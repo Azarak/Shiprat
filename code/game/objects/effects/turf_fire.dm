@@ -4,11 +4,13 @@
 #define TURF_FIRE_TEMP_INCREMENT_PER_POWER 3
 #define TURF_FIRE_VOLUME 150
 #define TURF_FIRE_MAX_POWER 50
+#define TURF_FIRE_REQUIRED_POWER_TO_SPREAD 6
 
 #define TURF_FIRE_ENERGY_PER_BURNED_OXY_MOL 12000
 #define TURF_FIRE_BURN_RATE_BASE 0.12
 #define TURF_FIRE_BURN_RATE_PER_POWER 0.02
 #define TURF_FIRE_BURN_CARBON_DIOXIDE_MULTIPLIER 0.75
+#define TURF_FIRE_POWER_LOSS_PER_SECOND 0.5
 
 #define TURF_FIRE_STATE_SMALL 1
 #define TURF_FIRE_STATE_MEDIUM 2
@@ -95,11 +97,22 @@
 	open_turf.air_update_turf(TRUE)
 	return TRUE
 
-/obj/effect/abstract/turf_fire/process()
+/obj/effect/abstract/turf_fire/process(delta_time)
 	var/turf/open/open_turf = loc
 	if(!open_turf) //This can happen, how I'm not sure
 		qdel(src)
 		return
+	if(open_turf.liquids)
+		var/liquid_power = open_turf.liquids.burn_and_get_power()
+		if(liquid_power > 0)
+			fire_power += liquid_power
+			// Try and spread fires on other liquids if we got extra power from a flammable liquid and fire power is big enough
+			if(fire_power >= TURF_FIRE_REQUIRED_POWER_TO_SPREAD)
+				for(var/turf/adjacent_turf as anything in open_turf.atmos_adjacent_turfs)
+					if(!adjacent_turf.liquids)
+						continue
+					adjacent_turf.liquids.liquid_hotspot_exposed()
+
 	if(open_turf.active_hotspot) //If we have an active hotspot, let it do the damage instead and lets not loose power
 		return
 	if(!magical)
@@ -108,7 +121,7 @@
 			return
 		if(open_turf.air.temperature < TURF_FIRE_REQUIRED_TEMP)
 			fire_power -= TURF_FIRE_POWER_LOSS_ON_LOW_TEMP
-		fire_power--
+		fire_power -= delta_time * TURF_FIRE_POWER_LOSS_PER_SECOND
 		if(fire_power <= 0)
 			qdel(src)
 			return

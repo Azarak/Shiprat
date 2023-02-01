@@ -85,6 +85,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_underlying_area = underlying_area
 	var/old_shuttle_roof = shuttle_roof
 
+	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
+	if(lgroup)
+		lgroup.remove_from_group(src)
+
 	var/old_bp = blueprint_data
 	blueprint_data = null
 
@@ -146,6 +150,29 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
 			space_tile.update_starlight()
+	
+	if(old_liquids)
+		if(W.liquids)
+			var/liquid_cache = W.liquids //Need to cache and re-set some vars due to the cleaning on Destroy(), and turf references
+			if(old_liquids.immutable)
+				old_liquids.remove_turf(src)
+			else
+				qdel(old_liquids, TRUE)
+			W.liquids = liquid_cache
+			W.liquids.my_turf = W
+		else
+			if(flags & CHANGETURF_INHERIT_AIR)
+				W.liquids = old_liquids
+				old_liquids.my_turf = W
+				if(old_liquids.immutable)
+					W.convert_immutable_liquids()
+				else
+					W.reasses_liquids()
+			else
+				if(old_liquids.immutable)
+					old_liquids.remove_turf(src)
+				else
+					qdel(old_liquids, TRUE)
 
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)

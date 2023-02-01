@@ -19,6 +19,9 @@
 	if(!air_gases)
 		return
 
+	if(liquids)
+		liquids.liquid_hotspot_exposed()
+
 	. = air_gases[/datum/gas/oxygen]
 	var/oxy = . ? .[MOLES] : 0
 	if (oxy < 0.5)

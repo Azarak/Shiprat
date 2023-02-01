@@ -45,3 +45,14 @@
 	minimum_temp = T20C - 70
 	maximum_temp = T20C - 50
 
+/datum/atmosphere/waterkilo
+	base_gases = list(
+		/datum/gas/oxygen=22,
+		/datum/gas/nitrogen=82,
+	)
+
+	minimum_pressure = WARNING_LOW_PRESSURE
+	maximum_pressure = WARNING_HIGH_PRESSURE
+
+	minimum_temp = T20C
+	maximum_temp = T20C

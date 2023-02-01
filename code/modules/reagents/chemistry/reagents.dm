@@ -100,6 +100,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/glass_icon
 	///How good of an accelerant is this reagent
 	var/accelerant_quality = 0
+	///Whether it will evaporate if left untouched on a liquids simulated puddle
+	var/evaporates = FALSE
 
 /datum/reagent/New()
 	SHOULD_CALL_PARENT(TRUE)

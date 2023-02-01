@@ -37,6 +37,10 @@ map skylineship
 	votable
 endmap
 
+map waterkilostation
+	votable
+endmap
+
 map icebox
 	minplayers 25
 	votable

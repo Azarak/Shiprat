@@ -45,6 +45,10 @@
 	return ..()
 
 /mob/living/onZImpact(turf/T, levels)
+	SEND_SIGNAL(T, COMSIG_TURF_MOB_FALL, src)
+	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
+		Knockdown(20)
+		return
 	ZImpactDamage(T, levels)
 	return ..()
 

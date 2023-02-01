@@ -683,6 +683,10 @@
 	name = "Ice Planet"
 	planet_color = COLOR_TEAL
 
+/datum/overmap_object/shuttle/planet/waterkilo
+	name = "Water Planet"
+	planet_color = COLOR_NAVY_BLUE
+
 /datum/overmap_object/shuttle/ess_crow
 	name = "ESS Crow"
 	speed_divisor_from_mass = 4

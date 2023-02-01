@@ -8,6 +8,32 @@
 	spillable = TRUE
 	resistance_flags = ACID_PROOF
 
+/obj/item/reagent_containers/glass/Initialize()
+	. = ..()
+	update_appearance()
+	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
+
+/obj/item/reagent_containers/glass/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
+	if(user.combat_mode)
+		return FALSE
+	if(!user.Adjacent(T))
+		return FALSE
+	if(liquids.liquid_state <= LIQUID_STATE_PUDDLE)
+		to_chat(user, SPAN_WARNING("The puddle is too shallow to scoop it up with \the [my_beaker]!"))
+		return FALSE
+	var/free_space = my_beaker.reagents.maximum_volume - my_beaker.reagents.total_volume
+	if(free_space <= 0)
+		to_chat(user, SPAN_WARNING("You can't fit any more liquids inside [my_beaker]!"))
+		return TRUE
+	var/desired_transfer = my_beaker.amount_per_transfer_from_this
+	if(desired_transfer > free_space)
+		desired_transfer = free_space
+	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
+	tempr.trans_to(my_beaker.reagents, tempr.total_volume)
+	to_chat(user, SPAN_NOTICE("You scoop up around [my_beaker.amount_per_transfer_from_this] units of liquids with [my_beaker]."))
+	qdel(tempr)
+	return TRUE
+
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/living/user, obj/target)
 	if(!canconsume(M, user))
@@ -130,10 +156,6 @@
 	custom_materials = list(/datum/material/glass=500)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
-/obj/item/reagent_containers/glass/beaker/Initialize()
-	. = ..()
-	update_appearance()
-
 /obj/item/reagent_containers/glass/beaker/get_part_rating()
 	return reagents.maximum_volume
 
@@ -251,6 +273,10 @@
 		ITEM_SLOT_DEX_STORAGE
 	)
 
+/obj/item/reagent_containers/glass/bucket/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("You can squeeze a mop's contents into it by using right-click")
+
 /obj/item/reagent_containers/glass/bucket/wooden
 	name = "wooden bucket"
 	icon_state = "woodbucket"
@@ -259,14 +285,28 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
+#define SQUEEZING_DISPERSAL_PERCENT 0.75
+
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))
-		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_WARNING("[src] is out of water!"))
+		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
+		if(is_right_clicking)
+			if(O.reagents.total_volume == 0)
+				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
+				return
+			if(reagents.total_volume == reagents.maximum_volume)
+				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				return
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_PERCENT)
+			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
+			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
-			reagents.trans_to(O, 5, transfered_by = user)
-			to_chat(user, SPAN_NOTICE("You wet [O] in [src]."))
-			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+			if(reagents.total_volume < 1)
+				to_chat(user, SPAN_WARNING("[src] is out of water!"))
+			else
+				reagents.trans_to(O, 5, transfered_by = user)
+				to_chat(user, SPAN_NOTICE("You wet [O] in [src]."))
+				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, SPAN_NOTICE("You add [O] to [src]."))
 		qdel(O)
@@ -274,6 +314,8 @@
 		user.put_in_hands(new /obj/item/bot_assembly/cleanbot)
 	else
 		..()
+	
+#undef SQUEEZING_DISPERSAL_PERCENT
 
 /obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
 	..()

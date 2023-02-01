@@ -21,6 +21,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
 	var/list/planet_ruins_templates = list()
+	var/list/trench_ruins_templates = list()
+	var/list/ocean_ruins_templates = list()
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
@@ -87,6 +89,17 @@ SUBSYSTEM_DEF(mapping)
 	// Generate mining ruins
 	loading_ruins = TRUE
 
+	//Ocean ruins
+	var/list/ocean_ruins = virtual_levels_by_trait(ZTRAIT_OCEAN_RUINS)
+	if (ocean_ruins.len)
+		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_ruins_templates)
+		for (var/datum/virtual_level/ocean_sub in ocean_ruins)
+			spawn_rivers(ocean_sub, 3, /turf/open/openspace/ocean, /area/ocean/generated, new_baseturfs = /turf/open/openspace/ocean)
+
+	var/list/trench_ruins = virtual_levels_by_trait(ZTRAIT_TRENCH_RUINS)
+	if (trench_ruins.len)
+		seedRuins(trench_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/trench/generated), trench_ruins_templates)
+
 	var/list/ice_ruins = virtual_levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
 		// needs to be whitelisted for underground too so place_below ruins work
@@ -152,6 +165,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
+	trench_ruins_templates = SSmapping.trench_ruins_templates
+	ocean_ruins_templates = SSmapping.ocean_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
 	planet_ruins_templates = SSmapping.planet_ruins_templates
@@ -503,6 +518,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			space_ruins_templates[R.name] = R
 		else if (istype(R, /datum/map_template/ruin/planetary))
 			planet_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/ocean))
+			ocean_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/trench))
+			trench_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")

@@ -194,8 +194,17 @@
 
 
 	var/turf/modeled_location = target
-	target_temperature = modeled_location.GetTemperature()
-	target_heat_capacity = modeled_location.GetHeatCapacity()
+
+	var/obj/effect/abstract/liquid_turf/liquid
+	if(modeled_location.liquids && modeled_location.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
+		liquid = modeled_location.liquids
+
+	if(liquid)
+		target_temperature = liquid.temp
+		target_heat_capacity = liquid.total_reagents * REAGENT_HEAT_CAPACITY
+	else
+		target_temperature = modeled_location.GetTemperature()
+		target_heat_capacity = modeled_location.GetHeatCapacity()
 
 	var/delta_temperature = air.temperature - target_temperature
 	var/sharer_heat_capacity = target_heat_capacity
@@ -208,9 +217,14 @@
 	var/sharer_temperature_delta = heat / sharer_heat_capacity
 
 	air.temperature += self_temperature_delta
-	modeled_location.TakeTemperature(sharer_temperature_delta)
-	if(modeled_location.blocks_air)
-		modeled_location.temperature_expose(air, modeled_location.temperature)
+
+	if(liquid)
+		if(!liquid.immutable)
+			liquid.temp += heat / target_heat_capacity
+	else
+		modeled_location.TakeTemperature(sharer_temperature_delta)
+		if(modeled_location.blocks_air)
+			modeled_location.temperature_expose(air, modeled_location.temperature)
 
 	update = TRUE
 
