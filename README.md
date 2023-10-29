@@ -1,10 +1,5 @@
 # Horizon Station 13
 
-[![GitHub continuous integrations status](https://img.shields.io/github/actions/workflow/status/hrzntal/horizon/ci_suite.yml?branch=main&style=for-the-badge)](https://github.com/hrzntal/horizon/actions?query=workflow%3A%22CI+Suite%22)
-[![Open GitHub pull requests](https://img.shields.io/github/issues-pr/hrzntal/horizon?color=blue&style=for-the-badge)](https://github.com/hrzntal/horizon/pulls)
-[![Open GitHub issues marked as tracked bugs](https://img.shields.io/github/issues/hrzntal/horizon/🐛%20Issue%20:%20Bug%20-%20Tracked?label=Bug%20Reports&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22🐛+Issue+%3A+Bug+-+Tracked%22)
-[![Open GitHub issues marked as feature requests](https://img.shields.io/github/issues/hrzntal/horizon/Issue%20:%20Feature%20Request?label=Feature%20Requests&color=a180f2&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22Issue%3AFeature+Request%22)
-
 ![Built with Aerogel](https://img.shields.io/static/v1?label=Built%20with&message=Aerogel&labelColor=e36d25&color=d15d27&style=for-the-badge)
 ![Contains Tasty Spaghetti Code](https://img.shields.io/static/v1?label=Contains&message=Tasty%20Spaghetti%20Code&labelColor=31c4f3&color=389ad5&style=for-the-badge)
 ![Powered By Tailwags](https://img.shields.io/static/v1?label=Powered%20By&message=Tailwags&labelColor=c1d72f&color=5d9741&style=for-the-badge)
@@ -24,9 +19,9 @@ Other code and assets come or are inspired from the rest of the SS13 community, 
 
 Helpful URLs          |<nbsp/>
 ----------------------|------------------------------------
-Website               | https://hrzn.fun                   
-Code                  | https://github.com/hrzntal/horizon 
-Discord               | https://discord.hrzn.fun           
+Website               | N/A               
+Code                  | https://github.com/sebdaz/HorizonSS13
+Discord               | N/A         
 Git/GitHub cheatsheet | https://www.notion.so/Git-GitHub-61bc81766b2e4c7d9a346db3078ce833 
 BYOND                 | https://byond.com                  
 ---
@@ -57,9 +52,9 @@ BYOND                 | https://byond.com
 
 ## LICENSE
 
-All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/hrzntal/horizon/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
+All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/sebdaz/HorizonSS13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
 
-All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/hrzntal/horizon/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
+All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/sebdaz/HorizonSS13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
 (Including tools unless their readme specifies otherwise.)
 
 See LICENSE and GPLv3.txt for more details.
