@@ -295,11 +295,6 @@
 	integer = FALSE
 	min_val = 0
 
-/datum/config_entry/number/ocean_budget
-	config_entry_value = 60
-	integer = FALSE
-	min_val = 0
-
 /datum/config_entry/flag/halt_storyteller // Stops storyteller from playing random events and spawning antags. This can be freely toggled in game in the storyteller menu
 
 /datum/config_entry/flag/allow_storyteller_pop_scaling // Allows storyteller to scale down the event frequency by population

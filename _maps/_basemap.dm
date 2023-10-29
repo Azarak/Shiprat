@@ -14,7 +14,6 @@
 		#include "map_files\tramstation\tramstation.dmm"
 		#include "map_files\tradership\tradership1.dmm"
 		#include "map_files\skylineship\skylineship.dmm"
-		#include "map_files\WaterKiloStation\WaterKiloStation.dmm"
 
 		#ifdef CIBUILDING
 			#include "templates.dm"

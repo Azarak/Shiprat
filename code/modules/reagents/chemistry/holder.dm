@@ -268,12 +268,10 @@
 	return TRUE
 
 /// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE)
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-		add_reagent(r_id, amt, data, TRUE)
-	if(!no_react)
-		handle_reactions()
+		add_reagent(r_id, amt, data)
 
 /// Like remove_reagent but you can enter a list.
 /datum/reagents/proc/remove_reagent_list(list/list_reagents)
@@ -318,8 +316,6 @@
 
 /// Remove an amount of reagents without caring about what they are
 /datum/reagents/proc/remove_any(amount = 1)
-	if(amount < 1)
-		amount = 1
 	var/list/cached_reagents = reagent_list
 	var/total_removed = 0
 	var/current_list_element = 1
@@ -594,7 +590,7 @@
 	return amount
 
 /// Copies the reagents to the target object
-/datum/reagents/proc/copy_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -624,9 +620,8 @@
 
 	src.update_total()
 	R.update_total()
-	if(!no_react)
-		R.handle_reactions()
-		src.handle_reactions()
+	R.handle_reactions()
+	src.handle_reactions()
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount
@@ -1076,7 +1071,7 @@
 	var/list/mix_message = list()
 	for(var/datum/equilibrium/equilibrium as anything in reaction_list)
 		mix_message += end_reaction(equilibrium)
-	if(length(mix_message) && my_atom)
+	if(length(mix_message))
 		my_atom.audible_message(SPAN_NOTICE("[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join(" ")]"))
 	finish_reacting()
 

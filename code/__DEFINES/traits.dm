@@ -613,8 +613,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
 
-#define TRAIT_WATER_BREATHING "water_breathing"
-
 ///Traits given by station traits
 #define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"
 #define STATION_TRAIT_UNNATURAL_ATMOSPHERE "station_trait_unnatural_atmosphere"

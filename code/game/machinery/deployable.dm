@@ -113,7 +113,6 @@
 /obj/structure/barricade/sandbags/Initialize()
 	. = ..()
 	AddElement(/datum/element/climbable)
-	AddElement(/datum/element/liquids_height, 20)
 
 /obj/structure/barricade/security
 	name = "security barrier"
