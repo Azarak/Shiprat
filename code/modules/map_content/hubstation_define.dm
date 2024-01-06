@@ -1,12 +1,12 @@
-/datum/map_config/metastation
-	map_name = "Meta Station"
-	map_path = "map_files/MetaStation"
-	map_file = "MetaStation.dmm"
+/datum/map_config/hubstation
+	map_name = "Hub Station"
+	map_path = "map_files/hubstation"
+	map_file = "hubstation.dmm"
 
 	traits = null
 	space_ruin_levels = 3
 
-	minetype = "lavaland"
+	minetype = "none"
 
 	allow_custom_shuttles = TRUE
 	shuttles = list(
