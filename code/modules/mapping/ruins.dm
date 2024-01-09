@@ -1,24 +1,25 @@
-/datum/map_template/ruin/proc/try_to_place(datum/virtual_level/vlevel ,allowed_areas,turf/forced_turf)
+/datum/map_template/ruin/proc/try_to_place(datum/virtual_level/vlevel ,allowed_areas,turf/forced_turf, allow_everywhere = FALSE)
 	var/z = vlevel.z_value
 	var/sanity = forced_turf ? 1 : PLACEMENT_TRIES
 	while(sanity > 0)
 		sanity--
-		var/width_border = vlevel.mapping_margin + SPACERUIN_MAP_EDGE_PAD + round(width / 2)
-		var/height_border = vlevel.mapping_margin + SPACERUIN_MAP_EDGE_PAD + round(height / 2)
+		var/width_border = vlevel.mapping_margin + round(width / 2)
+		var/height_border = vlevel.mapping_margin + round(height / 2)
 		var/turf/central_turf = forced_turf ? forced_turf : locate(rand(vlevel.low_x + width_border, vlevel.high_x - width_border), rand(vlevel.low_y + height_border, vlevel.high_y - height_border), z)
 		var/valid = TRUE
 
-		for(var/turf/check in get_affected_turfs(central_turf,1))
-			var/area/new_area = get_area(check)
-			valid = FALSE // set to false before we check
-			if(check.turf_flags & NO_RUINS)
-				break
-			for(var/type in allowed_areas)
-				if(istype(new_area, type)) // it's at least one of our types so it's whitelisted
-					valid = TRUE
+		if(!allow_everywhere)
+			for(var/turf/check in get_affected_turfs(central_turf,1))
+				var/area/new_area = get_area(check)
+				valid = FALSE // set to false before we check
+				if(check.turf_flags & NO_RUINS)
 					break
-			if(!valid)
-				break
+				for(var/type in allowed_areas)
+					if(istype(new_area, type)) // it's at least one of our types so it's whitelisted
+						valid = TRUE
+						break
+				if(!valid)
+					break
 
 		if(!valid)
 			continue

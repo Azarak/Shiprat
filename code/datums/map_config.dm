@@ -19,9 +19,6 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 3
-
-	var/minetype = "lavaland"
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
@@ -59,14 +56,14 @@
 	/// Possible water colors of the loaded map
 	var/list/water_color
 
-	var/amount_of_planets_spawned = 2
+	var/amount_of_planets_spawned = 1
 
 	var/ore_node_seeder_type
 
 	/// Whether the levels of the station levels self loop
-	var/self_looping = TRUE
+	var/self_looping = FALSE
 	/// Amount of margin padding added to each side of the map. This is required to be atleast 2 for selflooping
-	var/map_margin = 5
+	var/map_margin = MAP_EDGE_PAD
 
 	var/banned_event_tags = list(TAG_PLANETARY)
 

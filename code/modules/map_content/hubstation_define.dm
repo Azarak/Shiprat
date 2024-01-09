@@ -4,9 +4,6 @@
 	map_file = "hubstation.dmm"
 
 	traits = null
-	space_ruin_levels = 3
-
-	minetype = "none"
 
 	allow_custom_shuttles = TRUE
 	shuttles = list(

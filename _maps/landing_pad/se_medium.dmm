@@ -1,0 +1,27 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"m" = (/obj/docking_port/stationary/medium{dir = 4},/obj/effect/spawner/clear,/turf/template_noop,/area/template_noop)
+"T" = (/obj/effect/spawner/clear,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+aaaaTTTTTTTTTaaaa
+aaTTTTTTTTTTTTTaa
+aTTTTTTTTTTTTTTTa
+aTTTTTTTTTTTTTTTa
+TTTTTTTTTTTTTTTTa
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTmTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTT
+aTTTTTTTTTTTTTTTa
+aTTTTTTTTTTTTTTTa
+aaTTTTTTTTTTTTTaa
+aaaaTTTTTTTTaaaaa
+"}

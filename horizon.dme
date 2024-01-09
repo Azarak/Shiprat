@@ -868,6 +868,7 @@
 #include "code\datums\quirks\negative.dm"
 #include "code\datums\quirks\neutral.dm"
 #include "code\datums\ruins\icemoon.dm"
+#include "code\datums\ruins\landing_pad.dm"
 #include "code\datums\ruins\lavaland.dm"
 #include "code\datums\ruins\space.dm"
 #include "code\datums\station_traits\_station_trait.dm"

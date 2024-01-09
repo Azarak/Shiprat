@@ -8,7 +8,7 @@
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
 	transit_instance = transit_instance_
-	time_until_strand = world.time + 1 SECONDS
+	time_until_strand = world.time + 4 SECONDS
 	transit_instance.affected_movables[parent] = TRUE
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_parent_moved)
 

@@ -275,11 +275,13 @@
 				for(var/key in docks)
 					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[docks[key].id]'>Dock</a>"
 
+				/* FREEFORM DOCKING DISABLED FOR NOW
 				dat += "<BR><BR><B>Freeform docking spaces:</B>"
 				for(var/key in freeform_virtual_levels)
 					var/datum/virtual_level/vlevel = freeform_virtual_levels[key]
 					var/datum/map_zone/parent_zone = vlevel.parent_map_zone
 					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;map_id=[parent_zone.id];sub_id=[vlevel.id]'>Designate Location</a>"
+				*/
 
 	var/datum/browser/popup = new(user, "overmap_shuttle_control", "Shuttle Control", 400, 440)
 	popup.set_content(dat.Join())
@@ -427,6 +429,7 @@
 						if(0)
 							shuttle_controller.busy = TRUE
 							shuttle_controller.RemoveCurrentControl()
+				/* FREEFORM DOCK DISABLED FOR NOW
 				if("freeform_dock")
 					if(shuttle_controller.busy)
 						return
@@ -449,6 +452,7 @@
 						return
 					shuttle_controller.SetController(usr)
 					shuttle_controller.freeform_docker = new /datum/shuttle_freeform_docker(shuttle_controller, usr, vlevel)
+				*/
 
 		if("target")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_TARGET))

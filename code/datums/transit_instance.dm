@@ -60,6 +60,8 @@
 		return
 	for(var/i in affected_movables)
 		var/atom/movable/movable = i
+		if(QDELETED(movable))
+			continue
 		if(movable.anchored)
 			continue
 		var/turf/my_turf = get_turf(movable)
@@ -96,8 +98,7 @@
 	var/commit_strand = FALSE
 	var/name_to_apply
 	if(ishuman(strander))
-		commit_strand = TRUE
-		name_to_apply = "stranded human"
+		return
 	else if (istype(strander, /obj/structure/closet))
 		commit_strand = TRUE
 		name_to_apply = "stranded cargo"

@@ -1,0 +1,28 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"D" = (/obj/effect/spawner/clear,/obj/effect/spawner/clear,/turf/template_noop,/area/template_noop)
+"X" = (/obj/effect/spawner/clear,/turf/template_noop,/area/template_noop)
+"Z" = (/obj/docking_port/stationary/medium{dir = 8},/obj/effect/spawner/clear,/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+aaaaaXXXXXXXaaaaa
+aaXXXXXXXXXXXXXaa
+aXXXXXXXXXXXXXXXa
+aXXXXXXXXXXXXXXXa
+aXXXXXXXXXXXXXXXa
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+DXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXZXX
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXX
+aXXXXXXXXXXXXXXXX
+aXXXXXXXXXXXXXXXa
+aXXXXXXXXXXXXXXXa
+aXXXXXXXXXXXXXXXa
+aaXXXXXXXXXXXXXaa
+aaaaaXXXXXXaaaaaa
+"}

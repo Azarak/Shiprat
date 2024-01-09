@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(mapping)
 	var/map_voted = FALSE
 
 	var/list/map_templates = list()
+	var/list/landing_pad_templates = list()
 
 	var/list/planet_templates = list()
 
@@ -108,7 +109,7 @@ SUBSYSTEM_DEF(mapping)
 #endif
 	// Run map generation after ruin generation to prevent issues
 	run_map_generation()
-	
+
 	repopulate_sorted_areas()
 	generate_station_area_list()
 	return ..()
@@ -221,9 +222,9 @@ Used by the AI doomsday and the self-destruct nuke.
 	for (var/list/level as anything in traits)
 		i++
 		var/level_name = "[name] [i]"
-		
+
 		var/datum/virtual_level/vlevel = create_virtual_level(level_name, level.Copy(), mapzone, world.maxx, world.maxy, ALLOCATION_FULL, reservation_margin = map_margin)
-		
+
 		ordered_vlevels += vlevel
 	var/subi = 0
 	for(var/datum/virtual_level/vlevel as anything in ordered_vlevels)
@@ -321,19 +322,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 #ifndef LOWMEMORYMODE
 	// TODO: remove this when the DB is prepared for the z-levels getting reordered
-	if(config.space_ruin_levels)
-		for(var/i in 1 to config.space_ruin_levels)
-			var/ruins_name = "Ruins Area [i]"
-			var/overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,25), rand(5,25))
-			var/datum/map_zone/mapzone = create_map_zone(ruins_name, overmap_obj)
-			create_virtual_level(ruins_name, ZTRAITS_SPACE, mapzone, world.maxx, world.maxy, ALLOCATION_FULL, reservation_margin = MAP_EDGE_PAD)
 	//Load planets
-	if(config.minetype == "lavaland")
-		var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
-		lavaland_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
-	else if (!isnull(config.minetype) && config.minetype != "none")
-		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
-
 	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
 	var/spawned_habitable //One habitable planet is guaranteed to be spawned
 	if(config.amount_of_planets_spawned)
@@ -464,11 +453,18 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 		map_templates[T.name] = T
 
+	preloadLandingPadTemplates()
 	preloadPlanetTemplates()
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
 	preloadHolodeckTemplates()
+
+/datum/controller/subsystem/mapping/proc/preloadLandingPadTemplates()
+	for(var/path in subtypesof(/datum/map_template/ruin/landing_pad))
+		var/datum/map_template/T = new path()
+		landing_pad_templates[path] = T
+		map_templates[T.name] = T
 
 /datum/controller/subsystem/mapping/proc/preloadPlanetTemplates()
 	for(var/path in subtypesof(/datum/planet_template))

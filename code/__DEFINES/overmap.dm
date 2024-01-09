@@ -98,12 +98,12 @@
 //List of all the planets we can spawn roundstart, with an associated weight. Planets with less features are rarer
 #define SPAWN_PLANET_WEIGHT_LIST list(/datum/planet_template/volcanic_planet = 100, \
 					/datum/planet_template/snow_planet = 100, \
-					/datum/planet_template/shrouded_planet = 50, \
+					/datum/planet_template/shrouded_planet = 25, \
 					/datum/planet_template/lush_planet = 100, \
 					/datum/planet_template/jungle_planet = 100, \
 					/datum/planet_template/desert_planet = 100, \
-					/datum/planet_template/chlorine_planet = 50, \
-					/datum/planet_template/barren_planet = 50)
+					/datum/planet_template/chlorine_planet = 25, \
+					/datum/planet_template/barren_planet = 25)
 
 /// One planet from this list is guaranteed
 #define HABITABLE_PLANETS list(/datum/planet_template/snow_planet = 100, \

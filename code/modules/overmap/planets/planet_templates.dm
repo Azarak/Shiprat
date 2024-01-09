@@ -39,9 +39,32 @@
 	/// Type of our ore node seeder
 	var/ore_node_seeder_type = /datum/ore_node_seeder
 	/// Whether the levels of this planetary level self loop
-	var/self_looping = TRUE
+	var/self_looping = FALSE
 	/// Amount of margin padding added to each side of the map. This is required to be atleast 2 for selflooping
-	var/map_margin = 5
+	var/map_margin = MAP_EDGE_PAD
+
+/datum/planet_template/proc/GenerateLandingPads(datum/map_zone/mapzone)
+	var/datum/virtual_level/vlevel = mapzone.virtual_levels[1]
+	for(var/path in SSmapping.landing_pad_templates)
+		var/start_x = 0
+		var/start_y = 0
+		var/datum/map_template/ruin/landing_pad/pad = SSmapping.landing_pad_templates[path]
+		var/half_height = CEILING((pad.height / 2), 1)
+		var/half_width = CEILING((pad.width / 2), 1)
+		switch(pad.spawn_position)
+			if(LANDING_PAD_NE)
+				start_x = vlevel.high_x - vlevel.reserved_margin - half_width
+				start_y = vlevel.high_y - vlevel.reserved_margin - half_height
+			if(LANDING_PAD_NW)
+				start_x = vlevel.low_x + vlevel.reserved_margin + half_width
+				start_y = vlevel.high_y - vlevel.reserved_margin - half_height
+			if(LANDING_PAD_SE)
+				start_x = vlevel.high_x - vlevel.reserved_margin - half_width
+				start_y = vlevel.low_y + vlevel.reserved_margin + half_height
+			if(LANDING_PAD_SW)
+				start_x = vlevel.low_x + vlevel.reserved_margin + half_width
+				start_y = vlevel.low_y + vlevel.reserved_margin + half_height
+		pad.try_to_place(vlevel, list(), locate(start_x, start_y, vlevel.z_value), TRUE)
 
 /datum/planet_template/proc/LoadTemplate(datum/overmap_sun_system/system, coordinate_x, coordinate_y)
 	var/datum/overmap_object/linked_overmap_object = new overmap_type(system, coordinate_x, coordinate_y)
@@ -56,13 +79,13 @@
 	if(map_path)
 		if(!map_file)
 			WARNING("No map file passed on planet generation")
-		SSmapping.LoadGroup(null, 
-							name, 
-							map_path, 
-							map_file, 
-							default_traits = default_traits_input,  
-							ov_obj = linked_overmap_object, 
-							weather_controller_type = weather_controller_type, 
+		SSmapping.LoadGroup(null,
+							name,
+							map_path,
+							map_file,
+							default_traits = default_traits_input,
+							ov_obj = linked_overmap_object,
+							weather_controller_type = weather_controller_type,
 							atmosphere_type = atmosphere_type,
 							day_night_controller_type = day_night_controller_type,
 							rock_color = picked_rock_color,
@@ -121,6 +144,8 @@
 			new day_night_controller_type(mapzone)
 
 	var/datum/map_zone/mapzone = SSmapping.map_zones[SSmapping.map_zones.len]
+	// Generate landing pads
+	GenerateLandingPads(mapzone)
 	//Pass them to the ruin seeder
 	SeedRuins(mapzone)
 

@@ -277,6 +277,12 @@
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
 /area/shuttle/crow/engineering)
+"oK" = (
+/obj/machinery/atmospherics/pipe/bridge_pipe{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/crow)
 "pL" = (
 /obj/machinery/computer/shuttle/exploration_crow{
 	dir = 8
@@ -453,6 +459,7 @@
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/structure/tank_dispenser/oxygen,
 /obj/machinery/light/warm/directional/east,
+/obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
 /area/shuttle/crow)
 "CR" = (
@@ -524,6 +531,7 @@
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
 	},
+/obj/machinery/atmospherics/components/binary/pump,
 /turf/open/floor/iron,
 /area/shuttle/crow)
 "FP" = (
@@ -656,6 +664,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
 /area/shuttle/crow)
 "Pc" = (
@@ -754,6 +763,7 @@
 	dir = 9
 	},
 /obj/structure/lattice/catwalk/plated/dark,
+/obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
 /area/shuttle/crow)
 "VB" = (
@@ -772,6 +782,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/lattice/catwalk/plated/dark,
+/obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
 /area/shuttle/crow)
 "Ww" = (
@@ -939,7 +950,7 @@ kN
 Qy
 "}
 (10,1,1) = {"
-Rh
+oK
 CG
 MH
 Rh
