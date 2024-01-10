@@ -5174,9 +5174,6 @@
 /turf/open/floor/plating/airless,
 /area/syndicate_mothership/control)
 "sq" = (
-/obj/machinery/computer/shuttle/white_ship{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},

@@ -294,24 +294,6 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/pod/old/syndicate
 
-/obj/item/circuitboard/computer/white_ship
-	name = "White Ship (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/computer/shuttle/white_ship
-
-/obj/item/circuitboard/computer/white_ship/bridge
-	name = "White Ship Bridge (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/computer/shuttle/white_ship/bridge
-
-/obj/item/circuitboard/computer/white_ship/pod
-	name = "Salvage Pod (Computer Board)"
-	build_path = /obj/machinery/computer/shuttle/white_ship/pod
-
-/obj/item/circuitboard/computer/white_ship/pod/recall
-	name = "Salvage Pod Recall (Computer Board)"
-	build_path = /obj/machinery/computer/shuttle/white_ship/pod/recall
-
 /obj/item/circuitboard/computer/bountypad
 	name = "Bounty Pad (Computer Board)"
 	build_path = /obj/machinery/computer/piratepad_control/civilian

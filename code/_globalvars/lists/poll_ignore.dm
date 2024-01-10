@@ -13,7 +13,6 @@
 #define POLL_IGNORE_GOLEM "golem"
 #define POLL_IGNORE_SWARMER "swarmer"
 #define POLL_IGNORE_DRONE "drone"
-#define POLL_IGNORE_FUGITIVE "fugitive"
 #define POLL_IGNORE_PYROSLIME "slime"
 #define POLL_IGNORE_SHADE "shade"
 #define POLL_IGNORE_IMAGINARYFRIEND "imaginary_friend"
@@ -36,7 +35,6 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_GOLEM = "Golems",
 	POLL_IGNORE_SWARMER = "Swarmer shells",
 	POLL_IGNORE_DRONE = "Drone shells",
-	POLL_IGNORE_FUGITIVE = "Fugitive Hunter",
 	POLL_IGNORE_PYROSLIME = "Slime",
 	POLL_IGNORE_SHADE = "Shade",
 	POLL_IGNORE_IMAGINARYFRIEND = "Imaginary Friend",

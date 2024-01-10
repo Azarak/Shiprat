@@ -117,13 +117,6 @@
 	name = "Authorship"
 	description = "Just somewhere quiet, where I can focus on my work with no interruptions."
 
-/datum/map_template/ruin/space/caravanambush
-	id = "space/caravanambush"
-	suffix = "caravanambush.dmm"
-	name = "Syndicate Ambush"
-	description = "A caravan route used by passing cargo freights has been ambushed by a salvage team manned by the syndicate. \
-	The caravan managed to send off a distress message before being surrounded, their video feed cutting off as the sound of gunfire and a parrot was heard."
-
 /datum/map_template/ruin/space/mech_transport
 	id = "mech-transport"
 	suffix = "mechtransport.dmm"
@@ -236,19 +229,6 @@
 	suffix = "gondolaasteroid.dmm"
 	name = "Gondoland"
 	description = "Just an ordinary rock- wait, what's that thing?"
-
-/datum/map_template/ruin/space/whiteshipruin_box
-	id = "whiteshipruin_box"
-	suffix = "whiteshipruin_box.dmm"
-	name = "NT Medical Ship"
-	description = "An ancient ship, said to be among the first discovered derelicts near Space Station 13 that was still in working order. \
-	Aged and deprecated by time, this relic of a vessel is now broken beyond repair."
-
-/datum/map_template/ruin/space/whiteshipdock
-	id = "whiteshipdock"
-	suffix = "whiteshipdock.dmm"
-	name = "Whiteship Dock"
-	description = "An abandoned but functional vessel parked in deep space, ripe for the taking."
 
 /datum/map_template/ruin/space/cat_experiments
 	id = "meow"

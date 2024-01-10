@@ -53,14 +53,11 @@
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_MORPH "Morph"
 #define ROLE_SANTA "Santa"
-#define ROLE_FUGITIVE "Fugitive"
 
 //Spawner roles
 #define ROLE_GHOST_ROLE "Ghost Role"
 #define ROLE_SPIDER "Spider"
 #define ROLE_EXILE "Exile"
-#define ROLE_FUGITIVE_HUNTER "Fugitive Hunter"
-#define ROLE_ESCAPED_PRISONER "Escaped Prisoner"
 #define ROLE_LIFEBRINGER "Lifebringer"
 #define ROLE_ASHWALKER "Ash Walker"
 #define ROLE_LAVALAND_SYNDICATE "Lavaland Syndicate"

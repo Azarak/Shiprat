@@ -24,7 +24,6 @@
 	var/shuttles = list(
 		"cargo" = "cargo_box",
 		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
 		"emergency" = "emergency_box")
 
 	var/job_faction = FACTION_STATION

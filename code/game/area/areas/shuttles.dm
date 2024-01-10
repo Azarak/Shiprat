@@ -59,12 +59,6 @@
 	name = "Flying Dutchman"
 	requires_power = FALSE
 
-////////////////////////////Bounty Hunter Shuttles////////////////////////////
-
-/area/shuttle/hunter
-	name = "Hunter Shuttle"
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-
 ////////////////////////////White Ship////////////////////////////
 
 /area/shuttle/abandoned
@@ -197,30 +191,6 @@
 
 /area/shuttle/syndicate_scout
 	name = "Syndicate Scout"
-
-/area/shuttle/caravan
-	requires_power = TRUE
-
-/area/shuttle/caravan/syndicate1
-	name = "Syndicate Fighter"
-
-/area/shuttle/caravan/syndicate2
-	name = "Syndicate Fighter"
-
-/area/shuttle/caravan/syndicate3
-	name = "Syndicate Drop Ship"
-
-/area/shuttle/caravan/pirate
-	name = "Pirate Cutter"
-
-/area/shuttle/caravan/freighter1
-	name = "Small Freighter"
-
-/area/shuttle/caravan/freighter2
-	name = "Tiny Freighter"
-
-/area/shuttle/caravan/freighter3
-	name = "Tiny Freighter"
 
 // ----------- Arena Shuttle
 /area/shuttle_arena
@@ -366,12 +336,3 @@
 /area/shuttle/ironwrought/engine
 	name = "The Ironwrought Core"
 
-/area/shuttle/aggregeddon
-	name = "Supercruiser Aggregeddon"
-	requires_power = FALSE
-	area_limited_icon_smoothing = /area/shuttle/aggregeddon
-
-/area/shuttle/mezzeriah
-	name = "Supercruiser Mezzeriah"
-	requires_power = FALSE
-	area_limited_icon_smoothing = /area/shuttle/mezzeriah

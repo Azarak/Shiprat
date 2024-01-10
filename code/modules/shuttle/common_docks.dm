@@ -9,25 +9,37 @@
 /obj/docking_port/stationary/medium
 	name = "medium dock"
 	id = "mediumdock"
-	width = 17
+	width = 30
 	dwidth = 8
-	height = 13
+	height = 20
 
-//Modelled after boxstation whiteship, with 1 extra margin in width and in dwidth, and 2 height
 /obj/docking_port/stationary/large
 	name = "large dock"
 	id = "largedock"
-	width = 31
+	width = 40
 	dwidth = 8
-	height = 19
+	height = 30
 
-//Modelled after the SS13 standard auxilliary dock
 /obj/docking_port/stationary/huge
 	name = "huge dock"
 	id = "hugedock"
-	width = 35
-	dwidth = 11
-	height = 22
+	width = 50
+	dwidth = 16
+	height = 40
+
+// TODO Resize docks
+// new dimensions
+// medium 30x20 dwidth 8
+// large 40x30 dwidth 8
+// huge 50x40 dwidth 16
+// gigant?
+
+//TODO Mapzone generators
+// TODO asteroid level
+// TODO strand people on asteroid level
+// TODO dynamically spawned/despawned small levels for explorations
+// -- ^^^^ For now just spawn 8 "small" levels
+// TODO ship graveyard level where abandoned/dead ships automatically are docked to
 
 /obj/machinery/computer/shuttle/common_docks
 	circuit = /obj/item/circuitboard/computer/shuttle_common_docks
@@ -41,35 +53,3 @@
 /datum/map_template/shuttle/common
 	port_id = "common"
 	who_can_purchase = null
-
-/datum/map_template/shuttle/common/vulture
-	suffix = "vulture"
-	name = "MS Vulture"
-
-/datum/map_template/shuttle/common/petrel
-	suffix = "petrel"
-	name = "MS Petrel"
-
-/datum/map_template/shuttle/common/pigeon
-	suffix = "pigeon"
-	name = "CTS Pigeon"
-
-/datum/map_template/shuttle/common/rockdove
-	suffix = "rockdove"
-	name = "EMS Rockdove"
-
-/datum/map_template/shuttle/common/vista
-	suffix = "vista"
-	name = "CPCV Vista"
-
-/datum/map_template/shuttle/common/platform_small
-	suffix = "platform_small"
-	name = "Platform Shuttle"
-
-/datum/map_template/shuttle/common/platform_medium
-	suffix = "platform_medium"
-	name = "Platform Shuttle"
-
-/datum/map_template/shuttle/common/platform_large
-	suffix = "platform_large"
-	name = "Platform Shuttle"

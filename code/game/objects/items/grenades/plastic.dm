@@ -131,8 +131,6 @@
 			message_say = "FOR MY BROTHER!"
 		else if(our_guy.has_antag_datum(/datum/antagonist/ninja))
 			message_say = "FOR THE SPIDER CLAN!"
-		else if(our_guy.has_antag_datum(/datum/antagonist/fugitive))
-			message_say = "FOR FREEDOM!"
 		else if(our_guy.has_antag_datum(/datum/antagonist/ashwalker))
 			message_say = "I HAVE NO IDEA WHAT THIS THING DOES!"
 		else if(our_guy.has_antag_datum(/datum/antagonist/ert))

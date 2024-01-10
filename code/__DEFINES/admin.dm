@@ -129,7 +129,7 @@
 GLOBAL_VAR_INIT(ghost_role_flags, (~0))
 
 //Flags that control what ways ghosts can get back into the round
-//ie fugitives, space dragon, etc. also includes dynamic midrounds as it's the same deal
+//ie space dragon, etc. also includes dynamic midrounds as it's the same deal
 #define GHOSTROLE_MIDROUND_EVENT (1<<0)
 //ie ashwalkers, free golems, beach bums
 #define GHOSTROLE_SPAWNER (1<<1)

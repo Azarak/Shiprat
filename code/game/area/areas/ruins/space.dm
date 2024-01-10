@@ -462,13 +462,6 @@
 	name = "Abandoned Satellite"
 	icon_state = "tcomsatcham"
 
-//ABANDONED BOX WHITESHIP
-
-/area/ruin/space/has_grav/whiteship/box
-
-	name = "Abandoned Ship"
-	icon_state = "red"
-
 
 //SYNDICATE LISTENING POST STATION
 

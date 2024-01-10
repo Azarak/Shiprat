@@ -1,15 +1,22 @@
 /datum/map_config/hubstation
 	map_name = "Hub Station"
 	map_path = "map_files/hubstation"
-	map_file = "hubstation.dmm"
+	map_file = "hubstation_merged.dmm"
 
-	traits = null
+	traits = list(
+		list(
+			"Up" = 1,
+		),
+		list(
+			"Down" = -1,
+			"Baseturf" = "/turf/open/openspace",
+		)
+	)
 
 	allow_custom_shuttles = TRUE
 	shuttles = list(
 		"cargo" = "cargo_box",
 		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
 		"emergency" = "emergency_box",
 	)
 

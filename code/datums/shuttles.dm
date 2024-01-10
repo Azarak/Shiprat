@@ -119,9 +119,6 @@
 	port_id = "ferry"
 	name = "Base Shuttle Template (Ferry)"
 
-/datum/map_template/shuttle/whiteship
-	port_id = "whiteship"
-
 /datum/map_template/shuttle/labour
 	port_id = "labour"
 	who_can_purchase = null
@@ -156,10 +153,6 @@
 
 /datum/map_template/shuttle/pirate
 	port_id = "pirate"
-	who_can_purchase = null
-
-/datum/map_template/shuttle/hunter
-	port_id = "hunter"
 	who_can_purchase = null
 
 /datum/map_template/shuttle/ruin //For random shuttles in ruins
@@ -476,42 +469,6 @@
 	name = "kilo transport ferry"
 	description = "Standard issue CentCom Ferry for Kilo pattern stations. Includes additional equipment and rechargers."
 
-/datum/map_template/shuttle/whiteship/box
-	suffix = "box"
-	name = "Hospital Ship"
-
-/datum/map_template/shuttle/whiteship/meta
-	suffix = "meta"
-	name = "Salvage Ship"
-
-/datum/map_template/shuttle/whiteship/pubby
-	suffix = "pubby"
-	name = "NT White UFO"
-
-/datum/map_template/shuttle/whiteship/cere
-	suffix = "cere"
-	name = "NT Construction Vessel"
-
-/datum/map_template/shuttle/whiteship/kilo
-	suffix = "kilo"
-	name = "NT Mining Shuttle"
-
-/datum/map_template/shuttle/whiteship/donut
-	suffix = "donut"
-	name = "NT Long-Distance Bluespace Jumper"
-
-/datum/map_template/shuttle/whiteship/tram
-	suffix = "tram"
-	name = "NT Long-Distance Bluespace Freighter"
-
-/datum/map_template/shuttle/whiteship/delta
-	suffix = "delta"
-	name = "NT Frigate"
-
-/datum/map_template/shuttle/whiteship/pod
-	suffix = "whiteship_pod"
-	name = "Salvage Pod"
-
 /datum/map_template/shuttle/cargo/kilo
 	suffix = "kilo"
 	name = "supply shuttle (Kilo)"
@@ -671,18 +628,6 @@
 	suffix = "dutchman"
 	name = "pirate ship (Flying Dutchman)"
 
-/datum/map_template/shuttle/hunter/space_cop
-	suffix = "space_cop"
-	name = "Police Spacevan"
-
-/datum/map_template/shuttle/hunter/russian
-	suffix = "russian"
-	name = "Russian Cargo Ship"
-
-/datum/map_template/shuttle/hunter/bounty
-	suffix = "bounty"
-	name = "Bounty Hunter Ship"
-
 /datum/map_template/shuttle/ruin/caravan_victim
 	suffix = "caravan_victim"
 	name = "Small Freighter"
@@ -712,28 +657,3 @@
 	suffix = "crow"
 	name = "ESS Crow"
 	who_can_purchase = null
-
-/datum/map_template/shuttle/barrow
-	port_id = "whiteship"
-	suffix = "the_barrows"
-	name = "The Barrows"
-
-/datum/map_template/shuttle/chilldown
-	port_id = "luxury"
-	suffix = "chilldown"
-	name = "The Chilldown"
-
-/datum/map_template/shuttle/ironwrought
-	port_id = "luxury"
-	suffix = "ironwrought"
-	name = "The Ironwrought"
-
-/datum/map_template/shuttle/aggregeddon
-	port_id = "supercruiser"
-	suffix = "aggregeddon"
-	name = "Supercruiser Aggregeddon"
-
-/datum/map_template/shuttle/mezzeriah
-	port_id = "supercruiser"
-	suffix = "mezzeriah"
-	name = "Supercruiser Mezzeriah"
