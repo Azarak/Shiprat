@@ -50,6 +50,17 @@
 		qdel(vlevel)
 	return ..()
 
+/datum/map_zone/proc/vlevel_trait_init()
+	for(var/i in 1 to virtual_levels.len)
+		var/datum/virtual_level/vlevel = virtual_levels[i]
+		var/list/vlevel_traits = vlevel.traits
+		var/up_value = vlevel_traits["Up"]
+		var/down_value = vlevel_traits["Down"]
+		if(!isnull(up_value))
+			vlevel.up_linkage = virtual_levels[i+up_value]
+		if(!isnull(down_value))
+			vlevel.down_linkage = virtual_levels[i+down_value]
+
 /datum/map_zone/proc/get_block()
 	. = list()
 	for(var/datum/virtual_level/vlevel as anything in virtual_levels)

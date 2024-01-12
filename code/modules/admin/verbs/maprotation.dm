@@ -35,68 +35,6 @@
 	var/chosenmap = tgui_input_list(usr, "Choose a map to change to", "Change Map", sortList(maprotatechoices)|"Custom")
 	if (!chosenmap)
 		return
-
-	if(chosenmap == "Custom")
-		message_admins("[key_name_admin(usr)] is changing the map to a custom map")
-		log_admin("[key_name(usr)] is changing the map to a custom map")
-		var/datum/map_config/VM = new
-
-		VM.map_name = input("Choose the name for the map", "Map Name") as null|text
-		if(isnull(VM.map_name))
-			VM.map_name = "Custom"
-
-		var/map_file = input("Pick file:", "Map File") as null|file
-		if(isnull(map_file))
-			return
-
-		if(copytext("[map_file]", -4) != ".dmm")//4 == length(".dmm")
-			to_chat(src, SPAN_WARNING("Filename must end in '.dmm': [map_file]"))
-			return
-
-		if(!fcopy(map_file, "_maps/custom/[map_file]"))
-			return
-
-		// This is to make sure the map works so the server does not start without a map.
-		var/datum/parsed_map/M = new (map_file)
-		if(!M)
-			to_chat(src, SPAN_WARNING("Map '[map_file]' failed to parse properly."))
-			return
-
-		if(!M.bounds)
-			to_chat(src, SPAN_WARNING("Map '[map_file]' has non-existant bounds."))
-			qdel(M)
-			return
-
-		qdel(M)
-
-		var/shuttles = tgui_alert(usr,"Do you want to modify the shuttles?", "Map Shuttles", list("Yes", "No"))
-		if(shuttles == "Yes")
-			for(var/s in VM.shuttles)
-				var/shuttle = input(s, "Map Shuttles") as null|text
-				if(!shuttle)
-					continue
-				if(!SSmapping.shuttle_templates[shuttle])
-					to_chat(usr, SPAN_WARNING("No such shuttle as '[shuttle]' exists, using default."))
-					continue
-				VM.shuttles[s] = shuttle
-
-		VM.map_path = "custom"
-		VM.map_file = "[map_file]"
-		VM.config_filename = "data/next_map.json"
-		var/json_value = list(
-			"map_name" = VM.map_name,
-			"map_path" = VM.map_path,
-			"map_file" = VM.map_file,
-			"shuttles" = VM.shuttles
-		)
-
-		// If the file isn't removed text2file will just append.
-		if(fexists("data/next_map.json"))
-			fdel("data/next_map.json")
-		text2file(json_encode(json_value), "data/next_map.json")
-
-		if(SSmapping.changemap(VM))
-			message_admins("[key_name_admin(usr)] has changed the map to [VM.map_name]")
 	else
 		var/datum/map_config/VM = maprotatechoices[chosenmap]
 		message_admins("[key_name_admin(usr)] is changing the map to [VM.map_name]")

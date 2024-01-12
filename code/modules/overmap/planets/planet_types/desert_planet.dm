@@ -1,16 +1,43 @@
-/datum/planet_template/desert_planet
+/datum/overmap_map_zone_generator/desert
 	name = "Desert Planet"
-	area_type = /area/planet/desert
-	generator_type = /datum/map_generator/planet_gen/desert
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/desert
-	atmosphere_type = /datum/atmosphere/desert
-	weather_controller_type = /datum/weather_controller/desert
+	map_zone_generator = /datum/map_zone_generator/desert
 
+/datum/map_zone_generator/desert
+	mapzone_name = "Desert Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/desert
+	terrain_generator = /datum/terrain_generator/map_generator/desert
+	ruin_generator = /datum/ruin_generator/basic/desert
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/desert
+	day_night_controller = /datum/day_night_controller
+	atmosphere = /datum/atmosphere/desert
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_BEIGE, COLOR_PALE_YELLOW, COLOR_GRAY, COLOR_BROWN)
 	plant_color = list("#7b4a12","#e49135","#ba6222")
 	grass_color = list("#b8701f")
+	water_color = null
+	plant_color_as_grass = FALSE
+
+/datum/base_map_generator/empty_levels/desert
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/desert
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/desert
+	map_generator = /datum/map_generator/planet_gen/desert
+
+/datum/ruin_generator/basic/desert
+	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_REMOTE
+	budget = 40
+	allowed_areas = list(/area/planet/desert)
 
 /datum/weather_controller/desert
 	possible_weathers = list(/datum/weather/sandstorm = 100)

@@ -6,6 +6,7 @@
 /datum/map_template/ruin/landing_pad
 	description = "Landing pad."
 	prefix = "_maps/landing_pad/"
+	unpickable = TRUE
 	var/spawn_position = LANDING_PAD_NE
 
 /datum/map_template/ruin/landing_pad/ne_large

@@ -1,19 +1,45 @@
-/datum/planet_template/snow_planet
+/datum/overmap_map_zone_generator/snow
 	name = "Snow Planet"
-	area_type = /area/planet/snow
-	generator_type = /datum/map_generator/planet_gen/snow
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/snow
-	atmosphere_type = /datum/atmosphere/snow
-	weather_controller_type = /datum/weather_controller/snow_planet
+	map_zone_generator = /datum/map_zone_generator/snow
 
+/datum/map_zone_generator/snow
+	mapzone_name = "Snow Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/snow
+	terrain_generator = /datum/terrain_generator/map_generator/snow
+	ruin_generator = /datum/ruin_generator/basic/snow
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/snow
+	day_night_controller = /datum/day_night_controller
+	atmosphere = /datum/atmosphere/snow
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_DARK_BLUE_GRAY, COLOR_GUNMETAL, COLOR_GRAY, COLOR_DARK_GRAY)
 	plant_color = list("#d0fef5","#93e1d8","#93e1d8", "#b2abbf", "#3590f3", "#4b4e6d")
 	grass_color = list("#d0fef5")
-	planet_flags = PLANET_HABITABLE|PLANET_WATER|PLANET_WRECKAGES|PLANET_ICE
+	water_color = null
+	plant_color_as_grass = FALSE
 
-/datum/weather_controller/snow_planet
+/datum/base_map_generator/empty_levels/snow
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/snow
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/snow
+	map_generator = /datum/map_generator/planet_gen/snow
+
+/datum/ruin_generator/basic/snow
+	flags = RUIN_WRECKAGE|RUIN_HABITABLE|RUIN_ICE
+	budget = 40
+	allowed_areas = list(/area/planet/snow)
+
+/datum/weather_controller/snow
 	possible_weathers = list(
 		/datum/weather/snow_storm = 50,
 		/datum/weather/snowfall = 50,

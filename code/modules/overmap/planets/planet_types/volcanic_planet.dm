@@ -1,18 +1,43 @@
-/datum/planet_template/volcanic_planet
-	name = "Volcanic Planet"
-	area_type = /area/planet/volcanic
-	generator_type = /datum/map_generator/planet_gen/volcanic
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
+/datum/overmap_map_zone_generator/volcanic
+	name = "Snow Planet"
 	overmap_type = /datum/overmap_object/shuttle/planet/volcanic
-	atmosphere_type = /datum/atmosphere/volcanic
-	weather_controller_type = /datum/weather_controller/lavaland
-	day_night_controller_type = null //Ash blocks off the sky
+	map_zone_generator = /datum/map_zone_generator/volcanic
 
+/datum/map_zone_generator/volcanic
+	mapzone_name = "Snow Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/volcanic
+	terrain_generator = /datum/terrain_generator/map_generator/volcanic
+	ruin_generator = /datum/ruin_generator/basic/volcanic
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/lavaland
+	day_night_controller = null // Ash blocks the sky
+	atmosphere = /datum/atmosphere/volcanic
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_DARK_GRAY)
 	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")
+	grass_color = null
+	water_color = null
 	plant_color_as_grass = TRUE
-	planet_flags = PLANET_VOLCANIC|PLANET_WRECKAGES
+
+/datum/base_map_generator/empty_levels/volcanic
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/snow
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/volcanic
+	map_generator = /datum/map_generator/planet_gen/volcanic
+
+/datum/ruin_generator/basic/volcanic
+	flags = RUIN_WRECKAGE|RUIN_VOLCANIC|RUIN_REMOTE
+	budget = 40
+	allowed_areas = list(/area/planet/volcanic)
 
 /datum/overmap_object/shuttle/planet/volcanic
 	name = "Volcanic Planet"

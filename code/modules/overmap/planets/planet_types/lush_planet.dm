@@ -1,16 +1,43 @@
-/datum/planet_template/lush_planet
+/datum/overmap_map_zone_generator/lush
 	name = "Lush Planet"
-	area_type = /area/planet/lush
-	generator_type = /datum/map_generator/planet_gen/lush
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/lush
-	atmosphere_type = /datum/atmosphere/lush
-	weather_controller_type = /datum/weather_controller/lush
+	map_zone_generator = /datum/map_zone_generator/lush
 
+/datum/map_zone_generator/lush
+	mapzone_name = "Lush Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/lush
+	terrain_generator = /datum/terrain_generator/map_generator/lush
+	ruin_generator = /datum/ruin_generator/basic/lush
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/lush
+	day_night_controller = /datum/day_night_controller
+	atmosphere = /datum/atmosphere/lush
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_ASTEROID_ROCK, COLOR_GRAY, COLOR_BROWN)
 	plant_color = list("#215a00","#195a47","#5a7467","#9eab88","#6e7248")
+	grass_color = null
+	water_color = null
 	plant_color_as_grass = TRUE
+
+/datum/base_map_generator/empty_levels/lush
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/lush
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/lush
+	map_generator = /datum/map_generator/planet_gen/lush
+
+/datum/ruin_generator/basic/lush
+	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_HABITABLE
+	budget = 40
+	allowed_areas = list(/area/planet/lush)
 
 /datum/weather_controller/lush
 	possible_weathers = list(

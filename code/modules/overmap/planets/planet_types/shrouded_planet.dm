@@ -1,19 +1,43 @@
-/datum/planet_template/shrouded_planet
+/datum/overmap_map_zone_generator/shrouded
 	name = "Shrouded Planet"
-	area_type = /area/planet/shrouded
-	generator_type = /datum/map_generator/planet_gen/shrouded
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/shrouded
-	atmosphere_type = /datum/atmosphere/shrouded
-	weather_controller_type = /datum/weather_controller/shrouded
-	day_night_controller_type = /datum/day_night_controller/shrouded
+	map_zone_generator = /datum/map_zone_generator/shrouded
 
+/datum/map_zone_generator/shrouded
+	mapzone_name = "Shrouded Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/shrouded
+	terrain_generator = /datum/terrain_generator/map_generator/shrouded
+	ruin_generator = /datum/ruin_generator/basic/shrouded
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/shrouded
+	day_night_controller = /datum/day_night_controller/shrouded
+	atmosphere = /datum/atmosphere/shrouded
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_INDIGO, COLOR_DARK_BLUE_GRAY, COLOR_NAVY_BLUE)
 	plant_color = list("#3c5434", "#2f6655", "#0e703f", "#495139", "#394c66", "#1a3b77", "#3e3166", "#52457c", "#402d56", "#580d6d")
-	plant_color_as_grass = TRUE
+	grass_color = null
 	water_color = list("#3e3960")
-	planet_flags = PLANET_WATER|PLANET_WRECKAGES|PLANET_REMOTE
+	plant_color_as_grass = TRUE
+
+/datum/base_map_generator/empty_levels/shrouded
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/shrouded
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/shrouded
+	map_generator = /datum/map_generator/planet_gen/shrouded
+
+/datum/ruin_generator/basic/shrouded
+	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_REMOTE
+	budget = 40
+	allowed_areas = list(/area/planet/shrouded)
 
 /datum/day_night_controller/shrouded
 	midnight_color = COLOR_BLACK

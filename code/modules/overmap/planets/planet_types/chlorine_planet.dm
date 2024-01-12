@@ -1,16 +1,43 @@
-/datum/planet_template/chlorine_planet
+/datum/overmap_map_zone_generator/chlorine
 	name = "Chlorine Planet"
-	area_type = /area/planet/chlorine
-	generator_type = /datum/map_generator/planet_gen/chlorine
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
-	atmosphere_type = /datum/atmosphere/chlorine
-	weather_controller_type = /datum/weather_controller/chlorine
-	day_night_controller_type = /datum/day_night_controller/chlorine
+	map_zone_generator = /datum/map_zone_generator/chlorine
 
+/datum/map_zone_generator/chlorine
+	mapzone_name = "Chlorine Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/chlorine
+	terrain_generator = /datum/terrain_generator/map_generator/chlorine
+	ruin_generator = /datum/ruin_generator/basic/chlorine
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/chlorine
+	day_night_controller = /datum/day_night_controller/chlorine
+	atmosphere = /datum/atmosphere/chlorine
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_GRAY, COLOR_PALE_GREEN_GRAY, COLOR_PALE_BTL_GREEN)
-	planet_flags = PLANET_WATER|PLANET_WRECKAGES|PLANET_REMOTE
+	plant_color = null
+	plant_color_as_grass = FALSE
+	grass_color = null
+	water_color = null
+
+/datum/base_map_generator/empty_levels/chlorine
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/chlorine
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/chlorine
+	map_generator = /datum/map_generator/planet_gen/chlorine
+
+/datum/ruin_generator/basic/chlorine
+	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_REMOTE
+	budget = 40
+	allowed_areas = list(/area/planet/chlorine)
 
 /datum/weather_controller/chlorine
 	possible_weathers = list(/datum/weather/acid_rain = 100)

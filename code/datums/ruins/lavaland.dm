@@ -2,6 +2,7 @@
 
 /datum/map_template/ruin/lavaland
 	prefix = "_maps/RandomRuins/LavaRuins/"
+	requirements = RUIN_LAVALAND
 
 /datum/map_template/ruin/lavaland/biodome
 	cost = 5

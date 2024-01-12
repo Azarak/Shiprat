@@ -4,6 +4,7 @@
 	prefix = "_maps/RandomRuins/SpaceRuins/"
 	cost = 1
 	allow_duplicates = FALSE
+	requirements = RUIN_SPACE
 
 /datum/map_template/ruin/space/zoo
 	id = "zoo"

@@ -1,8 +1,6 @@
 /datum/map_template/ruin/planetary
 	prefix = "_maps/RandomRuins/Planet/"
 	allow_duplicates = FALSE
-	/// A bitfield representing the requirements of the ruin for it to be spawned (Planet properties are checked)
-	var/planet_requirements = NONE
 
 /datum/map_template/ruin/planetary/colony
 	name = "Colony"
@@ -10,7 +8,7 @@
 	description = "A colony."
 	cost = 10
 	suffix = "colony.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 	unpickable = TRUE
 
 /area/ruin/unpowered/colony
@@ -66,7 +64,7 @@
 	description = "A crashed pod."
 	cost = 5
 	suffix = "crashed_pod.dmm"
-	planet_requirements = PLANET_WRECKAGES
+	requirements = RUIN_WRECKAGE
 
 /area/ruin/unpowered/crashed_pod
 	name = "Crashed Pod"
@@ -77,7 +75,7 @@
 	description = "An old pod."
 	cost = 5
 	suffix = "old_pod.dmm"
-	planet_requirements = PLANET_WRECKAGES
+	requirements = RUIN_WRECKAGE
 
 /datum/map_template/ruin/planetary/deserted_lab
 	name = "Deserted Lab"
@@ -85,7 +83,7 @@
 	description = "A deserted lab."
 	cost = 5
 	suffix = "deserted_lab.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/lodge
 	name = "Lodge"
@@ -93,7 +91,7 @@
 	description = "A lodge."
 	cost = 5
 	suffix = "lodge.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/spider_nest
 	name = "Spider Nest"
@@ -101,7 +99,7 @@
 	description = "A spider nest."
 	cost = 5
 	suffix = "spider_nest.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/archeological_site
 	name = "Archeological Site"
@@ -109,7 +107,7 @@
 	description = "An archeological site."
 	cost = 5
 	suffix = "archeological_site.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/abandoned_factory
 	name = "Abandoned Factory"
@@ -117,7 +115,7 @@
 	description = "An abandoned factory."
 	cost = 5
 	suffix = "abandoned_factory.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/old_drill_site
 	name = "Old Drill Site"
@@ -125,7 +123,7 @@
 	description = "An old drill site."
 	cost = 5
 	suffix = "old_drill_site.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/mining_facility
 	name = "Mining Facility"
@@ -133,7 +131,7 @@
 	description = "A mining facility."
 	cost = 5
 	suffix = "mining_facility.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/abandoned_containment
 	name = "Abandoned Containment"
@@ -141,7 +139,7 @@
 	description = "A long abandoned base containing a dangerous secret."
 	cost = 5
 	suffix = "abandoned_containment.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/weather_station
 	name = "Weather Station"
@@ -149,7 +147,7 @@
 	description = "A dormant weather research station."
 	cost = 5
 	suffix = "weather_station.dmm"
-	planet_requirements = PLANET_HABITABLE
+	requirements = RUIN_HABITABLE
 
 /datum/map_template/ruin/planetary/heyheypeople
 	name = "Surgical Theatre Pod"
@@ -157,4 +155,4 @@
 	description = "A pod, meant for surgery.. what's with the pizza?"
 	cost = 5
 	suffix = "heyheypeople.dmm"
-	planet_requirements = PLANET_WRECKAGES
+	requirements = RUIN_HABITABLE

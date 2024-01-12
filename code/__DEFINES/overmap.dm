@@ -96,28 +96,31 @@
 #define CHECK_AND_PICK_OR_NULL(some_list) some_list ? pick(some_list) : null
 
 //List of all the planets we can spawn roundstart, with an associated weight. Planets with less features are rarer
-#define SPAWN_PLANET_WEIGHT_LIST list(/datum/planet_template/volcanic_planet = 100, \
-					/datum/planet_template/snow_planet = 100, \
-					/datum/planet_template/shrouded_planet = 25, \
-					/datum/planet_template/lush_planet = 100, \
-					/datum/planet_template/jungle_planet = 100, \
-					/datum/planet_template/desert_planet = 100, \
-					/datum/planet_template/chlorine_planet = 25, \
-					/datum/planet_template/barren_planet = 25)
+#define SPAWN_PLANET_WEIGHT_LIST list(/datum/map_zone_generator/volcanic_planet = 100, \
+					/datum/map_zone_generator/snow_planet = 100, \
+					/datum/map_zone_generator/shrouded_planet = 25, \
+					/datum/map_zone_generator/lush_planet = 100, \
+					/datum/map_zone_generator/jungle_planet = 100, \
+					/datum/map_zone_generator/desert_planet = 100, \
+					/datum/map_zone_generator/chlorine_planet = 25, \
+					/datum/map_zone_generator/barren_planet = 25)
 
 /// One planet from this list is guaranteed
-#define HABITABLE_PLANETS list(/datum/planet_template/snow_planet = 100, \
-					/datum/planet_template/lush_planet = 100, \
-					/datum/planet_template/desert_planet = 100, \
-					/datum/planet_template/jungle_planet = 100)
+#define HABITABLE_PLANETS list(/datum/map_zone_generator/snow_planet = 100, \
+					/datum/map_zone_generator/lush_planet = 100, \
+					/datum/map_zone_generator/desert_planet = 100, \
+					/datum/map_zone_generator/jungle_planet = 100)
 
-//Planetary proprties for ruins to check
-#define PLANET_HABITABLE (1<<0)
-#define PLANET_WATER (1<<1)
-#define PLANET_WRECKAGES (1<<2)
-#define PLANET_VOLCANIC (1<<3)
-#define PLANET_ICE (1<<4)
-#define PLANET_REMOTE (1<<5)
+//Ruin flags
+#define RUIN_HABITABLE (1<<0)
+#define RUIN_WATER (1<<1)
+#define RUIN_WRECKAGE (1<<2)
+#define RUIN_VOLCANIC (1<<3)
+#define RUIN_ICE (1<<4)
+#define RUIN_REMOTE (1<<5)
+#define RUIN_SPACE (1<<6)
+#define RUIN_ICEBOX (1<<7)
+#define RUIN_LAVALAND (1<<8)
 
 #define TRANSIT_VELOCITY_NEGLIGIBLE 0
 #define TRANSIT_VELOCITY_LOW 1

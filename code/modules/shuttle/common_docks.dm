@@ -27,20 +27,6 @@
 	dwidth = 16
 	height = 40
 
-// TODO Resize docks
-// new dimensions
-// medium 30x20 dwidth 8
-// large 40x30 dwidth 8
-// huge 50x40 dwidth 16
-// gigant?
-
-//TODO Mapzone generators
-// TODO asteroid level
-// TODO strand people on asteroid level
-// TODO dynamically spawned/despawned small levels for explorations
-// -- ^^^^ For now just spawn 8 "small" levels
-// TODO ship graveyard level where abandoned/dead ships automatically are docked to
-
 /obj/machinery/computer/shuttle/common_docks
 	circuit = /obj/item/circuitboard/computer/shuttle_common_docks
 	possible_destinations = "mediumdock;largedock;hugedock;smalldock"

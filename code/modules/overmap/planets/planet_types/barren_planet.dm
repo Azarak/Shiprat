@@ -1,14 +1,43 @@
-/datum/planet_template/barren_planet
+/datum/overmap_map_zone_generator/barren
 	name = "Barren Planet"
-	area_type = /area/planet/barren
-	generator_type = /datum/map_generator/planet_gen/barren
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/barren)
 	overmap_type = /datum/overmap_object/shuttle/planet/barren
-	atmosphere_type = /datum/atmosphere/barren
+	map_zone_generator = /datum/map_zone_generator/barren
 
+/datum/map_zone_generator/barren
+	mapzone_name = "Barren Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/barren
+	terrain_generator = /datum/terrain_generator/map_generator/barren
+	ruin_generator = /datum/ruin_generator/basic/barren
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller
+	day_night_controller = /datum/day_night_controller
+	atmosphere = /datum/atmosphere/barren
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_BEIGE_GRAYISH, COLOR_BEIGE, COLOR_GRAY, COLOR_BROWN)
-	planet_flags = PLANET_WRECKAGES|PLANET_REMOTE
+	plant_color = null
+	plant_color_as_grass = FALSE
+	grass_color = null
+	water_color = null
+
+/datum/base_map_generator/empty_levels/barren
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/barren
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/barren))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/barren
+	map_generator = /datum/map_generator/planet_gen/barren
+
+/datum/ruin_generator/basic/barren
+	flags = RUIN_REMOTE|RUIN_WRECKAGE
+	budget = 40
+	allowed_areas = list(/area/planet/barren)
 
 /datum/overmap_object/shuttle/planet/barren
 	name = "Barren Planet"

@@ -1,16 +1,43 @@
-/datum/planet_template/jungle_planet
+/datum/overmap_map_zone_generator/jungle
 	name = "Jungle Planet"
-	area_type = /area/planet/jungle
-	generator_type = /datum/map_generator/planet_gen/jungle
-
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle
-	atmosphere_type = /datum/atmosphere/jungle
-	weather_controller_type = /datum/weather_controller/lush
+	map_zone_generator = /datum/map_zone_generator/jungle
 
+/datum/map_zone_generator/jungle
+	mapzone_name = "Jungle Planet"
+	base_map_generator = /datum/base_map_generator/empty_levels/jungle
+	terrain_generator = /datum/terrain_generator/map_generator/jungle
+	ruin_generator = /datum/ruin_generator/basic/jungle
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller/lush
+	day_night_controller = /datum/day_night_controller
+	atmosphere = /datum/atmosphere/jungle
+	ore_node_seeder = /datum/ore_node_seeder
 	rock_color = list(COLOR_BEIGE_GRAYISH, COLOR_BEIGE, COLOR_ASTEROID_ROCK)
 	plant_color = list(COLOR_PALE_BTL_GREEN)
+	grass_color = null
+	water_color = null
 	plant_color_as_grass = TRUE
+
+/datum/base_map_generator/empty_levels/jungle
+	level_amount = 1
+	turf_type = null
+	area_type = /area/planet/jungle
+	traits = list(list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock))
+	self_looping = FALSE
+	map_margin = MAP_EDGE_PAD
+	size_x = 255
+	size_y = 255
+	allocation_type = ALLOCATION_FULL
+
+/datum/terrain_generator/map_generator/jungle
+	map_generator = /datum/map_generator/planet_gen/jungle
+
+/datum/ruin_generator/basic/jungle
+	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_HABITABLE
+	budget = 40
+	allowed_areas = list(/area/planet/jungle)
 
 /datum/overmap_object/shuttle/planet/jungle
 	name = "Jungle Planet"

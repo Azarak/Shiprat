@@ -4,6 +4,7 @@
 	prefix = "_maps/RandomRuins/IceRuins/"
 	allow_duplicates = FALSE
 	cost = 5
+	requirements = RUIN_ICEBOX
 
 // above ground only
 

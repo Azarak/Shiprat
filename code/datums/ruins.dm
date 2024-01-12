@@ -19,6 +19,9 @@
 	var/prefix = null
 	var/suffix = null
 
+	/// A bitfield representing the requirements of the ruin for it to be spawne
+	var/requirements = NONE
+
 /datum/map_template/ruin/New()
 	if(!name && id)
 		name = id
