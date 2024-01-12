@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/snow)
 
+/datum/overmap_map_zone_generator/snow/quad
+	name = "Snow Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/snow/quad
+	map_zone_generator = /datum/map_zone_generator/snow/quad
+
+/datum/map_zone_generator/snow/quad
+	mapzone_name = "Snow Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/snow/quad
+	ruin_generator = /datum/ruin_generator/basic/snow/quad
+
+/datum/base_map_generator/empty_levels/snow/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/snow/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/snow/quad
+	name = "Snow Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/weather_controller/snow
 	possible_weathers = list(
 		/datum/weather/snow_storm = 50,

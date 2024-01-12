@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/shrouded)
 
+/datum/overmap_map_zone_generator/shrouded/quad
+	name = "Shrouded Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/shrouded/quad
+	map_zone_generator = /datum/map_zone_generator/shrouded/quad
+
+/datum/map_zone_generator/shrouded/quad
+	mapzone_name = "Shrouded Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/shrouded/quad
+	ruin_generator = /datum/ruin_generator/basic/shrouded/quad
+
+/datum/base_map_generator/empty_levels/shrouded/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/shrouded/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/shrouded/quad
+	name = "Shrouded Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/day_night_controller/shrouded
 	midnight_color = COLOR_BLACK
 	midnight_light = 0

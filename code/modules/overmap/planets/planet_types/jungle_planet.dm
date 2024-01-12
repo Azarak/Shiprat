@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/jungle)
 
+/datum/overmap_map_zone_generator/jungle/quad
+	name = "Jungle Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/jungle/quad
+	map_zone_generator = /datum/map_zone_generator/jungle/quad
+
+/datum/map_zone_generator/jungle/quad
+	mapzone_name = "Jungle Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/jungle/quad
+	ruin_generator = /datum/ruin_generator/basic/jungle/quad
+
+/datum/base_map_generator/empty_levels/jungle/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/jungle/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/jungle/quad
+	name = "Jungle Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/overmap_object/shuttle/planet/jungle
 	name = "Jungle Planet"
 	planet_color = COLOR_PALE_BTL_GREEN

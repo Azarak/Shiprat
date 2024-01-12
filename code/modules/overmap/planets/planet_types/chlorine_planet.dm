@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/chlorine)
 
+/datum/overmap_map_zone_generator/chlorine/quad
+	name = "Chlorine Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/chlorine/quad
+	map_zone_generator = /datum/map_zone_generator/chlorine/quad
+
+/datum/map_zone_generator/chlorine/quad
+	mapzone_name = "Chlorine Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/chlorine/quad
+	ruin_generator = /datum/ruin_generator/basic/chlorine/quad
+
+/datum/base_map_generator/empty_levels/chlorine/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/chlorine/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/chlorine/quad
+	name = "Chlorine Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/weather_controller/chlorine
 	possible_weathers = list(/datum/weather/acid_rain = 100)
 

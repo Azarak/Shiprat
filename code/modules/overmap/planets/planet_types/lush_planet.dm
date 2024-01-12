@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/lush)
 
+/datum/overmap_map_zone_generator/lush/quad
+	name = "Lush Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/lush/quad
+	map_zone_generator = /datum/map_zone_generator/lush/quad
+
+/datum/map_zone_generator/lush/quad
+	mapzone_name = "Lush Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/lush/quad
+	ruin_generator = /datum/ruin_generator/basic/lush/quad
+
+/datum/base_map_generator/empty_levels/lush/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/lush/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/lush/quad
+	name = "Lush Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/weather_controller/lush
 	possible_weathers = list(
 		/datum/weather/rain = 30,

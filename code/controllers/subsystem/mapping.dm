@@ -149,31 +149,31 @@ Used by the AI doomsday and the self-destruct nuke.
 #ifndef LOWMEMORYMODE
 	// TODO: remove this when the DB is prepared for the z-levels getting reordered
 	//Load planets
-	/*
-	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
-	var/spawned_habitable //One habitable planet is guaranteed to be spawned
-	if(config.amount_of_planets_spawned)
-		for(var/i in 1 to config.amount_of_planets_spawned)
-			if(!length(planet_list))
-				break
-			var/picked_planet_type
-			if(!spawned_habitable)
-				picked_planet_type = pickweight(HABITABLE_PLANETS)
-				spawned_habitable = TRUE
-			else
-				picked_planet_type = pickweight(planet_list)
-			planet_list -= picked_planet_type
-			var/datum/map_zone_generator/picked_template = planet_templates[picked_planet_type]
-			picked_template.LoadTemplate(SSovermap.main_system, rand(5,25), rand(5,25))
-	*/
-	var/datum/overmap_map_zone_generator/lush_planet_gen = new /datum/overmap_map_zone_generator/lush()
-	lush_planet_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
+	var/list/habitable_big_planets = list(
+		/datum/overmap_map_zone_generator/lush,
+		/datum/overmap_map_zone_generator/jungle,
+		/datum/overmap_map_zone_generator/snow
+		)
+	var/list/smaller_levels_to_spawn = list(
+		/datum/overmap_map_zone_generator/asteroid/quad,
+		/datum/overmap_map_zone_generator/asteroid/quad,
+		/datum/overmap_map_zone_generator/asteroid/quad,
+		/datum/overmap_map_zone_generator/barren/quad,
+		/datum/overmap_map_zone_generator/chlorine/quad,
+		/datum/overmap_map_zone_generator/desert/quad,
+		/datum/overmap_map_zone_generator/jungle/quad,
+		/datum/overmap_map_zone_generator/lush/quad,
+		/datum/overmap_map_zone_generator/shrouded/quad,
+		/datum/overmap_map_zone_generator/snow/quad,
+		/datum/overmap_map_zone_generator/volcanic/quad,
+	)
+	var/picked_big_planet = pick(habitable_big_planets)
+	var/datum/overmap_map_zone_generator/big_gen = new picked_big_planet()
+	big_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 
-	var/datum/overmap_map_zone_generator/volcanic_planet_gen = new /datum/overmap_map_zone_generator/volcanic()
-	volcanic_planet_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
-
-	var/datum/overmap_map_zone_generator/ice_planet_gen = new /datum/overmap_map_zone_generator/snow()
-	ice_planet_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
+	for(var/generator_type in smaller_levels_to_spawn)
+		var/datum/overmap_map_zone_generator/smaller_gen = new generator_type()
+		smaller_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen

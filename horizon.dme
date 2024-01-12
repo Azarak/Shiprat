@@ -3122,6 +3122,7 @@
 #include "code\modules\overmap\planets\planetary_mobs.dm"
 #include "code\modules\overmap\planets\planetary_objects.dm"
 #include "code\modules\overmap\planets\PlanetGenerator.dm"
+#include "code\modules\overmap\planets\planet_types\asteroids.dm"
 #include "code\modules\overmap\planets\planet_types\barren_planet.dm"
 #include "code\modules\overmap\planets\planet_types\chlorine_planet.dm"
 #include "code\modules\overmap\planets\planet_types\desert_planet.dm"

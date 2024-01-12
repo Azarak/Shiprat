@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/volcanic)
 
+/datum/overmap_map_zone_generator/volcanic/quad
+	name = "Volcanic Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/volcanic/quad
+	map_zone_generator = /datum/map_zone_generator/volcanic/quad
+
+/datum/map_zone_generator/volcanic/quad
+	mapzone_name = "Volcanic Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/volcanic/quad
+	ruin_generator = /datum/ruin_generator/basic/volcanic/quad
+
+/datum/base_map_generator/empty_levels/volcanic/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/volcanic/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/volcanic/quad
+	name = "Volcanic Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/overmap_object/shuttle/planet/volcanic
 	name = "Volcanic Planet"
 	planet_color = COLOR_RED

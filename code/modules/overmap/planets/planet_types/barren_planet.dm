@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/barren)
 
+/datum/overmap_map_zone_generator/barren/quad
+	name = "Barren Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/barren/quad
+	map_zone_generator = /datum/map_zone_generator/barren/quad
+
+/datum/map_zone_generator/barren/quad
+	mapzone_name = "Barren Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/barren/quad
+	ruin_generator = /datum/ruin_generator/basic/barren/quad
+
+/datum/base_map_generator/empty_levels/barren/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/barren/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/barren/quad
+	name = "Barren Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/overmap_object/shuttle/planet/barren
 	name = "Barren Planet"
 	planet_color = COLOR_BEIGE_GRAYISH

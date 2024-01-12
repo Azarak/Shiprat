@@ -39,6 +39,28 @@
 	budget = 40
 	allowed_areas = list(/area/planet/desert)
 
+/datum/overmap_map_zone_generator/desert/quad
+	name = "Desert Planetoid"
+	overmap_type = /datum/overmap_object/shuttle/planet/desert/quad
+	map_zone_generator = /datum/map_zone_generator/desert/quad
+
+/datum/map_zone_generator/desert/quad
+	mapzone_name = "Desert Planetoid"
+	base_map_generator = /datum/base_map_generator/empty_levels/desert/quad
+	ruin_generator = /datum/ruin_generator/basic/desert/quad
+
+/datum/base_map_generator/empty_levels/desert/quad
+	size_x = 127
+	size_y = 127
+	allocation_type = ALLOCATION_QUADRANT
+
+/datum/ruin_generator/basic/desert/quad
+	budget = 15
+
+/datum/overmap_object/shuttle/planet/desert/quad
+	name = "Desert Planetoid"
+	planet_color = COLOR_BEIGE_GRAYISH
+
 /datum/weather_controller/desert
 	possible_weathers = list(/datum/weather/sandstorm = 100)
 
