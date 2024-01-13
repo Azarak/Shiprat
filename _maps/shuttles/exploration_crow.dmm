@@ -108,6 +108,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_switch/directional/east,
 /obj/effect/turf_decal/bot,
+/obj/machinery/power/mining_drill/cell,
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "gX" = (
@@ -237,7 +238,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "np" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
@@ -365,6 +366,7 @@
 /obj/structure/sign/warning/movingparts/small{
 	pixel_y = 32
 	},
+/obj/machinery/mining_brace,
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "vj" = (
@@ -385,6 +387,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/warm/directional/west,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
+/obj/item/stack/cable_coil,
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "wM" = (
@@ -460,7 +463,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "CG" = (
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/structure/tank_dispenser/oxygen,
@@ -493,6 +496,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/east,
+/obj/machinery/mining_brace,
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "DO" = (
@@ -663,8 +667,10 @@
 /turf/open/floor/plating,
 /area/shuttle/common/engineering)
 "OI" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/crow/helm)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/metal_density_scanner,
+/turf/open/floor/iron,
+/area/shuttle/common/cargo)
 "OP" = (
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/effect/turf_decal/stripes/line{
@@ -828,8 +834,14 @@
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "Zo" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/crow/cargo)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
+/obj/machinery/power/port_gen/pacman,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 10
+	},
+/turf/open/floor/iron,
+/area/shuttle/common/cargo)
 "ZC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/comfy/shuttle{
@@ -869,7 +881,7 @@ lr
 lR
 dd
 Ic
-sB
+Zo
 wt
 sB
 Sy
@@ -893,7 +905,7 @@ eT
 (5,1,1) = {"
 hk
 QL
-iP
+OI
 HK
 WN
 hB
@@ -918,9 +930,9 @@ Qy
 "}
 (7,1,1) = {"
 lr
-Zo
-Zo
-Zo
+lr
+lr
+lr
 Cc
 ne
 Qy
@@ -969,11 +981,11 @@ SL
 Qy
 "}
 (11,1,1) = {"
-OI
-OI
-OI
-OI
-OI
+oD
+oD
+oD
+oD
+oD
 Rs
 Rh
 Rh
