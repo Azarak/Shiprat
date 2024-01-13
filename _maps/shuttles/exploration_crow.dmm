@@ -319,6 +319,7 @@
 "sB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
+/obj/machinery/power/emitter,
 /turf/open/floor/iron,
 /area/shuttle/common/cargo)
 "tN" = (
