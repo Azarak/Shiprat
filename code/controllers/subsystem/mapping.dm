@@ -158,12 +158,10 @@ Used by the AI doomsday and the self-destruct nuke.
 		/datum/overmap_map_zone_generator/asteroid/quad,
 		/datum/overmap_map_zone_generator/asteroid/quad,
 		/datum/overmap_map_zone_generator/asteroid/quad,
-		/datum/overmap_map_zone_generator/barren/quad,
 		/datum/overmap_map_zone_generator/chlorine/quad,
 		/datum/overmap_map_zone_generator/desert/quad,
 		/datum/overmap_map_zone_generator/jungle/quad,
 		/datum/overmap_map_zone_generator/lush/quad,
-		/datum/overmap_map_zone_generator/shrouded/quad,
 		/datum/overmap_map_zone_generator/snow/quad,
 		/datum/overmap_map_zone_generator/volcanic/quad,
 	)

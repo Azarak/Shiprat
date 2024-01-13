@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/volcanic
 	flags = RUIN_WRECKAGE|RUIN_VOLCANIC|RUIN_REMOTE
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/planet/volcanic)
 
 /datum/overmap_map_zone_generator/volcanic/quad
@@ -55,7 +55,7 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/volcanic/quad
-	budget = 15
+	budget = 10
 
 /datum/overmap_object/shuttle/planet/volcanic/quad
 	name = "Volcanic Planetoid"

@@ -254,85 +254,30 @@
 	to_chat(M, "<span class='reallybig redtext'>You're trapped in a deadly arena! To escape, you'll need to drag a severed head to the escape portals.</span>", confidential = TRUE)
 	M.apply_status_effect(STATUS_EFFECT_MAYHEM)
 
-//Exploration shuttles
+// Generic shuttle areas
 
-/area/shuttle/crow
-	name = "ESS Crow"
+/area/shuttle/common
+	name = "Ship"
 	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/crow
+	area_limited_icon_smoothing = /area/shuttle/common
 
-/area/shuttle/crow/cargo
-	name = "ESS Crow Cargo Bay"
+/area/shuttle/common/cargo
+	name = "Ship Cargo Bay"
 
-/area/shuttle/crow/engineering
-	name = "ESS Crow Engineering"
+/area/shuttle/common/medbay
+	name = "Ship Medbay"
 
-/area/shuttle/crow/helm
-	name = "ESS Crow Helm"
+/area/shuttle/common/bridge
+	name = "Ship Bridge"
 
-//Common shuttles
+/area/shuttle/common/security
+	name = "Ship Security"
 
-/area/shuttle/platform
-	name = "Platform Shuttle"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/platform
+/area/shuttle/common/engineering
+	name = "Ship Engineering"
 
-/area/shuttle/vulture
-	name = "MS Vulture"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/vulture
+/area/shuttle/common/maintenance
+	name = "Ship Maintenance"
 
-/area/shuttle/vulture/helm
-	name = "MS Vulture Helm"
-
-/area/shuttle/vulture/dorm
-	name = "MS Vulture Quarters"
-
-/area/shuttle/petrel
-	name = "MS Petrel"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/petrel
-
-/area/shuttle/pigeon
-	name = "CTS Pigeon"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/pigeon
-
-/area/shuttle/pigeon/helm
-	name = "CTS Pigeon Helm"
-
-/area/shuttle/rockdove
-	name = "EMS Rockdove"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/rockdove
-
-/area/shuttle/rockdove/helm
-	name = "EMS Rockdove Helm"
-
-/area/shuttle/barrow
-	name = "The Barrows"
-	requires_power = FALSE
-	area_limited_icon_smoothing = /area/shuttle/barrow
-
-/area/shuttle/barrow/helm
-	name = "The Barrows Helm"
-
-/area/shuttle/barrow/medbay
-	name = "The Barrows Medbay"
-
-/area/shuttle/barrow/bar
-	name = "The Barrows Bar"
-
-/area/shuttle/chilldown
-	name = "The Chilldown"
-	requires_power = FALSE
-	area_limited_icon_smoothing = /area/shuttle/chilldown
-
-/area/shuttle/ironwrought
-	name = "The Ironwrought"
-	requires_power = TRUE
-	area_limited_icon_smoothing = /area/shuttle/ironwrought
-
-/area/shuttle/ironwrought/engine
-	name = "The Ironwrought Core"
-
+/area/shuttle/common/helm
+	name = "Ship Helm"

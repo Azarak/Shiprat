@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/desert
 	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_REMOTE
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/planet/desert)
 
 /datum/overmap_map_zone_generator/desert/quad
@@ -55,7 +55,7 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/desert/quad
-	budget = 15
+	budget = 10
 
 /datum/overmap_object/shuttle/planet/desert/quad
 	name = "Desert Planetoid"

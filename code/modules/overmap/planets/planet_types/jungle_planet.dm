@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/jungle
 	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_HABITABLE
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/planet/jungle)
 
 /datum/overmap_map_zone_generator/jungle/quad
@@ -55,7 +55,7 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/jungle/quad
-	budget = 15
+	budget = 10
 
 /datum/overmap_object/shuttle/planet/jungle/quad
 	name = "Jungle Planetoid"

@@ -9,7 +9,7 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "bZ" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
@@ -19,7 +19,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "cS" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -29,21 +29,21 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "dd" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/closet/crate,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "dm" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "eb" = (
 /obj/structure/cable,
 /obj/machinery/airalarm{
@@ -58,7 +58,7 @@
 	},
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "ec" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -72,18 +72,18 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "eT" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "fw" = (
 /obj/structure/closet/excavation,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "fJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stock_parts/cell/high,
@@ -94,34 +94,34 @@
 	name = "air supply gate"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "fM" = (
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "gn" = (
 /obj/machinery/atmospherics/components/unary/engine{
 	dir = 8
 	},
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "gD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_switch/directional/east,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "gX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "hk" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor/shutters{
 	id = "crow_cargo"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "hn" = (
 /obj/structure/rack,
 /obj/item/storage/bag/ore,
@@ -135,7 +135,7 @@
 /obj/item/pickaxe,
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "hB" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south{
@@ -150,7 +150,7 @@
 	},
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "hD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
@@ -160,11 +160,11 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "iP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "iX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/supply/hidden/layer4{
@@ -178,18 +178,18 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "jh" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "jH" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "jL" = (
 /turf/template_noop,
 /area/template_noop)
@@ -201,11 +201,14 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
+"lr" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/common/cargo)
 "lI" = (
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "lR" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -214,14 +217,14 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "mR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "ne" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -241,7 +244,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/item/gps/mining,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "nK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/lattice/catwalk/plated/dark,
@@ -249,7 +252,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "og" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -260,7 +263,10 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
+"oD" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/common/helm)
 "oH" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -276,19 +282,19 @@
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "oK" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe{
 	dir = 1
 	},
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/crow)
+/area/shuttle/common)
 "pL" = (
 /obj/machinery/computer/shuttle/exploration_crow{
 	dir = 8
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "qb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -296,7 +302,7 @@
 	},
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "qM" = (
 /obj/machinery/power/smes/engineering{
 	charge = 1e+006
@@ -308,12 +314,12 @@
 	pixel_x = -32
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "sB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "tN" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -324,13 +330,13 @@
 /obj/machinery/light/warm/directional/east,
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "um" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/excavation,
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "uo" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/brute{
@@ -343,12 +349,12 @@
 	pixel_y = -3
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "uQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "uY" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -360,7 +366,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "vj" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west{
@@ -374,13 +380,13 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "wt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/warm/directional/west,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "wM" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -390,7 +396,7 @@
 	},
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/visible,
 /turf/open/floor/plating,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "zn" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -406,13 +412,13 @@
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "zS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "AB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/modular_computer/console/preset/civilian{
@@ -420,13 +426,13 @@
 	},
 /obj/item/radio/intercom/wideband/directional/south,
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "AN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/binary/pump/layer2,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "AU" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/machinery/door/firedoor,
@@ -435,7 +441,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Bt" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west{
@@ -449,7 +455,7 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Cc" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
@@ -461,13 +467,13 @@
 /obj/machinery/light/warm/directional/east,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "CR" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "Dt" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north{
@@ -482,18 +488,18 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "Dy" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "DO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/holopad/long_range,
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "DX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -502,13 +508,13 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "Eq" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Fg" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -522,7 +528,7 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Fz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/supply/hidden/layer4{
@@ -533,7 +539,7 @@
 	},
 /obj/machinery/atmospherics/components/binary/pump,
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "FP" = (
 /obj/structure/cable,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/scrubbers/hidden/layer2{
@@ -546,7 +552,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Gz" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
@@ -564,15 +570,15 @@
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Hu" = (
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "HK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "HV" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -583,7 +589,7 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Ic" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -591,7 +597,7 @@
 /obj/effect/spawner/lootdrop/maintenance/five,
 /obj/structure/closet/crate,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "IN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -601,7 +607,7 @@
 	dir = 4
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "KC" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -616,11 +622,11 @@
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /obj/machinery/recharge_station,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "KJ" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "Lp" = (
 /obj/machinery/button/door/directional/west{
 	id = "crow_cargo";
@@ -631,11 +637,11 @@
 	id = "crow_cargo"
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "LG" = (
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "MH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -647,7 +653,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "NJ" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -655,7 +661,7 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "OI" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/crow/helm)
@@ -666,14 +672,14 @@
 	},
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Pc" = (
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/supply/hidden/layer4{
 	dir = 1
 	},
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "PR" = (
 /obj/structure/table,
 /obj/machinery/button/door{
@@ -681,20 +687,20 @@
 	name = "safety shutters button"
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 "Qy" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "QL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "Rh" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Rs" = (
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -706,20 +712,20 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "RX" = (
 /obj/structure/sign/poster/random{
 	pixel_x = 32
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "Sy" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "SC" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -734,7 +740,7 @@
 	name = "propellent gas meter"
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "SG" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/turf_decal/bot,
@@ -743,7 +749,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "SL" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
 	dir = 1;
@@ -752,7 +758,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/lattice/catwalk/plated/dark,
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "Vc" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/machinery/door/firedoor,
@@ -765,7 +771,7 @@
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "VB" = (
 /obj/structure/cable,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/scrubbers/hidden/layer2{
@@ -777,14 +783,14 @@
 /obj/machinery/light/warm/directional/south,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/iron,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Wo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/lattice/catwalk/plated/dark,
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/orange/hidden,
 /turf/open/floor/plating,
-/area/shuttle/crow)
+/area/shuttle/common)
 "Ww" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -799,7 +805,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/plating,
-/area/shuttle/crow/engineering)
+/area/shuttle/common/engineering)
 "WL" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -814,13 +820,13 @@
 	dir = 1
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow)
+/area/shuttle/common)
 "WN" = (
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
 	},
 /turf/open/floor/iron,
-/area/shuttle/crow/cargo)
+/area/shuttle/common/cargo)
 "Zo" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/crow/cargo)
@@ -830,36 +836,36 @@
 	dir = 4
 	},
 /turf/open/floor/pod,
-/area/shuttle/crow/helm)
+/area/shuttle/common/helm)
 
 (1,1,1) = {"
-Zo
+lr
 gn
 gn
-Zo
+lr
 jL
 jL
 jL
-Zo
+lr
 gn
 gn
-Zo
+lr
 "}
 (2,1,1) = {"
-Zo
+lr
 wM
 wM
 LG
 eT
-Zo
+lr
 eT
 LG
 wM
 wM
-Zo
+lr
 "}
 (3,1,1) = {"
-Zo
+lr
 lR
 dd
 Ic
@@ -891,27 +897,27 @@ iP
 HK
 WN
 hB
-Zo
 Qy
 Qy
 Qy
-Zo
+Qy
+Qy
 "}
 (6,1,1) = {"
-Zo
+lr
 uY
 Dy
 gD
 fM
 eb
-Zo
+Qy
 bZ
 NJ
 qM
 Qy
 "}
 (7,1,1) = {"
-Zo
+lr
 Zo
 Zo
 Zo
@@ -973,10 +979,10 @@ Rh
 Rh
 Rh
 Rh
-Qy
+Rh
 "}
 (12,1,1) = {"
-OI
+oD
 hD
 og
 vj
@@ -986,7 +992,7 @@ WL
 Bt
 Fg
 um
-Qy
+Rh
 "}
 (13,1,1) = {"
 dm
@@ -1006,7 +1012,7 @@ dm
 dm
 pL
 AB
-OI
+oD
 tN
 np
 uo
@@ -1018,8 +1024,8 @@ jh
 jL
 dm
 dm
-OI
-OI
+oD
+oD
 Rh
 jh
 jh

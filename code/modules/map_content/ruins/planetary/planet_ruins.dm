@@ -1,12 +1,12 @@
 /datum/map_template/ruin/planetary
 	prefix = "_maps/RandomRuins/Planet/"
 	allow_duplicates = FALSE
+	cost = 3
 
 /datum/map_template/ruin/planetary/colony
 	name = "Colony"
 	id = "colony"
 	description = "A colony."
-	cost = 10
 	suffix = "colony.dmm"
 	requirements = RUIN_HABITABLE
 	unpickable = TRUE
@@ -73,7 +73,6 @@
 	name = "Old Pod"
 	id = "old_pod"
 	description = "An old pod."
-	cost = 5
 	suffix = "old_pod.dmm"
 	requirements = RUIN_WRECKAGE
 
@@ -81,7 +80,6 @@
 	name = "Deserted Lab"
 	id = "deserted_lab"
 	description = "A deserted lab."
-	cost = 5
 	suffix = "deserted_lab.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -89,7 +87,6 @@
 	name = "Lodge"
 	id = "lodge"
 	description = "A lodge."
-	cost = 5
 	suffix = "lodge.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -97,7 +94,6 @@
 	name = "Spider Nest"
 	id = "spider_nest"
 	description = "A spider nest."
-	cost = 5
 	suffix = "spider_nest.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -105,7 +101,6 @@
 	name = "Archeological Site"
 	id = "archeological_site"
 	description = "An archeological site."
-	cost = 5
 	suffix = "archeological_site.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -113,7 +108,6 @@
 	name = "Abandoned Factory"
 	id = "abandoned_factory"
 	description = "An abandoned factory."
-	cost = 5
 	suffix = "abandoned_factory.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -121,7 +115,6 @@
 	name = "Old Drill Site"
 	id = "old_drill_site"
 	description = "An old drill site."
-	cost = 5
 	suffix = "old_drill_site.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -129,7 +122,6 @@
 	name = "Mining Facility"
 	id = "mining_facility"
 	description = "A mining facility."
-	cost = 5
 	suffix = "mining_facility.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -137,7 +129,6 @@
 	name = "Abandoned Containment"
 	id = "abandoned_containment"
 	description = "A long abandoned base containing a dangerous secret."
-	cost = 5
 	suffix = "abandoned_containment.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -145,7 +136,6 @@
 	name = "Weather Station"
 	id = "weather_station"
 	description = "A dormant weather research station."
-	cost = 5
 	suffix = "weather_station.dmm"
 	requirements = RUIN_HABITABLE
 
@@ -153,6 +143,5 @@
 	name = "Surgical Theatre Pod"
 	id = "heyheypeople"
 	description = "A pod, meant for surgery.. what's with the pizza?"
-	cost = 5
 	suffix = "heyheypeople.dmm"
 	requirements = RUIN_HABITABLE

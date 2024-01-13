@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/barren
 	flags = RUIN_REMOTE|RUIN_WRECKAGE
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/planet/barren)
 
 /datum/overmap_map_zone_generator/barren/quad
@@ -55,7 +55,7 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/barren/quad
-	budget = 15
+	budget = 10
 
 /datum/overmap_object/shuttle/planet/barren/quad
 	name = "Barren Planetoid"

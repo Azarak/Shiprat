@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/chlorine
 	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_REMOTE
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/planet/chlorine)
 
 /datum/overmap_map_zone_generator/chlorine/quad
@@ -55,7 +55,7 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/chlorine/quad
-	budget = 15
+	budget = 10
 
 /datum/overmap_object/shuttle/planet/chlorine/quad
 	name = "Chlorine Planetoid"

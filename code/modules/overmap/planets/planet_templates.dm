@@ -47,5 +47,5 @@
 
 /datum/ruin_generator/basic/lavaland
 	flags = RUIN_LAVALAND
-	budget = 40
+	budget = 20
 	allowed_areas = list(/area/lavaland/surface/outdoors/unexplored)

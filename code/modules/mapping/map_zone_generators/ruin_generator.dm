@@ -5,7 +5,7 @@
 
 /datum/ruin_generator/basic
 	var/flags = NONE
-	var/budget = 40
+	var/budget = 20
 	var/list/allowed_areas = list()
 
 /datum/ruin_generator/basic/generate(datum/map_zone/mapzone)
