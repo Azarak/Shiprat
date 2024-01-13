@@ -50,6 +50,21 @@
 		qdel(vlevel)
 	return ..()
 
+/datum/map_zone/proc/get_docks_for_shuttle(obj/docking_port/mobile/shuttle)
+	var/list/obj/docking_port/stationary/docks = list()
+	var/list/options = params2list(shuttle.possible_destinations)
+	for(var/i in SSshuttle.stationary)
+		var/obj/docking_port/stationary/iterated_dock = i
+		var/datum/virtual_level/vlevel = iterated_dock.get_virtual_level()
+		if(!(vlevel in virtual_levels))
+			continue
+		if(!options.Find(iterated_dock.port_destinations))
+			continue
+		if(!shuttle.check_dock(iterated_dock, silent = TRUE))
+			continue
+		docks += iterated_dock
+	return docks
+
 /datum/map_zone/proc/vlevel_trait_init()
 	for(var/i in 1 to virtual_levels.len)
 		var/datum/virtual_level/vlevel = virtual_levels[i]

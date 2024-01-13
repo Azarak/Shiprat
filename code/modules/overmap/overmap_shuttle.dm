@@ -116,9 +116,10 @@
 				dat += "<BR>Shields: Not installed"
 			dat += "<BR>Position: X: [x] , Y: [y]"
 			dat += "<BR>Overmap View: <a href='?src=[REF(src)];task=general;general_control=overmap'>Open</a>"
+			/* TODO
 			dat += "<BR>Send a Hail: <a href='?src=[REF(src)];task=general;general_control=hail'>Send...</a>"
 			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a> - Microphone: <a href='?src=[REF(src)];task=general;general_control=microphone_muted' [microphone_muted ? "" : "class='linkOn'"]>[microphone_muted ? "Muted" : "Open"]</a>"
-
+			*/
 		if(SHUTTLE_TAB_ENGINES)
 			if(engine_extensions.len == 0)
 				dat += "<B>No engines installed.</B>"
@@ -243,37 +244,25 @@
 			if(VECTOR_LENGTH(velocity_x, velocity_y) > SHUTTLE_MAXIMUM_DOCKING_SPEED)
 				dat += "<B>Cannot safely dock in high velocities!</B>"
 			else
-				var/list/virtual_levels = list()
 				var/list/nearby_objects = current_system.GetObjectsOnCoords(x,y)
-				var/list/freeform_virtual_levels = list()
+				var/list/nearby_map_zones = list()
 				for(var/datum/overmap_object/IO as anything in nearby_objects)
 					if(!IO.can_be_docked)
 						continue
-					var/iter = 0
 					if(IO.related_map_zone)
-						for(var/datum/virtual_level/vlevel in IO.related_map_zone.virtual_levels)
-							iter++
-							virtual_levels |= vlevel
-							freeform_virtual_levels["[iter]. [vlevel.name] - Freeform"] = vlevel
+						nearby_map_zones += IO.related_map_zone
 
-				var/list/obj/docking_port/stationary/docks = list()
-				var/list/options = params2list(my_shuttle.possible_destinations)
+				var/list/dock_list = list()
 				var/iter = 0
-				for(var/i in SSshuttle.stationary)
-					var/obj/docking_port/stationary/iterated_dock = i
-					var/datum/virtual_level/vlevel = iterated_dock.get_virtual_level()
-					if(!(vlevel in virtual_levels))
-						continue
-					if(!options.Find(iterated_dock.port_destinations))
-						continue
-					if(!my_shuttle.check_dock(iterated_dock, silent = TRUE))
-						continue
+				for(var/datum/map_zone/mapzone as anything in nearby_map_zones)
 					iter++
-					docks["[iter]. [iterated_dock.name]"] = iterated_dock
+					var/list/obj/docking_port/stationary/docks = mapzone.get_docks_for_shuttle(my_shuttle)
+					for(var/obj/docking_port/stationary/dock as anything in docks)
+						docks["[iter]. [dock.name]"] = dock
 
 				dat += "<B>Designated docks:</B>"
-				for(var/key in docks)
-					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[docks[key].id]'>Dock</a>"
+				for(var/key in dock_list)
+					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[dock_list[key].id]'>Dock</a>"
 
 				/* FREEFORM DOCKING DISABLED FOR NOW
 				dat += "<BR><BR><B>Freeform docking spaces:</B>"

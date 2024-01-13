@@ -78,3 +78,9 @@
 	shuttle_idle_state = "globe"
 	shuttle_forward_state = "globe"
 	shuttle_backward_state = "globe"
+
+/obj/effect/abstract/overmap/shuttle/planet/small
+	icon_state = "small_globe"
+	shuttle_idle_state = "small_globe"
+	shuttle_forward_state = "small_globe"
+	shuttle_backward_state = "small_globe"

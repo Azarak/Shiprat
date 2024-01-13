@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/lush
 	flags = RUIN_WATER|RUIN_WRECKAGE|RUIN_HABITABLE
-	budget = 20
+	budget = 30
 	allowed_areas = list(/area/planet/lush)
 
 /datum/overmap_map_zone_generator/lush/quad
@@ -55,11 +55,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/lush/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/lush/quad
 	name = "Lush Planetoid"
 	planet_color = COLOR_BEIGE_GRAYISH
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /datum/weather_controller/lush
 	possible_weathers = list(

@@ -1,9 +1,47 @@
+#define TRANSIT_DEAD_CYCLES_TO_GRAVEYARD 4
+
 /datum/transit_instance
 	var/datum/virtual_level/vlevel
 	var/obj/docking_port/stationary/transit/dock
 	var/datum/overmap_object/shuttle/overmap_shuttle
 	//Associative for easy lookup
 	var/list/affected_movables = list()
+	var/process_time = 0
+	var/dead_cycles = 0
+
+/datum/transit_instance/process(delta_time)
+	if(overmap_shuttle == null)
+		return
+	process_time += delta_time
+	while(process_time >= 60) // delta time is 1/10th's of normal time measurement?? what a joke
+		process_time -= 60
+		check_dead_cycle()
+
+/datum/transit_instance/proc/check_dead_cycle()
+	if(vlevel == null)
+		return
+	var/list/alive_client_mobs = vlevel.get_alive_client_mobs()
+	var/dead = (alive_client_mobs.len == 0) ? TRUE : FALSE
+	var/obj/docking_port/mobile/shuttle = dock.get_docked()
+	if(shuttle == null)
+		dead = FALSE
+	if(dead)
+		dead_cycles++
+		if(dead_cycles >= TRANSIT_DEAD_CYCLES_TO_GRAVEYARD)
+			send_to_graveyard()
+	else
+		dead_cycles = 0
+
+/datum/transit_instance/proc/send_to_graveyard()
+	var/obj/docking_port/mobile/shuttle = dock.get_docked()
+	if(shuttle == null)
+		return
+	var/list/docks = SSmapping.ship_graveyard_map_zone.get_docks_for_shuttle(shuttle)
+	if(docks.len == 0)
+		return
+	var/obj/docking_port/stationary/target_dock = docks[1]
+	message_admins("Ship was sent to Ship Graveyard due to no alive clients on board and inactivity [ADMIN_VERBOSEJMP(target_dock)]")
+	SSshuttle.moveShuttle(shuttle.id, target_dock.id, FALSE)
 
 /datum/transit_instance/New(datum/virtual_level/arg_vlevel, obj/docking_port/stationary/transit/arg_dock)
 	. = ..()
@@ -11,6 +49,7 @@
 	vlevel.transit_instance = src
 	dock = arg_dock
 	dock.transit_instance = src
+	START_PROCESSING(SStransit_instance, src)
 
 /datum/transit_instance/Destroy()
 	strand_all()
@@ -36,12 +75,6 @@
 	//We've moved to be adjacent to edge or out of bounds
 	//Check for things that should just disappear as they bump into the edges of the map
 	//Maybe listening for this event could be done in a better way?
-	if(ishuman(moved)) //Humans could disconnect and not have a client, we dont want to get them stranded
-		return
-	if(ismob(moved))
-		var/mob/moved_mob = moved
-		if(moved_mob.client) //Client things never voluntairly get stranded
-			return
 	strand_act(moved)
 
 //Apply velocity to the movables we're handling
@@ -98,6 +131,7 @@
 	var/commit_strand = FALSE
 	var/name_to_apply
 	if(ishuman(strander))
+		strand_human_on_dedicated_level(strander)
 		return
 	else if (istype(strander, /obj/structure/closet))
 		commit_strand = TRUE
@@ -124,3 +158,15 @@
 	if(ismob(strander))
 		var/mob/strander_mob = strander
 		to_chat(strander_mob, SPAN_USERDANGER("You have been stranded in the empty void of space! Your body is able to be recovered by someone picking it up with a transporter."))
+
+/datum/transit_instance/proc/strand_human_on_dedicated_level(mob/living/carbon/human/human)
+	var/datum/map_zone/mapzone = SSmapping.strand_map_zone
+	if(mapzone == null)
+		return
+	to_chat(human, SPAN_USERDANGER("You fell outside of your ship and floated away to a cluster of asteroids!"))
+	var/datum/virtual_level/vlevel = mapzone.virtual_levels[1]
+	var/turf/strand_location = vlevel.get_side_turf(NONE, 0, FALSE)
+	var/turf/center_location = vlevel.get_center()
+	human.forceMove(strand_location)
+	human.throw_at(center_location, 4, 2)
+	return

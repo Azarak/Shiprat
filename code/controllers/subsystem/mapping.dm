@@ -37,6 +37,10 @@ SUBSYSTEM_DEF(mapping)
 
 	/// The map zone of the main loaded station, for easy access
 	var/datum/map_zone/station_map_zone
+	/// The map zone to strand things at
+	var/datum/map_zone/strand_map_zone
+	/// The map zone to dock dead/abandoned transit ships at
+	var/datum/map_zone/ship_graveyard_map_zone
 	/// List of all map zones
 	var/list/map_zones = list()
 	/// Translation of virtual level ID to a virtual level reference
@@ -122,9 +126,6 @@ Used by the AI doomsday and the self-destruct nuke.
 #define INIT_ANNOUNCE(X) to_chat(world, SPAN_BOLDANNOUNCE("[X]")); log_world(X)
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
-	//if any of these fail, something has gone horribly, HORRIBLY, wrong
-	var/list/FailedZs = list()
-
 	// Ensure mapzone and virtual level wrap the Centcomm level
 	InitializeDefaultZLevels()
 
@@ -173,14 +174,11 @@ Used by the AI doomsday and the self-destruct nuke.
 		var/datum/overmap_map_zone_generator/smaller_gen = new generator_type()
 		smaller_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 #endif
+	var/datum/overmap_map_zone_generator/asteroid_gen = new /datum/overmap_map_zone_generator/asteroid()
+	strand_map_zone = asteroid_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 
-	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
-		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
-		if(FailedZs.len > 1)
-			for(var/I in 2 to FailedZs.len)
-				msg += ", [FailedZs[I]]"
-		msg += ". Yell at your server host!"
-		INIT_ANNOUNCE(msg)
+	var/datum/overmap_map_zone_generator/graveyard_gen = new /datum/overmap_map_zone_generator/ship_graveyard()
+	ship_graveyard_map_zone = graveyard_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 #undef INIT_ANNOUNCE
 
 

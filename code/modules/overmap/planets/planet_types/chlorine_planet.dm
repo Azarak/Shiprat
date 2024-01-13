@@ -55,11 +55,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/chlorine/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/chlorine/quad
 	name = "Chlorine Planetoid"
 	planet_color = COLOR_BEIGE_GRAYISH
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /datum/weather_controller/chlorine
 	possible_weathers = list(/datum/weather/acid_rain = 100)

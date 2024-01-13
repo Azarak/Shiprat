@@ -55,11 +55,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/volcanic/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/volcanic/quad
 	name = "Volcanic Planetoid"
 	planet_color = COLOR_BEIGE_GRAYISH
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /datum/overmap_object/shuttle/planet/volcanic
 	name = "Volcanic Planet"

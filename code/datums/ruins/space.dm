@@ -243,4 +243,9 @@
 	description = "A small little outpost that's mostly self-sufficient. It's a good place to dock for repairs when in the middle of nowhere.\
 	Apart from the neeed for occassional maintenance, this structure acts as a telecommunications relay link to put those lost back into contact with civilisation."
 
-
+/datum/map_template/ruin/space/graveyard_large_dock
+	id = "graveyard_large_dock"
+	suffix = "graveyard_large_dock.dmm"
+	name = "Graveyard Large Dock"
+	allow_duplicates = TRUE
+	requirements = RUIN_SHIP_GRAVEYARD

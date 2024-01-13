@@ -33,7 +33,7 @@
 
 /datum/ruin_generator/basic/asteroid
 	flags = RUIN_SPACE
-	budget = 20
+	budget = 40
 	allowed_areas = list(/area/asteroid_planet)
 
 /datum/overmap_object/shuttle/planet/asteroid
@@ -41,7 +41,7 @@
 	planet_color = COLOR_GRAY
 
 #define ASTEROID_GEN_DISTANCE_COEFF_FALLOFF 0.8
-#define ASTEROID_RANDOM_SQUARE_DRIFT 0
+#define ASTEROID_RANDOM_SQUARE_DRIFT 1
 
 /datum/terrain_generator/asteroid
 	var/falloff = ASTEROID_GEN_DISTANCE_COEFF_FALLOFF
@@ -110,11 +110,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/asteroid/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/asteroid/quad
 	name = "Tiny Asteroid"
 	planet_color = COLOR_GRAY
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /area/asteroid_planet
 	name = "Asteroid"
@@ -130,3 +131,34 @@
 	main_ambience = AMBIENCE_AWAY
 	outdoors = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+
+/datum/overmap_map_zone_generator/ship_graveyard
+	name = "Ship Graveyard"
+	overmap_type = /datum/overmap_object/shuttle/planet/ship_graveyard
+	map_zone_generator = /datum/map_zone_generator/ship_graveyard
+
+/datum/map_zone_generator/ship_graveyard
+	mapzone_name = "Ship Graveyard"
+	base_map_generator = /datum/base_map_generator/empty_levels/asteroid
+	terrain_generator = /datum/terrain_generator/asteroid
+	ruin_generator = /datum/ruin_generator/basic/ship_graveyard
+	pre_custom_generators = list(/datum/custom_generator/landing_pads)
+	post_custom_generators = null
+	weather_controller = /datum/weather_controller
+	day_night_controller = null
+	atmosphere = null
+	ore_node_seeder = null
+	rock_color = list(COLOR_ASTEROID_ROCK)
+	plant_color = null
+	plant_color_as_grass = FALSE
+	grass_color = null
+	water_color = null
+
+/datum/overmap_object/shuttle/planet/ship_graveyard
+	name = "Ship Graveyard"
+	planet_color = COLOR_GRAY
+
+/datum/ruin_generator/basic/ship_graveyard
+	flags = RUIN_SHIP_GRAVEYARD
+	budget = 25
+	allowed_areas = list(/area/asteroid_planet)

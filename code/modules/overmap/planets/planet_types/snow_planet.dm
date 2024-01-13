@@ -36,7 +36,7 @@
 
 /datum/ruin_generator/basic/snow
 	flags = RUIN_WRECKAGE|RUIN_HABITABLE|RUIN_ICE
-	budget = 20
+	budget = 30
 	allowed_areas = list(/area/planet/snow)
 
 /datum/overmap_map_zone_generator/snow/quad
@@ -55,11 +55,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/snow/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/snow/quad
 	name = "Snow Planetoid"
 	planet_color = COLOR_BEIGE_GRAYISH
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /datum/weather_controller/snow
 	possible_weathers = list(

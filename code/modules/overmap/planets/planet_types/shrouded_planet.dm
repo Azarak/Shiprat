@@ -55,11 +55,12 @@
 	allocation_type = ALLOCATION_QUADRANT
 
 /datum/ruin_generator/basic/shrouded/quad
-	budget = 10
+	budget = 15
 
 /datum/overmap_object/shuttle/planet/shrouded/quad
 	name = "Shrouded Planetoid"
 	planet_color = COLOR_BEIGE_GRAYISH
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/small
 
 /datum/day_night_controller/shrouded
 	midnight_color = COLOR_BLACK
