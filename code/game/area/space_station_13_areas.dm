@@ -242,6 +242,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Maintenance - Generic
 
+/area/maintenance/hangar
+	name = "Hangar Maintenance"
+	icon_state = "amaint"
+
 /area/maintenance/aft
 	name = "Aft Maintenance"
 	icon_state = "amaint"
@@ -374,6 +378,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/radshelter/cargo
 	name = "Cargo Radstorm Shelter"
 
+// Hangar
+/area/hangar
+	sound_environment = SOUND_AREA_STANDARD_STATION
+	name = "Ship Hangar"
+	icon_state = "hallA"
 
 //Hallway
 
@@ -858,6 +867,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Engineering SMES"
 	icon_state = "engine_smes"
 
+/area/engineering/hangar_electrical
+	name = "Hangar Electrical"
+	icon_state = "engine_smes"
+
 /area/engineering/main
 	name = "Engineering"
 	icon_state = "engine"
@@ -1291,6 +1304,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Customs"
 	icon_state = "customs_point"
 
+/area/security/checkpoint/hangar
+	name = "Hangar Customs"
+	icon_state = "customs_point"
+
 /area/security/checkpoint/customs/auxiliary
 	icon_state = "customs_point_aux"
 
@@ -1310,6 +1327,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Quartermasters"
 	icon_state = "quart"
 	airlock_wires = /datum/wires/airlock/service
+	sound_environment = SOUND_AREA_STANDARD_STATION
+
+/area/cargo/fuel_station
+	name = "Fuel Station"
+	icon_state = "cargo_delivery"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/cargo/sorting
