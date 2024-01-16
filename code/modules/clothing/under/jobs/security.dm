@@ -25,9 +25,6 @@
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
 
-/obj/item/clothing/under/rank/security/officer/skylineship
-	desc = "A tactical jumpsuit for security personnel."
-
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."

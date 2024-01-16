@@ -646,14 +646,6 @@
 	speed_divisor_from_mass = 20
 	clears_hazards_on_spawn = TRUE
 
-/datum/overmap_object/shuttle/ship/bearcat
-	name = "FTV Bearcat"
-	fixed_parallax_dir = NORTH
-
-/datum/overmap_object/shuttle/ship/skyline
-	name = "CPCV Skyline"
-	fixed_parallax_dir = NORTH
-
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
 	visual_type = /obj/effect/abstract/overmap/shuttle/planet
