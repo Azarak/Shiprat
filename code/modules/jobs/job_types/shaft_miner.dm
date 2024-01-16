@@ -1,3 +1,4 @@
+/* CURRENTLY REMOVED
 /datum/job/shaft_miner
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
@@ -25,7 +26,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	required_languages = LESS_IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
-
+*/
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
