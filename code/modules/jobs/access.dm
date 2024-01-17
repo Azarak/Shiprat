@@ -56,40 +56,10 @@
 //Call this before using req_access or req_one_access directly
 /obj/proc/gen_access()
 	//These generations have been moved out of /obj/New() because they were slowing down the creation of objects that never even used the access system.
-	if(!req_access)
-		req_access = list()
-		for(var/a in text2access(req_access_txt))
-			req_access += a
-	if(!req_one_access)
-		req_one_access = list()
-		for(var/b in text2access(req_one_access_txt))
-			req_one_access += b
+	return
 
 // Check if an item has access to this object
 /obj/proc/check_access(obj/item/I)
-	return check_access_list(I ? I.GetAccess() : null)
-
-/obj/proc/check_access_list(list/access_list)
-	gen_access()
-
-	if(!islist(req_access)) //something's very wrong
-		return TRUE
-
-	if(!req_access.len && !length(req_one_access))
-		return TRUE
-
-	if(!length(access_list) || !islist(access_list))
-		return FALSE
-
-	for(var/req in req_access)
-		if(!(req in access_list)) //doesn't have this access
-			return FALSE
-
-	if(length(req_one_access))
-		for(var/req in req_one_access)
-			if(req in access_list) //has an access from the single access list
-				return TRUE
-		return FALSE
 	return TRUE
 
 /*
@@ -102,7 +72,7 @@
  * * passkey - passkey from the datum/netdata packet
  */
 /obj/proc/check_access_ntnet(list/passkey)
-	return check_access_list(passkey)
+	return TRUE
 
 /// Returns the SecHUD job icon state for whatever this object's ID card is, if it has one.
 /obj/item/proc/get_sechud_job_icon_state()
@@ -111,15 +81,7 @@
 	if(!id_card)
 		return "hudno_id"
 
-	var/card_assignment
-	if(istype(id_card, /obj/item/card/id/advanced))
-		var/obj/item/card/id/advanced/advanced_id_card = id_card
-		card_assignment = advanced_id_card.trim_assignment_override ? advanced_id_card.trim_assignment_override : advanced_id_card.trim?.assignment
-	else
-		card_assignment = id_card.trim?.assignment
-
-	if(!card_assignment)
-		card_assignment = id_card.assignment
+	var/card_assignment = id_card.assignment
 
 	// Is this one of the jobs with dedicated HUD icons?
 	if(card_assignment in SSjob.station_jobs)

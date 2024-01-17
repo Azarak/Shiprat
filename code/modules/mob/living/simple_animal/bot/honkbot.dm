@@ -42,10 +42,6 @@
 	update_appearance()
 	auto_patrol = TRUE
 
-	// Doing this hurts my soul, but simplebot access reworks are for another day.
-	var/datum/id_trim/job/clown_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/clown]
-	access_card.add_access(clown_trim.access + clown_trim.wildcard_access)
-	prev_access = access_card.access.Copy()
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
@@ -377,4 +373,3 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 			return
 
 /obj/machinery/bot_core/honkbot
-	req_one_access = list(ACCESS_THEATRE, ACCESS_ROBOTICS)

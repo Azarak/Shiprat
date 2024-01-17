@@ -1,6 +1,5 @@
 /obj/structure/closet/secure_closet/captains
 	name = "\proper captain's locker"
-	req_access = list(ACCESS_CAPTAIN)
 	icon_state = "cap"
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
@@ -35,7 +34,6 @@
 
 /obj/structure/closet/secure_closet/hop
 	name = "\proper head of personnel's locker"
-	req_access = list(ACCESS_HOP)
 	icon_state = "hop"
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
@@ -66,7 +64,6 @@
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
-	req_access = list(ACCESS_HOS)
 	icon_state = "hos"
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
@@ -101,7 +98,6 @@
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "warden"
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
@@ -126,7 +122,6 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
-	req_access = list(ACCESS_SECURITY)
 	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
@@ -174,7 +169,6 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
-	req_access = list(ACCESS_FORENSICS_LOCKERS)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -197,7 +191,6 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
-	req_access = list(ACCESS_HOS)
 
 /obj/structure/closet/secure_closet/injection/PopulateContents()
 	..()
@@ -206,15 +199,12 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(ACCESS_BRIG)
 	anchored = TRUE
 	var/id = null
 
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE
 	name = "Secure Evidence Closet"
-	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
@@ -224,7 +214,6 @@
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
-	req_access = list(ACCESS_COURT)
 
 /obj/structure/closet/secure_closet/courtroom/PopulateContents()
 	..()
@@ -239,16 +228,13 @@
 /obj/structure/closet/secure_closet/contraband/armory
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(ACCESS_ARMORY)
 
 /obj/structure/closet/secure_closet/contraband/heads
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(ACCESS_HEADS)
 
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory"
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
@@ -263,7 +249,6 @@
 
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory"
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
@@ -276,7 +261,6 @@
 
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory"
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
@@ -290,7 +274,6 @@
 
 /obj/structure/closet/secure_closet/tac
 	name = "armory tac locker"
-	req_access = list(ACCESS_ARMORY)
 	icon_state = "tac"
 
 /obj/structure/closet/secure_closet/tac/PopulateContents()
@@ -302,7 +285,6 @@
 
 /obj/structure/closet/secure_closet/labor_camp_security
 	name = "labor camp security locker"
-	req_access = list(ACCESS_SECURITY)
 	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/labor_camp_security/PopulateContents()

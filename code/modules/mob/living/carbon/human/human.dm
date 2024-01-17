@@ -251,10 +251,6 @@
 			if(!H.wear_id) //You require access from here on out.
 				to_chat(H, SPAN_WARNING("ERROR: Invalid access"))
 				return
-			var/list/access = H.wear_id.GetAccess()
-			if(!(ACCESS_MEDICAL in access))
-				to_chat(H, SPAN_WARNING("ERROR: Invalid access"))
-				return
 			if(href_list["p_stat"])
 				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
 				if(!R)
@@ -298,7 +294,7 @@
 			else //Implant and standard glasses check access
 				if(H.wear_id)
 					var/list/access = H.wear_id.GetAccess()
-					if(ACCESS_SECURITY in access)
+					if(NONE in access)
 						allowed_access = H.get_authentification_name()
 
 			if(!allowed_access)
@@ -496,7 +492,7 @@
 
 	//Check for weapons
 	if( (judgement_criteria & JUDGE_WEAPONCHECK) && weaponcheck)
-		if(!idcard || !(ACCESS_WEAPONS in idcard.access))
+		if(!idcard || !(NONE in idcard.access))
 			for(var/obj/item/I in held_items) //if they're holding a gun
 				if(weaponcheck.Invoke(I))
 					threatcount += 4

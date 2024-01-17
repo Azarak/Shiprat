@@ -196,18 +196,6 @@
 		return
 
 	if(W.GetID())
-		if((mecha_flags & ADDING_ACCESS_POSSIBLE) || (mecha_flags & ADDING_MAINT_ACCESS_POSSIBLE))
-			if(internals_access_allowed(user))
-				var/obj/item/card/id/id_card
-				if(istype(W, /obj/item/card/id))
-					id_card = W
-				else
-					var/obj/item/pda/pda = W
-					id_card = pda.id
-				output_maintenance_dialog(id_card, user)
-				return
-			to_chat(user, SPAN_WARNING("Invalid ID: Access denied."))
-			return
 		to_chat(user, SPAN_WARNING("Maintenance protocols disabled by operator."))
 		return
 

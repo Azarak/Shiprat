@@ -45,11 +45,6 @@
 	toolbox_color = new_toolbox_color
 	update_appearance(UPDATE_ICON)
 
-	// Doing this hurts my soul, but simplebot access reworks are for another day.
-	var/datum/id_trim/job/engi_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/station_engineer]
-	access_card.add_access(engi_trim.access + engi_trim.wildcard_access)
-	prev_access = access_card.access.Copy()
-
 	if(toolbox_color == "s")
 		health = 100
 		maxHealth = 100
@@ -417,7 +412,6 @@
 	..()
 
 /obj/machinery/bot_core/floorbot
-	req_one_access = list(ACCESS_CONSTRUCTION, ACCESS_ROBOTICS)
 
 /mob/living/simple_animal/bot/floorbot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))

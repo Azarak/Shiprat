@@ -18,8 +18,6 @@
 
 	uplink_type = /obj/item/uplink/clownop
 
-	id_trim = /datum/id_trim/chameleon/operative/clown
-
 /datum/outfit/syndicate/clownop/no_crystals
 	tc = 0
 
@@ -28,4 +26,3 @@
 	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
 	command_radio = TRUE
 
-	id_trim = /datum/id_trim/chameleon/operative/clown_leader

@@ -20,10 +20,6 @@
 		/obj/item/pda/syndicate,
 		/obj/item/pda/chameleon,
 		/obj/item/pda/chameleon/broken)
-	/// A list of the PDA types that this machine can currently paint.
-	var/list/pda_types = list()
-	/// A list of the card trims that this machine can currently imprint onto a card.
-	var/list/card_trims = list()
 	/// Set to a region define (REGION_SECURITY for example) to create a departmental variant, limited to departmental options. If null, this is unrestricted.
 	var/target_dept
 
@@ -45,23 +41,6 @@
 
 /obj/machinery/pdapainter/Initialize()
 	. = ..()
-
-	if(!target_dept)
-		pda_types = SSid_access.station_pda_templates.Copy()
-		card_trims = SSid_access.station_job_templates.Copy()
-		return
-
-	// Cache the manager list, then check through each manager.
-	// If we get a region match, add their trim templates and PDA paths to our lists.
-	var/list/manager_cache = SSid_access.sub_department_managers_tgui
-	for(var/access_txt in manager_cache)
-		var/list/manager_info = manager_cache[access_txt]
-		var/list/manager_regions = manager_info["regions"]
-		if(target_dept in manager_regions)
-			var/list/pda_list = manager_info["pdas"]
-			var/list/trim_list = manager_info["templates"]
-			pda_types |= pda_list
-			card_trims |= trim_list
 
 /obj/machinery/pdapainter/Destroy()
 	QDEL_NULL(stored_pda)
@@ -268,9 +247,6 @@
 /obj/machinery/pdapainter/ui_static_data(mob/user)
 	var/data = list()
 
-	data["pdaTypes"] = pda_types
-	data["cardTrims"] = card_trims
-
 	return data
 
 /obj/machinery/pdapainter/ui_act(action, params)
@@ -312,37 +288,10 @@
 		if("trim_pda")
 			if((machine_stat & BROKEN) || !stored_pda)
 				return TRUE
-
-			var/selection = params["selection"]
 			var/obj/item/pda/pda_path = /obj/item/pda
 
-			for(var/path in pda_types)
-				if(pda_types[path] == selection)
-					pda_path = path
-					break
-
-			if(initial(pda_path.greyscale_config) && initial(pda_path.greyscale_colors))
-				stored_pda.set_greyscale(initial(pda_path.greyscale_colors), initial(pda_path.greyscale_config))
-			else
-				stored_pda.icon = initial(pda_path.icon)
 			stored_pda.icon_state = initial(pda_path.icon_state)
 			stored_pda.desc = initial(pda_path.desc)
-
-			return TRUE
-		if("trim_card")
-			if((machine_stat & BROKEN) || !stored_id_card)
-				return TRUE
-
-			var/selection = params["selection"]
-			for(var/path in card_trims)
-				if(!(card_trims[path] == selection))
-					continue
-
-				if(SSid_access.apply_trim_to_card(stored_id_card, path, copy_access = FALSE))
-					return TRUE
-
-				to_chat(usr, SPAN_WARNING("The trim you selected could not be added to \the [stored_id_card]. You will need a rarer ID card to imprint that trim data."))
-
 			return TRUE
 		if("reset_card")
 			if((machine_stat & BROKEN) || !stored_id_card)
@@ -352,22 +301,18 @@
 
 			return TRUE
 
-/// Security departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/// Security departmental variant.
 /obj/machinery/pdapainter/security
 	name = "\improper Security PDA & ID Painter"
-	target_dept = REGION_SECURITY
 
-/// Medical departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/// Medical departmental variant.
 /obj/machinery/pdapainter/medbay
 	name = "\improper Medbay PDA & ID Painter"
-	target_dept = REGION_MEDBAY
 
-/// Science departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/// Science departmental variant.
 /obj/machinery/pdapainter/research
 	name = "\improper Research PDA & ID Painter"
-	target_dept = REGION_RESEARCH
 
-/// Engineering departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/// Engineering departmental variant.
 /obj/machinery/pdapainter/engineering
 	name = "\improper Engineering PDA & ID Painter"
-	target_dept = REGION_ENGINEERING

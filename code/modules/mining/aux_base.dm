@@ -17,7 +17,6 @@
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "dorm_available"
 	icon_keyboard = null
-	req_one_access = list(ACCESS_AUX_BASE, ACCESS_HEADS)
 	circuit = /obj/item/circuitboard/computer/auxiliary_base
 	/// Shuttle ID of the base
 	var/shuttleId = "colony_drop"
@@ -195,7 +194,6 @@
 
 /obj/machinery/computer/auxiliary_base/proc/set_mining_mode()
 	if(is_mining_level(src)) //The console switches to controlling the mining shuttle once landed.
-		req_one_access = list()
 		shuttleId = "mining" //The base can only be dropped once, so this gives the console a new purpose.
 		possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
 

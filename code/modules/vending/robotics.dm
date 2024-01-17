@@ -5,7 +5,6 @@
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	light_mask = "robotics-light-mask"
-	req_access = list(ACCESS_ROBOTICS)
 	products = list(/obj/item/clothing/suit/toggle/labcoat = 4,
 					/obj/item/clothing/under/rank/rnd/roboticist = 4,
 					/obj/item/stack/cable_coil = 4,

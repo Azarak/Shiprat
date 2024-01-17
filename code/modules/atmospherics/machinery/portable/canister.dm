@@ -48,7 +48,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	max_integrity = 250
 	integrity_failure = 0.4
 	pressure_resistance = 7 * ONE_ATMOSPHERE
-	req_access = list()
 
 	var/icon/canister_overlay_file = 'icons/obj/atmospherics/canisters.dmi'
 
@@ -641,11 +640,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 					set_greyscale(initial(replacement.greyscale_colors), initial(replacement.greyscale_config))
 		if("restricted")
 			restricted = !restricted
-			if(restricted)
-				req_access = list(ACCESS_ENGINE)
-			else
-				req_access = list()
-				. = TRUE
 		if("pressure")
 			var/pressure = params["pressure"]
 			if(pressure == "reset")

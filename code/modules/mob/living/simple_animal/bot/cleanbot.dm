@@ -93,10 +93,6 @@
 	get_targets()
 	icon_state = "cleanbot[on]"
 
-	// Doing this hurts my soul, but simplebot access reworks are for another day.
-	var/datum/id_trim/job/jani_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/janitor]
-	access_card.add_access(jani_trim.access + jani_trim.wildcard_access)
-	prev_access = access_card.access.Copy()
 	stolen_valor = list()
 
 	prefixes = list(command, security, engineering)
@@ -378,7 +374,6 @@
 	on = FALSE
 
 /obj/machinery/bot_core/cleanbot
-	req_one_access = list(ACCESS_JANITOR, ACCESS_ROBOTICS)
 
 /mob/living/simple_animal/bot/cleanbot/get_controls(mob/user)
 	var/dat
@@ -413,4 +408,3 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 		update_controls()
 
 /obj/machinery/bot_core/cleanbot/medbay
-	req_one_access = list(ACCESS_JANITOR, ACCESS_ROBOTICS, ACCESS_MEDICAL)

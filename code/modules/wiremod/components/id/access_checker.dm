@@ -46,19 +46,13 @@
 	regenerate_access()
 
 /obj/item/circuit_component/compare/access/proc/regenerate_access()
-	var/check_any_value = check_any.value
 	var/list/required_accesses_list = required_accesses.value
 	if(!islist(required_accesses_list))
 		return
-	if(check_any_value)
-		LAZYCLEARLIST(req_access)
-		req_one_access = required_accesses_list.Copy()
-	else
-		LAZYCLEARLIST(req_one_access)
-		req_access = required_accesses_list.Copy()
+	// TODO
 
 /obj/item/circuit_component/compare/access/do_comparisons(list/ports)
-	return check_access_list(subject_accesses.value)
+	return TRUE
 
 /obj/item/circuit_component/compare/access/ui_perform_action(mob/user, action)
 	if(length(required_accesses.connected_ports))
@@ -76,12 +70,6 @@
 	var/list/data = list()
 
 	var/list/regions = list()
-	var/list/tgui_region_data = SSid_access.all_region_access_tgui
-	for(var/region in SSid_access.station_regions)
-		regions += tgui_region_data[region]
-	if(parent?.admin_only)
-		regions += tgui_region_data[REGION_CENTCOM]
-		regions += tgui_region_data[REGION_ALL_GLOBAL]
 	data["regions"] = regions
 	return data
 
@@ -102,7 +90,6 @@
 			check_any.set_value(0)
 			. = TRUE
 		if("grant_all")
-			required_accesses.set_value(SSid_access.get_region_access_list(list(REGION_ALL_STATION)))
 			. = TRUE
 		if("one_access")
 			check_any.set_value(!check_any.value)
@@ -118,20 +105,8 @@
 			required_accesses.set_value(new_accesses_value)
 			. = TRUE
 		if("grant_region")
-			var/list/required_accesses_list = required_accesses.value
-			var/list/required_accesses_value = LAZYCOPY(required_accesses_list)
-			var/region = params["region"]
-			if(isnull(region))
-				return
-			required_accesses.set_value(required_accesses_value | SSid_access.get_region_access_list(list(region)))
 			. = TRUE
 		if("deny_region")
-			var/list/required_accesses_list = required_accesses.value
-			var/list/required_accesses_value = LAZYCOPY(required_accesses_list)
-			var/region = params["region"]
-			if(isnull(region))
-				return
-			required_accesses.set_value(required_accesses_value - SSid_access.get_region_access_list(list(region)))
 			. = TRUE
 	if(.)
 		regenerate_access()

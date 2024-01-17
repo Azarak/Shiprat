@@ -12,7 +12,6 @@
 	desc = "A console used for high-priority announcements and emergencies."
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
-	req_access = list(ACCESS_HEADS)
 	circuit = /obj/item/circuitboard/computer/communications
 	light_color = LIGHT_COLOR_BLUE
 
@@ -50,13 +49,13 @@
 /obj/machinery/computer/communications/proc/authenticated_as_non_silicon_captain(mob/user)
 	if (issilicon(user))
 		return FALSE
-	return ACCESS_CAPTAIN in authorize_access
+	return NONE in authorize_access
 
 /// Are we a silicon, OR we're logged in as the captain?
 /obj/machinery/computer/communications/proc/authenticated_as_silicon_or_captain(mob/user)
 	if (issilicon(user))
 		return TRUE
-	return ACCESS_CAPTAIN in authorize_access
+	return NONE in authorize_access
 
 /// Are we a silicon, OR logged in?
 /obj/machinery/computer/communications/proc/authenticated(mob/user)
@@ -74,8 +73,6 @@
 	if (obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	if (authenticated)
-		authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 	to_chat(user, SPAN_DANGER("You scramble the communication routing circuits!"))
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 
@@ -132,7 +129,7 @@
 					to_chat(usr, SPAN_WARNING("You need to swipe your ID!"))
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
+				if (!(NONE in id_card.access))
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this!"))
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
@@ -313,7 +310,6 @@
 
 			if (obj_flags & EMAGGED)
 				authenticated = TRUE
-				authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 				authorize_name = "Unknown"
 				to_chat(usr, SPAN_WARNING("[src] lets out a quiet alarm as its login is overridden."))
 				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
@@ -354,10 +350,6 @@
 				to_chat(usr, SPAN_WARNING("The safe code has already been requested and delivered to your station!"))
 				return
 
-			if(!SSid_access.spare_id_safe_code)
-				to_chat(usr, SPAN_WARNING("There is no safe code to deliver to your station!"))
-				return
-
 			var/turf/pod_location = get_turf(src)
 
 			SSjob.safe_code_request_loc = pod_location
@@ -375,18 +367,6 @@
 
 	var/has_connection = has_communication()
 	data["hasConnection"] = has_connection
-
-	if(!SSjob.assigned_captain && !SSjob.safe_code_requested && SSid_access.spare_id_safe_code && has_connection)
-		data["canRequestSafeCode"] = TRUE
-		data["safeCodeDeliveryWait"] = 0
-	else
-		data["canRequestSafeCode"] = FALSE
-		if(SSjob.safe_code_timer_id && has_connection)
-			data["safeCodeDeliveryWait"] = timeleft(SSjob.safe_code_timer_id)
-			data["safeCodeDeliveryArea"] = get_area(SSjob.safe_code_request_loc)
-		else
-			data["safeCodeDeliveryWait"] = 0
-			data["safeCodeDeliveryArea"] = null
 
 	if (authenticated || issilicon(user))
 		data["authenticated"] = TRUE
@@ -475,11 +455,6 @@
 
 					var/has_access = FALSE
 
-					for (var/purchase_access in shuttle_template.who_can_purchase)
-						if (purchase_access in authorize_access)
-							has_access = TRUE
-							break
-
 					if (!has_access)
 						continue
 
@@ -552,13 +527,6 @@
 /// Returns whether we are authorized to buy this specific shuttle.
 /// Does not handle prerequisite checks, as those should still *show*.
 /obj/machinery/computer/communications/proc/can_purchase_this_shuttle(datum/map_template/shuttle/shuttle_template)
-	if (isnull(shuttle_template.who_can_purchase))
-		return FALSE
-
-	for (var/access in authorize_access)
-		if (access in shuttle_template.who_can_purchase)
-			return TRUE
-
 	return FALSE
 
 /obj/machinery/computer/communications/proc/can_send_messages_to_other_sectors(mob/user)

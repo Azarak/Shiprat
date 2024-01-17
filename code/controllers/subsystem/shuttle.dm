@@ -1015,12 +1015,6 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/init_has_purchase_shuttle_access()
 	var/list/has_purchase_shuttle_access = list()
-
-	for (var/shuttle_id in SSmapping.shuttle_templates)
-		var/datum/map_template/shuttle/shuttle_template = SSmapping.shuttle_templates[shuttle_id]
-		if (!isnull(shuttle_template.who_can_purchase))
-			has_purchase_shuttle_access |= shuttle_template.who_can_purchase
-
 	return has_purchase_shuttle_access
 
 /datum/controller/subsystem/shuttle/proc/auto_transfer()

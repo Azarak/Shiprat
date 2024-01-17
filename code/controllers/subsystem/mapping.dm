@@ -312,16 +312,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
-	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
-
 	for(var/item in subtypesof(/datum/map_template/shuttle))
 		var/datum/map_template/shuttle/shuttle_type = item
 		if(!(initial(shuttle_type.suffix)))
 			continue
 
 		var/datum/map_template/shuttle/S = new shuttle_type()
-		if(unbuyable.Find(S.mappath))
-			S.who_can_purchase = null
 
 		shuttle_templates[S.shuttle_id] = S
 		map_templates[S.shuttle_id] = S

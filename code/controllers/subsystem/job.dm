@@ -794,8 +794,7 @@ SUBSYSTEM_DEF(job)
 
 /obj/item/paper/fluff/spare_id_safe_code/Initialize()
 	. = ..()
-	var/safe_code = SSid_access.spare_id_safe_code
-
+	var/safe_code = "ERROR"
 	info = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge.<br><br>If your job would not ordinarily have Head of Staff access, your ID card has been specially modified to possess it."
 	update_appearance()
 
@@ -805,14 +804,13 @@ SUBSYSTEM_DEF(job)
 
 /obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize()
 	. = ..()
-	var/safe_code = SSid_access.spare_id_safe_code
-
+	var/safe_code = "ERROR"
 	info = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge."
 	update_appearance()
 
 /datum/controller/subsystem/job/proc/promote_to_captain(mob/living/carbon/human/new_captain, acting_captain = FALSE)
-	var/id_safe_code = SSid_access.spare_id_safe_code
 
+	var/id_safe_code = "ERROR"
 	if(!id_safe_code)
 		CRASH("Cannot promote [new_captain.real_name] to Captain, there is no id_safe_code.")
 
@@ -830,12 +828,10 @@ SUBSYSTEM_DEF(job)
 	else
 		to_chat(new_captain, SPAN_NOTICE("You can find the code to obtain your spare ID from the secure safe on the Bridge [where]."))
 
+	/* TODO
 	// Force-give their ID card bridge access.
-	var/obj/item/id_slot = new_captain.get_item_by_slot(ITEM_SLOT_ID)
-	if(id_slot)
-		var/obj/item/card/id/id_card = id_slot.GetID()
-		if(!(ACCESS_HEADS in id_card.access))
-			id_card.add_wildcards(list(ACCESS_HEADS), mode=FORCE_ADD_ALL)
+
+	*/
 
 	assigned_captain = TRUE
 

@@ -58,7 +58,7 @@
 	///Whether the mechs maintenance protocols are on or off
 	var/construction_state = MECHA_LOCKED
 	///Contains flags for the mecha
-	var/mecha_flags = ADDING_ACCESS_POSSIBLE | CANSTRAFE | IS_ENCLOSED | HAS_LIGHTS
+	var/mecha_flags = CANSTRAFE | IS_ENCLOSED | HAS_LIGHTS
 	///Stores the DNA enzymes of a carbon so tht only they can access the mech
 	var/dna_lock
 	///Spark effects are handled by this datum
@@ -93,11 +93,6 @@
 	var/internal_damage_threshold = 50
 	///Bitflags for internal damage
 	var/internal_damage = NONE
-
-	///required access level for mecha operation
-	var/list/operation_req_access = list()
-	///required access to change internal components
-	var/list/internals_req_access = list(ACCESS_MECH_ENGINE, ACCESS_MECH_SCIENCE)
 
 	///Typepath for the wreckage it spawns when destroyed
 	var/wreckage
@@ -1093,13 +1088,9 @@
 /////////////////////////
 
 /obj/vehicle/sealed/mecha/proc/operation_allowed(mob/M)
-	req_access = operation_req_access
-	req_one_access = list()
 	return allowed(M)
 
 /obj/vehicle/sealed/mecha/proc/internals_access_allowed(mob/M)
-	req_one_access = internals_req_access
-	req_access = list()
 	return allowed(M)
 
 

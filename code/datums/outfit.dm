@@ -20,9 +20,6 @@
 	/// Type path of item to go in the idcard slot
 	var/id = null
 
-	/// Type path of ID card trim associated with this outfit.
-	var/id_trim = null
-
 	/// Type path of item to go in uniform slot
 	var/uniform = null
 
@@ -179,10 +176,6 @@
 		H.equip_to_slot_or_del(new glasses(H),ITEM_SLOT_EYES, TRUE)
 	if(id)
 		H.equip_to_slot_or_del(new id(H),ITEM_SLOT_ID, TRUE)
-	if(!visualsOnly && id_trim && H.wear_id)
-		var/obj/item/card/id/id_card = H.wear_id
-		if(istype(id_card) && !SSid_access.apply_trim_to_card(id_card, id_trim))
-			WARNING("Unable to apply trim [id_trim] to [id_card] in outfit [name].")
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H),ITEM_SLOT_SUITSTORE, TRUE)
 
@@ -313,7 +306,6 @@
 	.["ears"] = ears
 	.["glasses"] = glasses
 	.["id"] = id
-	.["id_trim"] = id_trim
 	.["l_pocket"] = l_pocket
 	.["r_pocket"] = r_pocket
 	.["suit_store"] = suit_store
@@ -341,7 +333,6 @@
 	ears = target.ears
 	glasses = target.glasses
 	id = target.id
-	id_trim = target.id_trim
 	l_pocket = target.l_pocket
 	r_pocket = target.r_pocket
 	suit_store = target.suit_store
@@ -380,7 +371,6 @@
 	ears = text2path(outfit_data["ears"])
 	glasses = text2path(outfit_data["glasses"])
 	id = text2path(outfit_data["id"])
-	id_trim = text2path(outfit_data["id_trim"])
 	l_pocket = text2path(outfit_data["l_pocket"])
 	r_pocket = text2path(outfit_data["r_pocket"])
 	suit_store = text2path(outfit_data["suit_store"])

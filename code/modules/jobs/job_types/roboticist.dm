@@ -53,5 +53,3 @@
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/science=1)
 
 	pda_slot = ITEM_SLOT_LPOCKET
-
-	id_trim = /datum/id_trim/job/roboticist

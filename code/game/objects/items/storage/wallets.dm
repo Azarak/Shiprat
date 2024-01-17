@@ -64,7 +64,7 @@
 		var/obj/item/card/id/id_card = card
 		if(!istype(id_card))
 			continue
-		var/card_tally = SSid_access.tally_access(id_card, ACCESS_FLAG_COMMAND)
+		var/card_tally = 0
 		if(card_tally > winning_tally)
 			winning_tally = card_tally
 			front_id = id_card

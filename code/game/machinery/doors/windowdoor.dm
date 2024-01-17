@@ -31,9 +31,6 @@
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	if(set_dir)
 		setDir(set_dir)
-	if(LAZYLEN(req_access))
-		icon_state = "[icon_state]"
-		base_state = icon_state
 	for(var/i in 1 to shards)
 		debris += new /obj/item/shard(src)
 	if(rods)
@@ -281,11 +278,6 @@
 						var/obj/item/electronics/airlock/ae
 						if(!electronics)
 							ae = new/obj/item/electronics/airlock(drop_location())
-							if(req_one_access)
-								ae.one_access = 1
-								ae.accesses = req_one_access
-							else
-								ae.accesses = req_access
 						else
 							ae = electronics
 							electronics = null
@@ -373,11 +365,9 @@
 /obj/machinery/door/window/brigdoor/security/cell
 	name = "cell door"
 	desc = "For keeping in criminal scum."
-	req_access = list(ACCESS_BRIG)
 
 /obj/machinery/door/window/brigdoor/security/holding
 	name = "holding cell door"
-	req_one_access = list(ACCESS_SEC_DOORS, ACCESS_LAWYER) //love for the lawyer
 
 /obj/machinery/door/window/northleft
 	dir = NORTH

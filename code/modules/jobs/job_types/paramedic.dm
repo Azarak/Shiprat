@@ -57,5 +57,3 @@
 	box = /obj/item/storage/box/survival/medical
 
 	chameleon_extras = /obj/item/gun/syringe
-
-	id_trim = /datum/id_trim/job/paramedic

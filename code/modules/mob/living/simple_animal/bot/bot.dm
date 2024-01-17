@@ -154,8 +154,6 @@
 	GLOB.bots_list += src
 	// Give bots a fancy new ID card that can hold any access.
 	access_card = new /obj/item/card/id/advanced/simple_bot(src)
-	// This access is so bots can be immediately set to patrol and leave Robotics, instead of having to be let out first.
-	access_card.set_access(list(ACCESS_ROBOTICS))
 	set_custom_texts()
 	Radio = new/obj/item/radio(src)
 	if(radio_key)
@@ -552,8 +550,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 
 /mob/living/simple_animal/bot/proc/check_bot_access()
-	if(mode != BOT_SUMMON && mode != BOT_RESPONDING)
-		access_card.set_access(prev_access)
+	return
 
 /mob/living/simple_animal/bot/proc/call_bot(caller, turf/waypoint, message=TRUE)
 	bot_reset() //Reset a bot before setting it to call mode.
@@ -569,7 +566,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 		var/end_area = get_area_name(waypoint)
 		if(!on)
 			turn_on() //Saves the AI the hassle of having to activate a bot manually.
-		access_card.set_access(REGION_ACCESS_ALL_STATION) //Give the bot all-access while under the AI's command.
 		if(client)
 			reset_access_timer_id = addtimer(CALLBACK (src, .proc/bot_reset), 60 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
 			to_chat(src, SPAN_NOTICE("[SPAN_BIG("Priority waypoint set by [icon2html(calling_ai, src)] <b>[caller]</b>. Proceed to <b>[end_area]</b>.")]<br>[path.len-1] meters to destination. You have been granted additional door access for 60 seconds."))
@@ -603,7 +599,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 	set_path(null)
 	summon_target = null
 	pathset = 0
-	access_card.set_access(prev_access)
 	tries = 0
 	mode = BOT_IDLE
 	diag_hud_set_botstat()
@@ -740,8 +735,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 		if("summon")
 			bot_reset()
 			summon_target = get_turf(user)
-			if(user_access.len != 0)
-				access_card.set_access(user_access + prev_access) //Adds the user's access, if any.
 			mode = BOT_SUMMON
 			speak("Responding.", radio_channel)
 
@@ -995,8 +988,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 	if(!. || !client)
 		return FALSE
 	// If we have any bonus player accesses, add them to our internal ID card.
-	if(length(player_access))
-		access_card.add_access(player_access)
 	diag_hud_set_botmode()
 
 /mob/living/simple_animal/bot/Logout()

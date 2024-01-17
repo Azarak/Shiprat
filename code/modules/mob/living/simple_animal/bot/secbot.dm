@@ -79,11 +79,6 @@
 	weapon = new baton_type()
 	update_appearance(UPDATE_ICON)
 
-	// Doing this hurts my soul, but simplebot access reworks are for another day.
-	var/datum/id_trim/job/det_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/detective]
-	access_card.add_access(det_trim.access + det_trim.wildcard_access)
-	prev_access = access_card.access.Copy()
-
 	//SECHUD
 	var/datum/atom_hud/secsensor = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	secsensor.add_hud_to(src)
@@ -514,7 +509,6 @@ Auto Patrol: []"},
 		return
 
 /obj/machinery/bot_core/secbot
-	req_access = list(ACCESS_SECURITY)
 
 /// Returns false if the current target is unable to pay the fair_market_price for being arrested/detained
 /mob/living/simple_animal/bot/secbot/proc/check_nap_violations()

@@ -4,7 +4,6 @@
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
-	req_access = list( )
 	/// ID of the attached shuttle
 	var/shuttleId
 	/// Possible destinations of the attached shuttle
@@ -230,7 +229,6 @@
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	req_access = list()
 	obj_flags |= EMAGGED
 	to_chat(user, SPAN_NOTICE("You fried the consoles ID checking system."))
 

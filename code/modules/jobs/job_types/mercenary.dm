@@ -34,7 +34,6 @@
 /datum/outfit/job/mercenary
 	name = "Mercenary"
 	jobtype = /datum/job/mercenary
-	id_trim = /datum/id_trim/job/assistant
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,

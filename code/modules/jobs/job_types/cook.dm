@@ -84,8 +84,6 @@
 		/obj/item/choice_beacon/ingredient = 1
 	)
 
-	id_trim = /datum/id_trim/job/cook
-
 /datum/outfit/job/cook/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 	var/datum/job/cook/J = SSjob.GetJobType(jobtype)

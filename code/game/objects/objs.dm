@@ -25,11 +25,12 @@
 	var/current_skin //Has the item been reskinned?
 	var/list/unique_reskin //List of options to reskin.
 
-	// Access levels, used in modules\jobs\access.dm
+	// only exist here for maps to compile, remove later
 	var/list/req_access
 	var/req_access_txt = "0"
 	var/list/req_one_access
 	var/req_one_access_txt = "0"
+
 	/// Custom fire overlay icon
 	var/custom_fire_overlay
 

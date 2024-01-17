@@ -66,23 +66,6 @@
 					dat += "[ckey] - [D.rank.name]<br>"
 				holder << browse(dat, "window=showadmins;size=600x500")
 		//Buttons for debug.
-		if("maint_access_engiebrig")
-			if(!is_debugger)
-				return
-			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
-				M.check_access()
-				if (ACCESS_MAINT_TUNNELS in M.req_access)
-					M.req_access = list()
-					M.req_one_access = list(ACCESS_BRIG,ACCESS_ENGINE)
-			message_admins("[key_name_admin(holder)] made all maint doors engineering and brig access-only.")
-		if("maint_access_brig")
-			if(!is_debugger)
-				return
-			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
-				M.check_access()
-				if (ACCESS_MAINT_TUNNELS in M.req_access)
-					M.req_access = list(ACCESS_BRIG)
-			message_admins("[key_name_admin(holder)] made all maint doors brig access-only.")
 		if("infinite_sec")
 			if(!is_debugger)
 				return
@@ -322,9 +305,6 @@
 			if(!is_funmin)
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Egalitarian Station"))
-			for(var/obj/machinery/door/airlock/W in GLOB.machines)
-				if(is_station_level(W) && !istype(get_area(W), /area/command) && !istype(get_area(W), /area/commons) && !istype(get_area(W), /area/service) && !istype(get_area(W), /area/command/heads_quarters) && !istype(get_area(W), /area/security/prison))
-					W.req_access = list()
 			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
 			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
 		if("ancap")

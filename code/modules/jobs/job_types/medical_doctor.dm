@@ -54,4 +54,3 @@
 
 	chameleon_extras = /obj/item/gun/syringe
 
-	id_trim = /datum/id_trim/job/medical_doctor

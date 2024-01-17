@@ -1369,11 +1369,6 @@
 			if(!electronics)
 				ae = new/obj/item/electronics/airlock(loc)
 				gen_access()
-				if(req_one_access.len)
-					ae.one_access = 1
-					ae.accesses = req_one_access
-				else
-					ae.accesses = req_access
 			else
 				ae = electronics
 				electronics = null

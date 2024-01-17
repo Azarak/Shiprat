@@ -3,7 +3,6 @@
 	desc = "Used to reclaim your items after you finish your sentence at the labor camp."
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "dorm_taken"
-	req_access = list(ACCESS_SECURITY) //REQACCESS TO ACCESS ALL STORED ITEMS
 	density = FALSE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 100
@@ -23,7 +22,6 @@
 /obj/machinery/gulag_item_reclaimer/emag_act(mob/user)
 	if(obj_flags & EMAGGED) // emagging lets anyone reclaim all the items
 		return
-	req_access = list()
 	obj_flags |= EMAGGED
 
 /obj/machinery/gulag_item_reclaimer/ui_interact(mob/user, datum/tgui/ui)
