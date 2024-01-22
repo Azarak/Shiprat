@@ -1,7 +1,6 @@
 /datum/job/lawyer
 	title = "Lawyer"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_LAWYER
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/gavelhammer, /obj/item/book/manual/wiki/security_space_law)
 

@@ -33,7 +33,7 @@
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	var/datum/preferences/dummy_prefs = new
 	dummy_prefs.pref_species = new /datum/species/zombie
-	var/datum/job/J = SSjob.GetJob(zombiejob)
+	var/datum/job/J = SSjob.get_job_by_name(zombiejob)
 	var/datum/outfit/O
 	if(J.outfit)
 		O = new J.outfit

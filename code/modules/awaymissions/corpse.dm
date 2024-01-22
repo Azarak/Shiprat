@@ -153,7 +153,7 @@
 				var/datum/objective/O = new/datum/objective(objective)
 				O.owner = MM
 				A.objectives += O
-		M.mind.set_assigned_role(SSjob.GetJobType(spawner_job_path))
+		M.mind.set_assigned_role(SSjob.get_job_by_type(spawner_job_path))
 		special(M, pref_load)
 		MM.name = M.real_name
 	if(uses > 0)

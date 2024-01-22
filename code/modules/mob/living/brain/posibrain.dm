@@ -124,7 +124,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	brainmob.timeofhostdeath = C.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(brainmob.mind)
-		brainmob.mind.set_assigned_role(SSjob.GetJobType(posibrain_job_path))
+		brainmob.mind.set_assigned_role(SSjob.get_job_by_type(posibrain_job_path))
 	if(C.mind)
 		C.mind.transfer_to(brainmob)
 
@@ -147,7 +147,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	var/policy = get_policy(ROLE_POSIBRAIN)
 	if(policy)
 		to_chat(brainmob, policy)
-	brainmob.mind.set_assigned_role(SSjob.GetJobType(posibrain_job_path))
+	brainmob.mind.set_assigned_role(SSjob.get_job_by_type(posibrain_job_path))
 	brainmob.set_stat(CONSCIOUS)
 
 	visible_message(new_mob_message)

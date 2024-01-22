@@ -803,7 +803,7 @@
 
 	dat += "<table>"
 
-	for(var/datum/job/job as anything in SSjob.joinable_occupations)
+	for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 		count++
 		var/J_title = html_encode(job.title)
 		var/J_opPos = html_encode(job.total_positions - (job.total_positions - job.current_positions))

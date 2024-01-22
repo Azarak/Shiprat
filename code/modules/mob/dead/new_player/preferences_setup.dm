@@ -45,7 +45,7 @@
 	var/highest_pref = 0
 	for(var/job in job_preferences)
 		if(job_preferences[job] > highest_pref)
-			previewJob = SSjob.GetJob(job)
+			previewJob = SSjob.get_job_by_name(job)
 			highest_pref = job_preferences[job]
 
 	if(previewJob)

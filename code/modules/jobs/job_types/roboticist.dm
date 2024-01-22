@@ -1,7 +1,6 @@
 /datum/job/roboticist
 	title = "Roboticist"
 	department_head = list("Research Director")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the research director"
@@ -13,9 +12,6 @@
 
 	outfit = /datum/outfit/job/roboticist
 	plasmaman_outfit = /datum/outfit/plasmaman/robotics
-	departments_list = list(
-		/datum/job_department/science,
-		)
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SCI

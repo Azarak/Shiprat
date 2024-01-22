@@ -1,7 +1,6 @@
 /datum/job/psychologist
 	title = "Psychologist"
 	department_head = list("Head of Personnel","Chief Medical Officer")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel and the chief medical officer"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_PSYCHOLOGIST
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/storage/pill_bottle)
 

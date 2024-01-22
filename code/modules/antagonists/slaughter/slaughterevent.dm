@@ -37,7 +37,7 @@
 	var/obj/effect/dummy/phased_mob/holder = new /obj/effect/dummy/phased_mob((pick(spawn_locs)))
 	var/mob/living/simple_animal/hostile/imp/slaughter/S = new (holder)
 	player_mind.transfer_to(S)
-	player_mind.set_assigned_role(SSjob.GetJobType(/datum/job/slaughter_demon))
+	player_mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/slaughter_demon))
 	player_mind.special_role = ROLE_SLAUGHTER_DEMON
 	player_mind.add_antag_datum(/datum/antagonist/slaughter)
 	to_chat(S, S.playstyle_string)

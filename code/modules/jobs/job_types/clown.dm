@@ -1,7 +1,6 @@
 /datum/job/clown
 	title = "Clown"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_CLOWN
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	mail_goodies = list(
 		/obj/item/food/grown/banana = 100,

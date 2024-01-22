@@ -1,7 +1,6 @@
 /datum/job/station_engineer
 	title = "Station Engineer"
 	department_head = list("Chief Engineer")
-	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineer"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_STATION_ENGINEER
 	bounty_types = CIV_JOB_ENG
-	departments_list = list(
-		/datum/job_department/engineering,
-		)
 
 	family_heirlooms = list(/obj/item/clothing/head/hardhat, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 

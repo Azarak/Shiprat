@@ -1,7 +1,6 @@
 /datum/job/doctor
 	title = "Medical Doctor"
 	department_head = list("Chief Medical Officer")
-	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
@@ -16,9 +15,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_MEDICAL_DOCTOR
 	bounty_types = CIV_JOB_MED
-	departments_list = list(
-		/datum/job_department/medical,
-		)
 
 	family_heirlooms = list(/obj/item/storage/firstaid/ancient/heirloom)
 

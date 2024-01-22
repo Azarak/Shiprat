@@ -1,7 +1,6 @@
 /datum/job/geneticist
 	title = "Geneticist"
 	department_head = list("Research Director")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the research director"
@@ -12,9 +11,6 @@
 
 	outfit = /datum/outfit/job/geneticist
 	plasmaman_outfit = /datum/outfit/plasmaman/genetics
-	departments_list = list(
-		/datum/job_department/medical,
-		)
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SCI

@@ -95,7 +95,7 @@
 /datum/mind/New(_key)
 	key = _key
 	martial_art = default_martial_art
-	set_assigned_role(SSjob.GetJobType(/datum/job/unassigned)) // Unassigned by default.
+	set_assigned_role(SSjob.get_job_by_type(/datum/job/unassigned)) // Unassigned by default.
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
@@ -432,10 +432,10 @@
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role.title) as null|anything in sortList(SSjob.station_jobs)
+		var/new_role = input("Select new role", "Assigned role", assigned_role.title) as null|anything in sortList(SSjob.get_station_jobs())
 		if(isnull(new_role))
 			return
-		var/datum/job/new_job = SSjob.GetJob(new_role)
+		var/datum/job/new_job = SSjob.get_job_by_name(new_role)
 		if (!new_job)
 			to_chat(usr, SPAN_WARNING("Job not found."))
 			return
@@ -646,7 +646,7 @@
 /datum/mind/proc/make_wizard()
 	if(has_antag_datum(/datum/antagonist/wizard))
 		return
-	set_assigned_role(SSjob.GetJobType(/datum/job/space_wizard))
+	set_assigned_role(SSjob.get_job_by_type(/datum/job/space_wizard))
 	special_role = ROLE_WIZARD
 	add_antag_datum(/datum/antagonist/wizard)
 
@@ -794,17 +794,17 @@
 //AI
 /mob/living/silicon/ai/mind_initialize()
 	. = ..()
-	mind.set_assigned_role(SSjob.GetJobType(/datum/job/ai))
+	mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/ai))
 
 
 //BORG
 /mob/living/silicon/robot/mind_initialize()
 	. = ..()
-	mind.set_assigned_role(SSjob.GetJobType(/datum/job/cyborg))
+	mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/cyborg))
 
 
 //PAI
 /mob/living/silicon/pai/mind_initialize()
 	. = ..()
-	mind.set_assigned_role(SSjob.GetJobType(/datum/job/personal_ai))
+	mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/personal_ai))
 	mind.special_role = ""

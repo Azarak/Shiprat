@@ -145,7 +145,8 @@
 /datum/datacore/proc/get_manifest()
 	// First we build up the order in which we want the departments to appear in.
 	var/list/manifest_out = list()
-	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+	/* TODO
+	for(var/datum/job_department/department as anything in SSjob.get_joinable_departments())
 		manifest_out[department.department_name] = list()
 	manifest_out[DEPARTMENT_UNASSIGNED] = list()
 
@@ -153,7 +154,7 @@
 	for(var/datum/data/record/record as anything in GLOB.data_core.general)
 		var/name = record.fields["name"]
 		var/rank = record.fields["rank"]
-		var/datum/job/job = SSjob.GetJob(rank)
+		var/datum/job/job = SSjob.get_job_by_name(rank)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list)) // In case an unlawful custom rank is added.
 			var/list/misc_list = manifest_out[DEPARTMENT_UNASSIGNED]
 			misc_list[++misc_list.len] = list(
@@ -181,6 +182,7 @@
 	for (var/department in manifest_out)
 		if(!length(manifest_out[department]))
 			manifest_out -= department
+	*/
 
 	return manifest_out
 

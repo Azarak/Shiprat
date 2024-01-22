@@ -338,24 +338,7 @@
 				deadchat_broadcast(" enabled emergency maintenance access at [SPAN_NAME("[get_area_name(usr, TRUE)]")].", SPAN_NAME("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
 		if("requestSafeCodes")
-			if(SSjob.assigned_captain)
-				to_chat(usr, SPAN_WARNING("There is already an assigned Captain or Acting Captain on deck!"))
-				return
-
-			if(SSjob.safe_code_timer_id)
-				to_chat(usr, SPAN_WARNING("The safe code has already been requested and is being delivered to your station!"))
-				return
-
-			if(SSjob.safe_code_requested)
-				to_chat(usr, SPAN_WARNING("The safe code has already been requested and delivered to your station!"))
-				return
-
-			var/turf/pod_location = get_turf(src)
-
-			SSjob.safe_code_request_loc = pod_location
-			SSjob.safe_code_requested = TRUE
-			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+			return
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(

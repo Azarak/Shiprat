@@ -157,6 +157,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		)
 	var/list/smaller_levels_to_spawn = list(
 		/datum/overmap_map_zone_generator/asteroid/quad,
+		/*
 		/datum/overmap_map_zone_generator/asteroid/quad,
 		/datum/overmap_map_zone_generator/asteroid/quad,
 		/datum/overmap_map_zone_generator/chlorine/quad,
@@ -165,10 +166,13 @@ Used by the AI doomsday and the self-destruct nuke.
 		/datum/overmap_map_zone_generator/lush/quad,
 		/datum/overmap_map_zone_generator/snow/quad,
 		/datum/overmap_map_zone_generator/volcanic/quad,
+		*/
 	)
+	/*
 	var/picked_big_planet = pick(habitable_big_planets)
 	var/datum/overmap_map_zone_generator/big_gen = new picked_big_planet()
 	big_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
+	*/
 
 	for(var/generator_type in smaller_levels_to_spawn)
 		var/datum/overmap_map_zone_generator/smaller_gen = new generator_type()

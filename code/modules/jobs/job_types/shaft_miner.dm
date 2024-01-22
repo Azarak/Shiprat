@@ -2,7 +2,6 @@
 /datum/job/shaft_miner
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
@@ -17,9 +16,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_SHAFT_MINER
 	bounty_types = CIV_JOB_MINE
-	departments_list = list(
-		/datum/job_department/cargo,
-		)
 
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
 

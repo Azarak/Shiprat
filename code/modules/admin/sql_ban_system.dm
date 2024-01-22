@@ -236,15 +236,15 @@
 		var/break_counter = 0
 		output += "<div class='row'>"
 
-		for(var/datum/job_department/department as anything in SSjob.joinable_departments)
-			var/label_class = department.label_class
-			var/department_name = department.department_name
+		for(var/datum/job_department/department as anything in SSjob.get_joinable_departments())
+			var/label_class = department.template_ref.label_class
+			var/department_name = department.template_ref.department_name
 			output += "<div class='column'><label class='rolegroup [label_class]'>[department_name]</label><div class='content'>"
 			for(var/datum/job/job_datum as anything in department.department_jobs)
 				if(break_counter > 0 && (break_counter % 3 == 0))
 					output += "<br>"
 				break_counter++
-				var/job_name = job_datum.title
+				var/job_name = job_datum.id
 				if(length(job_datum.departments_list) > 1) //This job is in multiple departments, so we need to check all the boxes.
 					// Clicking this will also toggle all the other boxes, minus this one.
 					var/department_index = job_datum.departments_list.Find(department.type)

@@ -14,6 +14,8 @@
 	var/mob/living/new_character
 	///Used to make sure someone doesn't get spammed with messages if they're ineligible for roles.
 	var/ineligible_for_roles = FALSE
+	var/ready_job_listing_index = 1
+	var/latejoin_job_listing_index = 1
 
 
 
@@ -60,6 +62,8 @@
 	output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>"
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
+		var/datum/job_listing/selected_listing = SSjob.job_listings[ready_job_listing_index]
+		output += "<p>Location: <a href='byond://?src=[REF(src)];select_listing=1'>[selected_listing.template_ref.name]</a></p>"
 		switch(ready)
 			if(PLAYER_NOT_READY)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | <b>Not Ready</b> | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
@@ -183,6 +187,17 @@
 
 	if(href_list["manifest"])
 		ViewManifest()
+	if(href_list["select_listing"])
+		var/list/assoc_choice_list = list()
+		var/i = 0
+		for(var/datum/job_listing/listing as anything in SSjob.job_listings)
+			i++
+			assoc_choice_list[listing.template_ref.name] = i
+		var/choice_name = input(usr, "Choose the location of your round start:", "Location") as null|anything in assoc_choice_list
+		if(!choice_name)
+			return
+		var/selected_index = assoc_choice_list[choice_name]
+		ready_job_listing_index = selected_index
 
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
@@ -203,6 +218,12 @@
 
 	else if(!href_list["late_join"])
 		new_player_panel()
+
+	if(href_list["SelectJobListingLatejoin"])
+		var/index_value = text2num(href_list["SelectJobListingLatejoin"])
+		latejoin_job_listing_index  = index_value
+		LateChoices()
+		return
 
 	if(href_list["showpoll"])
 		handle_player_polling()
@@ -279,14 +300,14 @@
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
-	var/datum/job/job = SSjob.GetJob(rank)
-	if(!(job in SSjob.joinable_occupations))
+	var/datum/job/job = SSjob.get_job_by_name(rank)
+	if(!(job in SSjob.get_joinable_jobs()))
 		return JOB_UNAVAILABLE_GENERIC
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(is_assistant_job(job))
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
 				return JOB_AVAILABLE
-			for(var/datum/job/other_job as anything in SSjob.joinable_occupations)
+			for(var/datum/job/other_job as anything in SSjob.get_joinable_jobs())
 				if(other_job.current_positions < other_job.total_positions && other_job != job)
 					return JOB_UNAVAILABLE_SLOTFULL
 		else
@@ -332,7 +353,8 @@
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
 
-	var/datum/job/job = SSjob.GetJob(rank)
+	var/datum/job_listing/listing = SSjob.job_listings[latejoin_job_listing_index]
+	var/datum/job/job = listing.jobs_by_name[rank]
 
 	SSjob.AssignRole(src, job, TRUE)
 
@@ -347,23 +369,6 @@
 
 	SSjob.EquipRank(character, job, character.client)
 	job.after_latejoin_spawn(character)
-
-	#define IS_NOT_CAPTAIN 0
-	#define IS_ACTING_CAPTAIN 1
-	#define IS_FULL_CAPTAIN 2
-	var/is_captain = IS_NOT_CAPTAIN
-	// If we already have a captain, are they a "Captain" rank and are we allowing multiple of them to be assigned?
-	if(is_captain_job(job))
-		is_captain = IS_FULL_CAPTAIN
-	// If we don't have an assigned cap yet, check if this person qualifies for some from of captaincy.
-	else if(!SSjob.assigned_captain && ishuman(character) && SSjob.chain_of_command[rank] && !is_banned_from(ckey, list("Captain")))
-		is_captain = IS_ACTING_CAPTAIN
-	if(is_captain != IS_NOT_CAPTAIN)
-		minor_announce(job.get_captaincy_announcement(character))
-		SSjob.promote_to_captain(character, is_captain == IS_ACTING_CAPTAIN)
-	#undef IS_NOT_CAPTAIN
-	#undef IS_ACTING_CAPTAIN
-	#undef IS_FULL_CAPTAIN
 
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
@@ -429,16 +434,30 @@
 			if(SHUTTLE_CALL)
 				if(!SSshuttle.canRecall())
 					dat += "<div class='notice red'>The station is currently undergoing evacuation procedures.</div><br>"
-	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
-		if(prioritized_job.current_positions >= prioritized_job.total_positions)
-			SSjob.prioritized_jobs -= prioritized_job
+
+	// List job listings
+	dat += "<HR>"
+	var/i = 0
+	for(var/datum/job_listing/listing as anything in SSjob.job_listings)
+		i++
+		var/button_class
+		if(latejoin_job_listing_index == i)
+			button_class = "href='byond://?src=[REF(src)];SelectJobListingLatejoin=[i]' class='linkOn'"
+		else
+			button_class = "href='byond://?src=[REF(src)];SelectJobListingLatejoin=[i]'"
+		dat += "<a [button_class]>[listing.template_ref.name]</a>"
+		dat += "<br>[listing.template_ref.desc]"
+
+	dat += "<HR>"
+	// List jobs under departments
 	dat += "<table><tr><td valign='top'>"
 	var/column_counter = 0
 
-	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
-		var/department_color = department.latejoin_color
+	var/datum/job_listing/selected_listing = SSjob.job_listings[latejoin_job_listing_index]
+	for(var/datum/job_department/department as anything in selected_listing.departments)
+		var/department_color = department.template_ref.latejoin_color
 		dat += "<fieldset style='width: 185px; border: 2px solid [department_color]; display: inline'>"
-		dat += "<legend align='center' style='color: [department_color]'>[department.department_name]</legend>"
+		dat += "<legend align='center' style='color: [department_color]'>[department.template_ref.department_name]</legend>"
 		var/list/dept_data = list()
 		for(var/datum/job/job_datum as anything in department.department_jobs)
 			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
@@ -446,10 +465,7 @@
 			var/command_bold = ""
 			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 				command_bold = " command"
-			if(job_datum in SSjob.prioritized_jobs)
-				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-			else
-				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+			dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title];'>[job_datum.title] ([job_datum.current_positions])</a>"
 		if(!length(dept_data))
 			dept_data += "<span class='nopositions'>No positions open.</span>"
 		dat += dept_data.Join()

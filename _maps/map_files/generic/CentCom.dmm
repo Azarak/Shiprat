@@ -254,7 +254,7 @@
 /turf/closed/indestructible/riveted,
 /area/start)
 "fY" = (
-/obj/effect/landmark/start/new_player,
+/obj/effect/landmark/new_player_start,
 /turf/open/floor/plating,
 /area/start)
 "gu" = (
@@ -5121,7 +5121,7 @@
 /area/syndicate_mothership/control)
 "sh" = (
 /obj/structure/chair/stool/directional/west,
-/obj/effect/landmark/start/nukeop,
+/obj/effect/landmark/nukeop_start,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -6926,7 +6926,7 @@
 /turf/open/floor/wood,
 /area/syndicate_mothership/control)
 "wm" = (
-/obj/effect/landmark/start/nukeop_leader,
+/obj/effect/landmark/nukeop_start_leader,
 /turf/open/floor/wood,
 /area/syndicate_mothership/control)
 "wn" = (
@@ -8469,7 +8469,7 @@
 	},
 /area/wizard_station)
 "Ay" = (
-/obj/effect/landmark/start/wizard,
+/obj/effect/landmark/wizard_start,
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "Az" = (
@@ -14685,7 +14685,7 @@
 /area/centcom/supplypod/loading/four)
 "VX" = (
 /obj/structure/chair/stool/directional/east,
-/obj/effect/landmark/start/nukeop,
+/obj/effect/landmark/nukeop_start,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1

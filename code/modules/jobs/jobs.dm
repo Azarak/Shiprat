@@ -32,7 +32,7 @@ GLOBAL_PROTECT(exp_specialmap)
 	if(!job_title)
 		return list()
 
-	for(var/datum/job/job as anything in SSjob.joinable_occupations)
+	for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 		if(job.title == job_title)
 			return job.department_head //this is a list
 

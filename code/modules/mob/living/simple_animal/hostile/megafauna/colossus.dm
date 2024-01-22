@@ -474,7 +474,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 		var/mob/living/carbon/human/new_clown = user
 		for(var/obj/item/to_strip in new_clown)
 			new_clown.dropItemToGround(to_strip)
-		new_clown.dress_up_as_job(SSjob.GetJobType(/datum/job/clown))
+		new_clown.dress_up_as_job(SSjob.get_job_by_type(/datum/job/clown))
 		affected_targets.Add(new_clown)
 
 

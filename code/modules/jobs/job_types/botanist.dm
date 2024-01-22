@@ -1,7 +1,6 @@
 /datum/job/botanist
 	title = "Botanist"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_BOTANIST
 	bounty_types = CIV_JOB_GROW
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/cultivator, /obj/item/reagent_containers/glass/bucket, /obj/item/toy/plush/beeplushie)
 

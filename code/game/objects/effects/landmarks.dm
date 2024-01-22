@@ -29,8 +29,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "x"
 	anchored = TRUE
 	layer = MOB_LAYER
-	var/jobspawn_override = FALSE
+	/// The job type this landmark belongs to, if `null` then it will work as a fallback
+	var/job_type = null
+	/// The job listing define to get what job listing this landmark should be setup to
+	var/job_listing_define = JOB_LISTING_LAST_LOADED
+	/// Whether it gets deleted after roundstart
 	var/delete_after_roundstart = TRUE
+	/// Whether it was used to place a person in there
 	var/used = FALSE
 
 /obj/effect/landmark/start/proc/after_round_start()
@@ -40,161 +45,200 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/Initialize()
 	. = ..()
 	GLOB.start_landmarks_list += src
-	if(jobspawn_override)
-		LAZYADDASSOCLIST(GLOB.jobspawn_overrides, name, src)
-	if(name != "start")
-		tag = "start*[name]"
+	//add
+	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(job_listing_define)
+	if(job_type != null)
+		listing.job_spawn_landmarks += src
+	else
+		listing.spawn_landmarks += src
 
 /obj/effect/landmark/start/Destroy()
 	GLOB.start_landmarks_list -= src
-	if(jobspawn_override)
-		LAZYREMOVEASSOC(GLOB.jobspawn_overrides, name, src)
+	//remove
+	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(job_listing_define)
+	if(job_type != null)
+		listing.job_spawn_landmarks -= src
+	else
+		listing.spawn_landmarks -= src
 	return ..()
 
-// START LANDMARKS FOLLOW. Don't change the names unless
-// you are refactoring shitty landmark code.
+/obj/effect/landmark/start/any
+	name = "Any"
+	job_type = null
+
 /obj/effect/landmark/start/assistant
 	name = "Assistant"
+	job_type = /datum/job/assistant
 	icon_state = "Assistant" //icon_state is case sensitive. why are all of these capitalized? because fuck you that's why
-
-/obj/effect/landmark/start/assistant/override
-	jobspawn_override = TRUE
-	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/prisoner
 	name = "Prisoner"
+	job_type = /datum/job/prisoner
 	icon_state = "Prisoner"
 
 /obj/effect/landmark/start/janitor
 	name = "Janitor"
+	job_type = /datum/job/janitor
 	icon_state = "Janitor"
 
 /obj/effect/landmark/start/cargo_technician
 	name = "Cargo Technician"
+	job_type = /datum/job/cargo_technician
 	icon_state = "Cargo Technician"
 
 /obj/effect/landmark/start/bartender
 	name = "Bartender"
+	job_type = /datum/job/bartender
 	icon_state = "Bartender"
 
 /obj/effect/landmark/start/clown
 	name = "Clown"
+	job_type = /datum/job/clown
 	icon_state = "Clown"
 
 /obj/effect/landmark/start/mime
 	name = "Mime"
+	job_type = /datum/job/mime
 	icon_state = "Mime"
 
 /obj/effect/landmark/start/quartermaster
 	name = "Quartermaster"
+	job_type = /datum/job/quartermaster
 	icon_state = "Quartermaster"
 
 /obj/effect/landmark/start/atmospheric_technician
 	name = "Atmospheric Technician"
+	job_type = /datum/job/atmospheric_technician
 	icon_state = "Atmospheric Technician"
 
 /obj/effect/landmark/start/cook
 	name = "Cook"
+	job_type = /datum/job/cook
 	icon_state = "Cook"
 
 /obj/effect/landmark/start/shaft_miner
 	name = "Shaft Miner"
+	job_type = null
 	icon_state = "Shaft Miner"
 
 /obj/effect/landmark/start/security_officer
 	name = "Security Officer"
+	job_type = /datum/job/security_officer
 	icon_state = "Security Officer"
 
 /obj/effect/landmark/start/botanist
 	name = "Botanist"
+	job_type = /datum/job/botanist
 	icon_state = "Botanist"
 
 /obj/effect/landmark/start/head_of_security
 	name = "Head of Security"
+	job_type = /datum/job/head_of_security
 	icon_state = "Head of Security"
 
 /obj/effect/landmark/start/captain
 	name = "Captain"
+	job_type = /datum/job/captain
 	icon_state = "Captain"
 
 /obj/effect/landmark/start/detective
 	name = "Detective"
+	job_type = /datum/job/detective
 	icon_state = "Detective"
 
 /obj/effect/landmark/start/warden
 	name = "Warden"
+	job_type = /datum/job/warden
 	icon_state = "Warden"
 
 /obj/effect/landmark/start/chief_engineer
 	name = "Chief Engineer"
+	job_type = /datum/job/chief_engineer
 	icon_state = "Chief Engineer"
 
 /obj/effect/landmark/start/head_of_personnel
 	name = "Head of Personnel"
+	job_type = /datum/job/head_of_personnel
 	icon_state = "Head of Personnel"
 
 /obj/effect/landmark/start/librarian
 	name = "Curator"
+	job_type = /datum/job/curator
 	icon_state = "Curator"
 
 /obj/effect/landmark/start/lawyer
 	name = "Lawyer"
+	job_type = /datum/job/lawyer
 	icon_state = "Lawyer"
 
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"
+	job_type = /datum/job/station_engineer
 	icon_state = "Station Engineer"
 
 /obj/effect/landmark/start/medical_doctor
 	name = "Medical Doctor"
+	job_type = /datum/job/doctor
 	icon_state = "Medical Doctor"
 
 /obj/effect/landmark/start/paramedic
 	name = "Paramedic"
+	job_type = /datum/job/paramedic
 	icon_state = "Paramedic"
 
 /obj/effect/landmark/start/scientist
 	name = "Scientist"
+	job_type = /datum/job/scientist
 	icon_state = "Scientist"
 
 /obj/effect/landmark/start/chemist
 	name = "Chemist"
+	job_type = /datum/job/chemist
 	icon_state = "Chemist"
 
 /obj/effect/landmark/start/roboticist
 	name = "Roboticist"
+	job_type = /datum/job/roboticist
 	icon_state = "Roboticist"
 
 /obj/effect/landmark/start/research_director
 	name = "Research Director"
+	job_type = /datum/job/research_director
 	icon_state = "Research Director"
 
 /obj/effect/landmark/start/geneticist
 	name = "Geneticist"
+	job_type = /datum/job/geneticist
 	icon_state = "Geneticist"
 
 /obj/effect/landmark/start/chief_medical_officer
 	name = "Chief Medical Officer"
+	job_type = /datum/job/chief_medical_officer
 	icon_state = "Chief Medical Officer"
 
 /obj/effect/landmark/start/virologist
 	name = "Virologist"
+	job_type = /datum/job/virologist
 	icon_state = "Virologist"
 
 /obj/effect/landmark/start/psychologist
 	name = "Psychologist"
+	job_type = /datum/job/psychologist
 	icon_state = "Psychologist"
 
 /obj/effect/landmark/start/chaplain
 	name = "Chaplain"
+	job_type = /datum/job/chaplain
 	icon_state = "Chaplain"
 
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
+	job_type = /datum/job/cyborg
 	icon_state = "Cyborg"
 
 /obj/effect/landmark/start/ai
 	name = "AI"
+	job_type = /datum/job/ai
 	icon_state = "AI"
 	delete_after_roundstart = FALSE
 	var/primary_ai = TRUE
@@ -213,86 +257,88 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 //Department Security spawns
 
-/obj/effect/landmark/start/depsec
+/obj/effect/landmark/depsec
 	name = "department_sec"
 	icon_state = "Security Officer"
 	/// What department this spawner is for
 	var/department
 
-/obj/effect/landmark/start/depsec/New()
+/obj/effect/landmark/depsec/New()
 	..()
 	LAZYADDASSOCLIST(GLOB.department_security_spawns, department, src)
 
-/obj/effect/landmark/start/depsec/Destroy()
+/obj/effect/landmark/depsec/Destroy()
 	LAZYREMOVEASSOC(GLOB.department_security_spawns, department, src)
 	return ..()
 
-/obj/effect/landmark/start/depsec/supply
+/obj/effect/landmark/depsec/supply
 	name = "supply_sec"
 	department = SEC_DEPT_SUPPLY
 
-/obj/effect/landmark/start/depsec/medical
+/obj/effect/landmark/depsec/medical
 	name = "medical_sec"
 	department = SEC_DEPT_MEDICAL
 
-/obj/effect/landmark/start/depsec/engineering
+/obj/effect/landmark/depsec/engineering
 	name = "engineering_sec"
 	department = SEC_DEPT_ENGINEERING
 
-/obj/effect/landmark/start/depsec/science
+/obj/effect/landmark/depsec/science
 	name = "science_sec"
 	department = SEC_DEPT_SCIENCE
 
 //Antagonist spawns
 
-/obj/effect/landmark/start/wizard
+/obj/effect/landmark/wizard_start
 	name = "wizard"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "wiznerd_spawn"
 
-/obj/effect/landmark/start/wizard/Initialize()
+/obj/effect/landmark/wizard_start/Initialize()
 	..()
 	GLOB.wizardstart += loc
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/start/nukeop
+/obj/effect/landmark/nukeop_start
 	name = "nukeop"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "snukeop_spawn"
 
-/obj/effect/landmark/start/nukeop/Initialize()
+/obj/effect/landmark/nukeop_start/Initialize()
 	..()
 	GLOB.nukeop_start += loc
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/start/nukeop_leader
+/obj/effect/landmark/nukeop_start_leader
 	name = "nukeop leader"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "snukeop_leader_spawn"
 
-/obj/effect/landmark/start/nukeop_leader/Initialize()
+/obj/effect/landmark/nukeop_start_leader/Initialize()
 	..()
 	GLOB.nukeop_leader_start += loc
 	return INITIALIZE_HINT_QDEL
 
 // Must be immediate because players will
 // join before SSatom initializes everything.
-INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
+INITIALIZE_IMMEDIATE(/obj/effect/landmark/new_player_start)
 
-/obj/effect/landmark/start/new_player
+/obj/effect/landmark/new_player_start
 	name = "New Player"
 
-/obj/effect/landmark/start/new_player/Initialize()
+/obj/effect/landmark/new_player_start/Initialize()
 	..()
 	GLOB.newplayer_start += loc
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
+	var/job_listing_define = JOB_LISTING_LAST_LOADED
 
 /obj/effect/landmark/latejoin/Initialize(mapload)
 	..()
-	SSjob.latejoin_trackers += loc
+	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(job_listing_define)
+	listing.latejoin_landmarks += loc
 	return INITIALIZE_HINT_QDEL
 
 //space carps, magicarps, lone ops, slaughter demons, possibly revenants spawn here
@@ -432,15 +478,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	name = "unit test zone top right"
 
 
-/obj/effect/landmark/start/hangover
+/obj/effect/landmark/start_hangover
 	name = "hangover spawn"
 	icon_state = "hangover_spawn"
 
-/obj/effect/landmark/start/hangover/Initialize()
+/obj/effect/landmark/start_hangover/Initialize()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/landmark/start/hangover/LateInitialize()
+/obj/effect/landmark/start_hangover/LateInitialize()
 	. = ..()
 	if(!HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER))
 		return
@@ -462,7 +508,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 			new /obj/item/reagent_containers/food/drinks/beer/almost_empty(turf_to_spawn_on)
 
 ///Spawns the mob with some drugginess/drunkeness, and some disgust.
-/obj/effect/landmark/start/hangover/proc/make_hungover(mob/hangover_mob)
+/obj/effect/landmark/start_hangover/proc/make_hungover(mob/hangover_mob)
 	if(!iscarbon(hangover_mob))
 		return
 	var/mob/living/carbon/spawned_carbon = hangover_mob
@@ -475,15 +521,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	if(spawned_carbon.head)
 		return
 
-/obj/effect/landmark/start/hangover/JoinPlayerHere(mob/M, buckle)
+/obj/effect/landmark/start_hangover/JoinPlayerHere(mob/M, buckle)
 	. = ..()
 	make_hungover(M)
 
-/obj/effect/landmark/start/hangover/closet
+/obj/effect/landmark/start_hangover/closet
 	name = "hangover spawn closet"
 	icon_state = "hangover_spawn_closet"
 
-/obj/effect/landmark/start/hangover/closet/JoinPlayerHere(mob/M, buckle)
+/obj/effect/landmark/start_hangover/closet/JoinPlayerHere(mob/M, buckle)
 	make_hungover(M)
 	for(var/obj/structure/closet/closet in contents)
 		if(closet.opened)

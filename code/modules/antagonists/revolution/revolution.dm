@@ -434,10 +434,9 @@
 			else
 				mind.announce_objectives()
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND)))
 				continue
-			job.allow_bureaucratic_error = FALSE
 			job.total_positions = 0
 
 		priority_announce("A recent assessment of your station has marked your station as a severe risk area for high ranking Nanotrasen officials. \

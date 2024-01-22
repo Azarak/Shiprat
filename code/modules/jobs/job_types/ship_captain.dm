@@ -1,6 +1,5 @@
 /datum/job/ship_captain
 	title = "Ship Captain"
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "yourself"

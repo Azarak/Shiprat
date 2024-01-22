@@ -2,7 +2,6 @@
 	title = "Warden"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security"
@@ -20,9 +19,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_WARDEN
 	bounty_types = CIV_JOB_SEC
-	departments_list = list(
-		/datum/job_department/security,
-		)
 
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 

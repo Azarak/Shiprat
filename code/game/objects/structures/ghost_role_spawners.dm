@@ -233,9 +233,9 @@
 		else
 			H.fully_replace_character_name(null, name)
 	if(has_owner)
-		new_spawn.mind.set_assigned_role(SSjob.GetJobType(/datum/job/servant_golem))
+		new_spawn.mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/servant_golem))
 	else
-		new_spawn.mind.set_assigned_role(SSjob.GetJobType(/datum/job/free_golem))
+		new_spawn.mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/free_golem))
 
 /obj/effect/mob_spawn/human/golem/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -681,7 +681,7 @@
 
 /obj/effect/mob_spawn/human/syndicatespace/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
-	var/datum/job/spawn_job = SSjob.GetJobType(spawner_job_path)
+	var/datum/job/spawn_job = SSjob.get_job_by_type(spawner_job_path)
 	var/policy = get_policy(spawn_job.policy_index)
 	if(policy)
 		to_chat(new_spawn, SPAN_BOLD("[policy]"))

@@ -1,7 +1,6 @@
 /datum/job/scientist
 	title = "Scientist"
 	department_head = list("Research Director")
-	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = "the research director"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_SCIENTIST
 	bounty_types = CIV_JOB_SCI
-	departments_list = list(
-		/datum/job_department/science,
-		)
 
 	family_heirlooms = list(/obj/item/toy/plush/slimeplushie)
 

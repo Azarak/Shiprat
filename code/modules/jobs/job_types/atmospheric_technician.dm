@@ -1,7 +1,6 @@
 /datum/job/atmospheric_technician
 	title = "Atmospheric Technician"
 	department_head = list("Chief Engineer")
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the chief engineer"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN
 	bounty_types = CIV_JOB_ENG
-	departments_list = list(
-		/datum/job_department/engineering,
-		)
 
 	family_heirlooms = list(/obj/item/lighter, /obj/item/lighter/greyscale, /obj/item/storage/box/matches)
 

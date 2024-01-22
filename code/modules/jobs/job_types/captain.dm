@@ -2,7 +2,6 @@
 	title = "Captain"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("CentCom")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Nanotrasen officials and Space law"
@@ -21,9 +20,6 @@
 	paycheck_department = ACCOUNT_SEC
 
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
-	departments_list = list(
-		/datum/job_department/command,
-		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
 

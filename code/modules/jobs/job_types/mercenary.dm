@@ -1,6 +1,5 @@
 /datum/job/mercenary
 	title = "Mercenary"
-	faction = FACTION_STATION
 	total_positions = 10
 	spawn_positions = 10
 	supervisors = "yourself"
