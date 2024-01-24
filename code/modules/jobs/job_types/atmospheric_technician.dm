@@ -39,6 +39,7 @@
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced/atmos=1)
+	id_chips = list(/obj/item/id_card_chip/station_job/atmospheric_technician)
 
 /datum/outfit/job/atmos/rig
 	name = "Atmospheric Technician (Hardsuit)"

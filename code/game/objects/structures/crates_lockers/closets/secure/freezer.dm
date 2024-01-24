@@ -1,5 +1,6 @@
 /obj/structure/closet/secure_closet/freezer
 	icon_state = "freezer"
+	req_access = list(ACCESS_KITCHEN)
 	var/jones = FALSE
 
 /obj/structure/closet/secure_closet/freezer/Destroy()
@@ -38,6 +39,7 @@
 /obj/structure/closet/secure_closet/freezer/kitchen/maintenance
 	name = "maintenance refrigerator"
 	desc = "This refrigerator looks quite dusty, is there anything edible still inside?"
+	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/kitchen/maintenance/PopulateContents()
 	..()
@@ -49,10 +51,11 @@
 		new /obj/item/storage/fancy/egg_box(src)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/mining
+	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/meat
 	name = "meat fridge"
-
+	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/meat/PopulateContents()
 	..()
@@ -61,6 +64,7 @@
 
 /obj/structure/closet/secure_closet/freezer/meat/open
 	locked = FALSE
+	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/gulag_fridge
 	name = "refrigerator"
@@ -72,6 +76,7 @@
 
 /obj/structure/closet/secure_closet/freezer/fridge
 	name = "refrigerator"
+	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/fridge/PopulateContents()
 	..()
@@ -83,11 +88,13 @@
 		new /obj/item/storage/fancy/egg_box(src)
 
 /obj/structure/closet/secure_closet/freezer/fridge/open
+	req_access = null
 	locked = FALSE
 
 /obj/structure/closet/secure_closet/freezer/money
 	name = "freezer"
 	desc = "This contains cold hard cash."
+	req_access = list(ACCESS_VAULT)
 
 /obj/structure/closet/secure_closet/freezer/money/PopulateContents()
 	..()
@@ -101,6 +108,7 @@
 /obj/structure/closet/secure_closet/freezer/cream_pie
 	name = "cream pie closet"
 	desc = "Contains pies filled with cream and/or custard, you sickos."
+	req_access = list(ACCESS_THEATRE)
 
 /obj/structure/closet/secure_closet/freezer/cream_pie/PopulateContents()
 	..()

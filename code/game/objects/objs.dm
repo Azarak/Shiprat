@@ -25,7 +25,8 @@
 	var/current_skin //Has the item been reskinned?
 	var/list/unique_reskin //List of options to reskin.
 
-	// only exist here for maps to compile, remove later
+	var/datum/access_category/access_category = null
+	var/access_category_define = null
 	var/list/req_access
 	var/req_access_txt = "0"
 	var/list/req_one_access
@@ -89,6 +90,7 @@
 			network_id = NETWORK_NAME_COMBINE(STATION_NETWORK_ROOT, network_id) // I regret nothing!!
 		AddComponent(/datum/component/ntnet_interface, network_id, id_tag)
 		/// Needs to run before as ComponentInitialize runs after this statement...why do we have ComponentInitialize again?
+
 
 
 /obj/Destroy(force=FALSE)

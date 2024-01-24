@@ -21,6 +21,7 @@
 	contraband = list(/obj/item/food/syndicake = 6,
 					/obj/item/food/candy/bronx = 1)
 	refill_canister = /obj/item/vending_refill/snack
+	canload_access_list = list(ACCESS_KITCHEN)
 	default_price = PAYCHECK_ASSISTANT * 0.6
 	extra_price = PAYCHECK_EASY
 	payment_department = ACCOUNT_SRV

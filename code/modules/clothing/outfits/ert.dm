@@ -1,4 +1,4 @@
-/datum/outfit/centcom/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
@@ -15,7 +15,7 @@
 	shoes = /obj/item/clothing/shoes/combat/swat
 	toggle_helmet = FALSE
 
-/datum/outfit/centcom/ert/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
@@ -45,7 +45,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	l_pocket = /obj/item/switchblade
 
-/datum/outfit/centcom/ert/commander/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/commander/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)
@@ -81,7 +81,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 
-/datum/outfit/centcom/ert/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)
@@ -123,7 +123,7 @@
 	l_hand = /obj/item/storage/belt/medical/paramedic
 	r_hand = /obj/item/storage/backpack/duffelbag/med/surgery
 
-/datum/outfit/centcom/ert/medic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/medic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)
@@ -168,7 +168,7 @@
 	glasses =  /obj/item/clothing/glasses/meson/engine
 	l_pocket = /obj/item/rcd_ammo/large
 
-/datum/outfit/centcom/ert/engineer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/engineer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)
@@ -208,7 +208,7 @@
 	r_pocket = /obj/item/pda/heads
 	l_hand = /obj/item/clipboard
 
-/datum/outfit/centcom/centcom_official/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/centcom_official/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
@@ -270,7 +270,7 @@
 	belt = /obj/item/storage/belt/soulstone
 	glasses = /obj/item/clothing/glasses/hud/health
 
-/datum/outfit/centcom/ert/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 	if(visualsOnly)
 		return
@@ -308,7 +308,7 @@
 	r_pocket = /obj/item/grenade/chem_grenade/cleaner
 	l_hand = /obj/item/storage/bag/trash/bluespace
 
-/datum/outfit/centcom/ert/janitor/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/janitor/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)
@@ -348,7 +348,7 @@
 	l_pocket = /obj/item/food/grown/banana
 	r_pocket = /obj/item/bikehorn/golden
 
-/datum/outfit/centcom/ert/clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/ert/clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 	if(visualsOnly)
 		return
@@ -378,7 +378,7 @@
 	r_pocket = /obj/item/ammo_box/a762
 	l_hand = /obj/item/gun/ballistic/rifle/boltaction/brand_new
 
-/datum/outfit/centcom/centcom_intern/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/centcom_intern/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
@@ -521,7 +521,7 @@
 	r_pocket = /obj/item/shield/energy
 	l_hand = /obj/item/gun/energy/pulse/loyalpin
 
-/datum/outfit/centcom/death_commando/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/death_commando/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 

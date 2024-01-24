@@ -660,7 +660,24 @@ GLOBAL_LIST_EMPTY(vending_products)
  * * user - mob that is doing the loading of the vending machine
  */
 /obj/machinery/vending/proc/compartmentLoadAccessCheck(mob/user)
-	return TRUE
+	if(!canload_access_list)
+		return TRUE
+	else
+		var/do_you_have_access = FALSE
+		var/req_access_txt_holder = req_access_txt
+		for(var/i in canload_access_list)
+			req_access_txt = i
+			if(!allowed(user) && !(obj_flags & EMAGGED) && scan_id)
+				continue
+			else
+				do_you_have_access = TRUE
+				break //you passed don't bother looping anymore
+		req_access_txt = req_access_txt_holder // revert to normal (before the proc ran)
+		if(do_you_have_access)
+			return TRUE
+		else
+			to_chat(user, SPAN_WARNING("[src]'s input compartment blinks red: Access denied."))
+			return FALSE
 
 /obj/machinery/vending/exchange_parts(mob/user, obj/item/storage/part_replacer/W)
 	if(!istype(W))

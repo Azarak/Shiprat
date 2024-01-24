@@ -29,4 +29,4 @@
 	if(!istype(target_item) || get_dist(current_turf, target_turf) > max_range || current_turf.z != target_turf.z)
 		access_port.set_output(null)
 		return
-	access_port.set_output(target_item.GetAccess())
+	access_port.set_output(target_item.get_access())

@@ -32,13 +32,13 @@
 		QDEL_NULL(stored_card)
 	return ..()
 
-/obj/item/computer_hardware/card_slot/GetAccess()
+/obj/item/computer_hardware/card_slot/get_access(datum/access_category/category)
 	var/list/total_access
 	if(stored_card)
-		total_access = stored_card.GetAccess()
+		total_access = stored_card.get_access(category)
 	var/obj/item/computer_hardware/card_slot/card_slot2 = holder?.all_components[MC_CARD2] //Best of both worlds
 	if(card_slot2?.stored_card)
-		total_access |= card_slot2.stored_card.GetAccess()
+		total_access |= card_slot2.stored_card.get_access(category)
 	return total_access
 
 /obj/item/computer_hardware/card_slot/GetID()

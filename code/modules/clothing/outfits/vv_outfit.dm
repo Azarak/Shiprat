@@ -2,7 +2,6 @@
 // Created from admin helpers.
 /datum/outfit/varedit
 	var/list/vv_values
-	var/list/stored_access
 	var/update_id_name = FALSE //If the name of the human is same as the name on the id they're wearing we'll update provided id when equipping
 
 /datum/outfit/varedit/pre_equip(mob/living/carbon/human/H, visualsOnly)
@@ -79,10 +78,8 @@
 			O.set_equipement_by_slot(s,I.type)
 
 	//Copy access
-	O.stored_access = list()
 	var/obj/item/id_slot = get_item_by_slot(ITEM_SLOT_ID)
 	if(id_slot)
-		O.stored_access |= id_slot.GetAccess()
 		var/obj/item/card/id/ID = id_slot.GetID()
 		if(ID)
 			if(ID.registered_name == real_name)
@@ -152,7 +149,6 @@
 
 /datum/outfit/varedit/get_json_data()
 	. = .. ()
-	.["stored_access"] = stored_access
 	.["update_id_name"] = update_id_name
 	var/list/stripped_vv = list()
 	for(var/slot in vv_values)
@@ -167,6 +163,5 @@
 
 /datum/outfit/varedit/load_from(list/outfit_data)
 	. = ..()
-	stored_access = outfit_data["stored_access"]
 	vv_values = outfit_data["vv_values"]
 	update_id_name = outfit_data["update_id_name"]

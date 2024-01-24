@@ -65,6 +65,7 @@
 	box = /obj/item/storage/box/survival/medical
 
 	chameleon_extras = list(/obj/item/gun/syringe, /obj/item/stamp/cmo)
+	id_chips = list(/obj/item/id_card_chip/station_job/chief_medical_officer)
 
 /datum/outfit/job/cmo/hardsuit
 	name = "Chief Medical Officer (Hardsuit)"

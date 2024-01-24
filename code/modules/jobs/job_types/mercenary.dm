@@ -38,3 +38,4 @@
 		/obj/item/kitchen/knife/combat/survival=1,
 		/obj/item/pickaxe/mini=1,
 		)
+	id_chips = list(/obj/item/id_card_chip/station_job/assistant)

@@ -29,6 +29,8 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
+	req_access = list()
+	req_one_access = list()
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	to_chat(user, SPAN_WARNING("You short out the access controller."))
 

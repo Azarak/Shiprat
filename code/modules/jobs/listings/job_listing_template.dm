@@ -11,10 +11,13 @@
 	var/list/job_types = list()
 	/// Defined used for easy lookup by landmarks and such
 	var/define = JOB_LISTING_STATION
+	/// Type of the access category to be created for the job listing, doesn't if null
+	var/access_category = null
 
 /datum/job_listing_template/hubstation
 	name = "Hubstation"
 	desc = "The hub station"
+	access_category = /datum/access_category/station
 	department_templates = list(
 		/datum/job_department_template/command,
 		/datum/job_department_template/security,

@@ -37,6 +37,7 @@
 	belt = /obj/item/pda/medical
 	pda_slot = ITEM_SLOT_BELT
 	l_hand = /obj/item/clipboard
+	id_chips = list(/obj/item/id_card_chip/station_job/psychologist)
 
 	backpack_contents = list(/obj/item/storage/pill_bottle/mannitol, /obj/item/storage/pill_bottle/psicodine, /obj/item/storage/pill_bottle/paxpsych, /obj/item/storage/pill_bottle/happinesspsych, /obj/item/storage/pill_bottle/lsdpsych)
 

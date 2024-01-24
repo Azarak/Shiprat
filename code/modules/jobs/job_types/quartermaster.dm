@@ -40,5 +40,6 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/clipboard
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1)
+	id_chips = list(/obj/item/id_card_chip/station_job/quartermaster)
 
 	chameleon_extras = /obj/item/stamp/qm

@@ -32,7 +32,13 @@
 
 	src.check_access(null)
 
-	// TODO create board if we have accesses
+	if(req_access.len || req_one_access.len)
+		board = new(src)
+		if(req_access.len)
+			board.accesses = req_access
+		else
+			board.one_access = 1
+			board.accesses = req_one_access
 
 	setup_device()
 
@@ -77,7 +83,11 @@
 			if(!user.transferItemToLoc(W, src))
 				to_chat(user, SPAN_WARNING("\The [W] is stuck to you!"))
 				return
-			// TODO
+			board = W
+			if(board.one_access)
+				req_one_access = board.accesses
+			else
+				req_access = board.accesses
 			to_chat(user, SPAN_NOTICE("You add [W] to the button."))
 
 		if(!device && !board && W.tool_behaviour == TOOL_WRENCH)
@@ -100,7 +110,8 @@
 /obj/machinery/button/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	// TODO remove access
+	req_access = list()
+	req_one_access = list()
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	obj_flags |= EMAGGED
 
@@ -136,7 +147,8 @@
 				device = null
 			if(board)
 				board.forceMove(drop_location())
-				// TODO remove access
+				req_access = list()
+				req_one_access = list()
 				board = null
 			update_appearance()
 			to_chat(user, SPAN_NOTICE("You remove electronics from the button frame."))
@@ -210,22 +222,27 @@
 /obj/machinery/button/door/incinerator_vent_toxmix
 	name = "combustion chamber vent control"
 	id = INCINERATOR_TOXMIX_VENT
+	req_access = list(ACCESS_TOXINS)
 
 /obj/machinery/button/door/incinerator_vent_atmos_main
 	name = "turbine vent control"
 	id = INCINERATOR_ATMOS_MAINVENT
+	req_one_access = list(ACCESS_ATMOSPHERICS, ACCESS_MAINT_TUNNELS)
 
 /obj/machinery/button/door/incinerator_vent_atmos_aux
 	name = "combustion chamber vent control"
 	id = INCINERATOR_ATMOS_AUXVENT
+	req_one_access = list(ACCESS_ATMOSPHERICS, ACCESS_MAINT_TUNNELS)
 
 /obj/machinery/button/door/atmos_test_room_mainvent_1
 	name = "test chamber 1 vent control"
 	id = TEST_ROOM_ATMOS_MAINVENT_1
+	req_one_access = list(ACCESS_ATMOSPHERICS)
 
 /obj/machinery/button/door/atmos_test_room_mainvent_2
 	name = "test chamber 2 vent control"
 	id = TEST_ROOM_ATMOS_MAINVENT_2
+	req_one_access = list(ACCESS_ATMOSPHERICS)
 
 /obj/machinery/button/door/incinerator_vent_syndicatelava_main
 	name = "turbine vent control"
@@ -291,6 +308,7 @@
 	icon_state = "launcher"
 	skin = "launcher"
 	device_type = /obj/item/assembly/control/crematorium
+	req_access = list()
 	id = 1
 
 /obj/machinery/button/crematorium/indestructible

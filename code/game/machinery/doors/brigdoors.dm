@@ -23,6 +23,7 @@
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"
 	desc = "A remote control for a door."
+	req_access = list(ACCESS_SECURITY)
 	density = FALSE
 	var/id = null // id of linked machinery/lockers
 

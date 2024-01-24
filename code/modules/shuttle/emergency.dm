@@ -96,7 +96,7 @@
 		to_chat(user, SPAN_WARNING("You don't have an ID."))
 		return
 
-	if(!(NONE in ID.access))
+	if(!(ACCESS_HEADS in ID.get_access(access_category)))
 		to_chat(user, SPAN_WARNING("The access level of your card is not high enough."))
 		return
 

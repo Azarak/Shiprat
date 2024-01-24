@@ -47,3 +47,4 @@
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/virology
 	box = /obj/item/storage/box/survival/medical
+	id_chips = list(/obj/item/id_card_chip/station_job/virologist)

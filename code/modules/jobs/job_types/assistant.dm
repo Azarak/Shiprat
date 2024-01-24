@@ -37,6 +37,7 @@ Assistant
 /datum/outfit/job/assistant
 	name = "Assistant"
 	jobtype = /datum/job/assistant
+	id_chips = list(/obj/item/id_card_chip/station_job/assistant)
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()

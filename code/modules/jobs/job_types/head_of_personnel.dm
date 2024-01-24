@@ -57,6 +57,7 @@
 		/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/hop)
+	id_chips = list(/obj/item/id_card_chip/station_job/head_of_personnel)
 
 /datum/outfit/job/hop/pre_equip(mob/living/carbon/human/H)
 	..()

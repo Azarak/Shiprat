@@ -79,6 +79,7 @@
 		/obj/item/sharpener = 1,
 		/obj/item/choice_beacon/ingredient = 1
 	)
+	id_chips = list(/obj/item/id_card_chip/station_job/cook)
 
 /datum/outfit/job/cook/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()

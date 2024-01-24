@@ -35,6 +35,7 @@ Possible to do for anyone motivated enough:
 	layer = LOW_OBJ_LAYER
 	plane = FLOOR_PLANE
 	flags_1 = HEAR_1
+	req_access = list(ACCESS_KEYCARD_AUTH) //Used to allow for forced connecting to other (not secure) holopads. Anyone can make a call, though.
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -219,7 +220,7 @@ Possible to do for anyone motivated enough:
 	data["calling"] = calling
 	data["on_network"] = on_network
 	data["on_cooldown"] = last_request + 200 < world.time ? FALSE : TRUE
-	var/head_access = TRUE
+	var/head_access = req_access ? allowed(user) : FALSE
 	data["allowed"] = head_access
 	data["disk"] = disk ? TRUE : FALSE
 	data["disk_record"] = disk?.record ? TRUE : FALSE
@@ -687,6 +688,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	desc = "It's a floor-mounted device for projecting holographic images across vast distances."
 	icon_state = "holopad-longrange0"
 	base_icon_state = "holopad-longrange"
+	req_access = null
 	circuit = /obj/item/circuitboard/machine/holopad_long_range
 	secure = TRUE
 	listed = FALSE

@@ -178,7 +178,7 @@
 		if(equipping.no_dresscode)
 			packed_items = used_client.prefs.equip_preference_loadout(src, FALSE, equipping, blacklist = equipping.blacklist_dresscode_slots, initial = TRUE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
-	equipOutfit(equipping.outfit, visual_only)
+	equipOutfit(equipping.outfit, visual_only, equipping.listing.access_category)
 	if(loadout_asserted && !equipping.no_dresscode)
 		packed_items = used_client.prefs.equip_preference_loadout(src, FALSE, equipping, blacklist = equipping.blacklist_dresscode_slots, initial = TRUE)
 	if(packed_items)
@@ -267,13 +267,12 @@
 		holder = "[uniform]"
 	uniform = text2path(holder)
 
-/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))
-		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
@@ -284,6 +283,9 @@
 			C.registered_account = B
 			B.bank_cards += C
 		H.sec_hud_set_ID()
+		if(access_category != null)
+			for(var/obj/item/id_card_chip/chip in C.contents)
+				chip.category = access_category
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))

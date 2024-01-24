@@ -31,5 +31,6 @@
 	uniform = /obj/item/clothing/under/rank/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	id = /obj/item/card/id/advanced/prisoner
+	id_chips = list(/obj/item/id_card_chip/station_job/prisoner)
 	ears = null
 	belt = null

@@ -35,6 +35,7 @@
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced=1)
+	id_chips = list(/obj/item/id_card_chip/station_job/janitor)
 
 /datum/outfit/job/janitor/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

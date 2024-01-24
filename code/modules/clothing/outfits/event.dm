@@ -14,7 +14,7 @@
 
 	box = /obj/item/storage/box/survival/engineer
 
-/datum/outfit/santa/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/santa/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 	H.fully_replace_character_name(H.real_name, "Santa Claus")

@@ -63,6 +63,7 @@
 
 	implants = list(/obj/item/implant/mindshield)
 	accessory = /obj/item/clothing/accessory/medal/gold/captain
+	id_chips = list(/obj/item/id_card_chip/station_job/captain)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/captain)
 	var/special_charter

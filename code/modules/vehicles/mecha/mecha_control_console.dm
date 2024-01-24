@@ -4,6 +4,7 @@
 	icon_screen = "mecha"
 	icon_keyboard = "tech_key"
 	circuit = /obj/item/circuitboard/computer/mecha_control
+	req_access = list(ACCESS_ROBOTICS)
 
 /obj/machinery/computer/mecha/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -46,6 +46,7 @@
 	satchel = /obj/item/storage/backpack/satchel/chem
 	duffelbag = /obj/item/storage/backpack/duffelbag/chemistry
 	box = /obj/item/storage/box/survival/medical
+	id_chips = list(/obj/item/id_card_chip/station_job/chemist)
 
 	chameleon_extras = /obj/item/gun/syringe
 

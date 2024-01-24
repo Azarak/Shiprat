@@ -100,19 +100,15 @@
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
 
-	/// Access levels held by this card.
-	var/list/access = list()
-
-	/// List of wildcard slot names as keys with lists of wildcard data as values.
-	var/list/wildcard_slots = list()
-
-	/// Boolean value. If TRUE, the [Intern] tag gets prepended to this ID card when the label is updated.
-	var/is_intern = FALSE
-
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
 	update_label()
 	update_icon()
+
+	var/datum/component/storage/STR = AddComponent(/datum/component/storage/concrete)
+	STR.max_w_class = WEIGHT_CLASS_TINY
+	STR.max_combined_w_class = 5
+	STR.set_holdable(list(/obj/item/id_card_chip))
 
 	RegisterSignal(src, COMSIG_ATOM_UPDATED_ICON, .proc/update_in_wallet)
 
@@ -122,6 +118,14 @@
 	if (my_store && my_store.my_card == src)
 		my_store.my_card = null
 	return ..()
+
+/obj/item/card/id/get_access(datum/access_category/category)
+	var/list/total_access = list()
+	for(var/obj/item/id_card_chip/chip in contents)
+		if(chip.category != category)
+			continue
+		total_access += chip.access
+	return total_access
 
 /obj/item/card/id/get_id_examine_strings(mob/user)
 	. = ..()
@@ -341,9 +345,6 @@
 
 	return msg
 
-/obj/item/card/id/GetAccess()
-	return access
-
 /obj/item/card/id/GetID()
 	return src
 
@@ -365,10 +366,7 @@
 	var/name_string = registered_name ? "[registered_name]'s ID Card" : initial(name)
 	var/assignment_string
 
-	if(is_intern)
-		assignment_string = " (Intern)"
-	else
-		assignment_string = " ([assignment])"
+	assignment_string = " ([assignment])"
 
 	name = "[name_string][assignment_string]"
 
@@ -460,57 +458,16 @@
 
 /obj/item/card/id/advanced/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, .proc/update_intern_status)
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, .proc/remove_intern_status)
 
 /obj/item/card/id/advanced/Destroy()
 	UnregisterSignal(src, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
 
 	return ..()
 
-/obj/item/card/id/advanced/proc/update_intern_status(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	if(!user?.client)
-		return
-	if(!CONFIG_GET(flag/use_exp_tracking))
-		return
-	if(!CONFIG_GET(flag/use_low_living_hour_intern))
-		return
-	if(!SSdbcore.Connect())
-		return
-
-	var/intern_threshold = (CONFIG_GET(number/use_low_living_hour_intern_hours) * 60) || (CONFIG_GET(number/use_exp_restrictions_heads_hours) * 60) || INTERN_THRESHOLD_FALLBACK_HOURS * 60
-	var/playtime = user.client.get_exp_living(pure_numeric = TRUE)
-
-	if((intern_threshold >= playtime) && (user.mind?.assigned_role.title in SSjob.get_station_jobs()))
-		is_intern = TRUE
-		update_label()
-		return
-
-	if(!is_intern)
-		return
-
-	is_intern = FALSE
-	update_label()
-
-/obj/item/card/id/advanced/proc/remove_intern_status(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	if(!is_intern)
-		return
-
-	is_intern = FALSE
-	update_label()
-
 /obj/item/card/id/advanced/proc/on_holding_card_slot_moved(obj/item/computer_hardware/card_slot/source, atom/old_loc, dir, forced)
 	SIGNAL_HANDLER
 	if(istype(old_loc, /obj/item/modular_computer/tablet))
 		UnregisterSignal(old_loc, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
-
-	if(istype(source.loc, /obj/item/modular_computer/tablet))
-		RegisterSignal(source.loc, COMSIG_ITEM_EQUIPPED, .proc/update_intern_status)
-		RegisterSignal(source.loc, COMSIG_ITEM_DROPPED, .proc/remove_intern_status)
 
 /obj/item/card/id/advanced/Moved(atom/OldLoc, Dir)
 	. = ..()
@@ -527,19 +484,9 @@
 			var/obj/item/modular_computer/tablet/slot_holder = slot.holder
 			UnregisterSignal(slot_holder, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
 
-	if(istype(loc, /obj/item/pda) || istype(OldLoc, /obj/item/storage/wallet))
-		RegisterSignal(loc, COMSIG_ITEM_EQUIPPED, .proc/update_intern_status)
-		RegisterSignal(loc, COMSIG_ITEM_DROPPED, .proc/remove_intern_status)
-
 	if(istype(loc, /obj/item/computer_hardware/card_slot))
-		var/obj/item/computer_hardware/card_slot/slot = loc
-
 		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/on_holding_card_slot_moved)
 
-		if(istype(slot.holder, /obj/item/modular_computer/tablet))
-			var/obj/item/modular_computer/tablet/slot_holder = slot.holder
-			RegisterSignal(slot_holder, COMSIG_ITEM_EQUIPPED, .proc/update_intern_status)
-			RegisterSignal(slot_holder, COMSIG_ITEM_DROPPED, .proc/remove_intern_status)
 
 /obj/item/card/id/advanced/update_overlays()
 	. = ..()

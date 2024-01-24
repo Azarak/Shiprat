@@ -238,6 +238,10 @@
 			if(electronics)
 				electronics.forceMove(sale)
 				sale.electronics = electronics
+				if(electronics.one_access)
+					sale.req_one_access = electronics.accesses
+				else
+					sale.req_access = electronics.accesses
 			qdel(src)
 			qdel(C)
 
@@ -253,6 +257,10 @@
 			if(electronics)
 				electronics.forceMove(display)
 				display.electronics = electronics
+				if(electronics.one_access)
+					display.req_one_access = electronics.accesses
+				else
+					display.req_access = electronics.accesses
 			qdel(src)
 	else
 		return ..()
@@ -260,11 +268,13 @@
 //The lab cage and captain's display case do not spawn with electronics, which is why req_access is needed.
 /obj/structure/displaycase/captain
 	start_showpiece_type = /obj/item/gun/energy/laser/captain
+	req_access = list(ACCESS_CAPTAIN)
 
 /obj/structure/displaycase/labcage
 	name = "lab cage"
 	desc = "A glass lab container for storing interesting creatures."
 	start_showpiece_type = /obj/item/clothing/mask/facehugger/lamarr
+	req_access = list(ACCESS_RD)
 
 /obj/structure/displaycase/noalert
 	alert = FALSE
@@ -381,6 +391,7 @@
 	desc = "A display case with an ID-card swiper. Use your ID to purchase the contents."
 	density = FALSE
 	max_integrity = 100
+	req_access = null
 	alert = FALSE //No, we're not calling the fire department because someone stole your cookie.
 	glass_fix = FALSE //Fixable with tools instead.
 	pass_flags = PASSTABLE ///Can be placed and moved onto a table.
@@ -552,6 +563,7 @@
 /obj/structure/displaycase/forsale/emag_act(mob/user)
 	. = ..()
 	payments_acc = null
+	req_access = list()
 	to_chat(user, SPAN_WARNING("[src]'s card reader fizzles and smokes, and the account owner is reset."))
 
 /obj/structure/displaycase/forsale/examine(mob/user)
@@ -571,4 +583,5 @@
 
 /obj/structure/displaycase/forsale/kitchen
 	desc = "A display case with an ID-card swiper. Use your ID to purchase the contents. Meant for the bartender and chef."
+	req_one_access = list(ACCESS_KITCHEN, ACCESS_BAR)
 

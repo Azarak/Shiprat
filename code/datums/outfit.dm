@@ -110,6 +110,8 @@
 	/// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
 	var/datum/sprite_accessory/undershirt = null
 
+	var/list/id_chips = null
+
 /**
  * Called at the start of the equip proc
  *
@@ -136,7 +138,7 @@
  *
  * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
@@ -148,7 +150,7 @@
  *
  * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	pre_equip(H, visualsOnly)
 
 	//Start with uniform,suit,backpack for additional slots
@@ -175,7 +177,10 @@
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H),ITEM_SLOT_EYES, TRUE)
 	if(id)
-		H.equip_to_slot_or_del(new id(H),ITEM_SLOT_ID, TRUE)
+		var/obj/item/new_id = new id(H)
+		if(H.equip_to_slot_or_del(new_id,ITEM_SLOT_ID, TRUE))
+			for(var/chip_type in id_chips)
+				new chip_type(new_id)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H),ITEM_SLOT_SUITSTORE, TRUE)
 
@@ -218,7 +223,7 @@
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 		HS.ToggleHelmet()
 
-	post_equip(H, visualsOnly)
+	post_equip(H, visualsOnly, access_category)
 
 	if(!visualsOnly)
 		apply_fingerprints(H)

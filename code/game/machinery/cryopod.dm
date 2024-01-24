@@ -21,6 +21,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	icon_keyboard = null
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
+	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
 	var/mode = null
 
 	// Used for logging people entering cryosleep and important items they are carrying.

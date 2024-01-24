@@ -91,9 +91,12 @@
 		if(locked)
 			if(allowed(user))
 				locked = FALSE
+				req_access = list()
 				to_chat(user, SPAN_NOTICE("You unlock [src]."))
 		else if(!(obj_flags & EMAGGED))
 			to_chat(user, SPAN_NOTICE("You lock [src] with [W]."))
+			var/list/access = W.get_access(access_category)
+			req_access = access
 			locked = TRUE
 		else
 			to_chat(user, SPAN_WARNING("You try to lock [src] with [W], but nothing happens."))
@@ -108,6 +111,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	locked = FALSE
+	req_access = list()
 	obj_flags |= EMAGGED
 	to_chat(user, SPAN_NOTICE("You fry the ID checking system."))
 

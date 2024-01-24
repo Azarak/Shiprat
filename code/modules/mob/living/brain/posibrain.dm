@@ -11,6 +11,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	var/next_ask ///World time tick when ghost polling will be available again
 	var/askDelay = 600 ///Delay after polling ghosts
 	var/searching = FALSE
+	req_access = list(ACCESS_ROBOTICS)
 	braintype = "Android"
 	var/autoping = TRUE ///If it pings on creation immediately
 	///Message sent to the user when polling ghosts

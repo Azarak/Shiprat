@@ -109,6 +109,7 @@
 
 	icon_state = "apc0"
 	use_power = NO_POWER_USE
+	req_access = list(ACCESS_ENGINE_EQUIP)
 	max_integrity = 200
 	integrity_failure = 0.25
 	damage_deflection = 10
@@ -164,8 +165,10 @@
 	locked = FALSE
 
 /obj/machinery/power/apc/syndicate //general syndicate access
+	req_access = null
 
 /obj/machinery/power/apc/away //general away mission access
+	req_access = null
 
 /obj/machinery/power/apc/highcap/five_k
 	cell_type = /obj/item/stock_parts/cell/upgraded/plus

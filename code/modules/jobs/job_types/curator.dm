@@ -40,9 +40,10 @@
 		/obj/item/soapstone = 1,
 		/obj/item/barcodescanner = 1
 	)
+	id_chips = list(/obj/item/id_card_chip/station_job/curator)
 
 
-/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)

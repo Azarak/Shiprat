@@ -82,6 +82,7 @@
 	name = "increment ticket counter"
 	desc = "Use this button after you've served someone to tell the next person to come forward."
 	device_type = /obj/item/assembly/control/ticket_machine
+	req_access = list()
 	id = "ticket_machine_default"
 
 /obj/machinery/button/ticket_machine/Initialize()

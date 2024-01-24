@@ -17,6 +17,7 @@
 	var/list/latejoin_landmarks = list()
 	/// Unique ID of the job listing, ex "station", or "station_copy"
 	var/id = ""
+	var/datum/access_category/access_category = null
 
 /datum/job_listing/proc/get_roundstart_spawn_point_for_job(datum/job/job)
 	for(var/obj/effect/landmark/start/start as anything in job_spawn_landmarks)
@@ -43,6 +44,8 @@
 
 /datum/job_listing/proc/setup(template_type)
 	template_ref = SSjob.job_listing_templates[template_type]
+	if(template_ref.access_category)
+		access_category = SSid_access.create_access_category(template_ref.access_category)
 
 	if(template_ref.id == null)
 		id = template_ref.name

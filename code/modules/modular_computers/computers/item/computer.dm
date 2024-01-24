@@ -113,10 +113,10 @@
 		return (card_slot2?.try_eject(user) || card_slot?.try_eject(user)) //Try the secondary one first.
 
 // Gets IDs/access levels from card slot. Would be useful when/if PDAs would become modular PCs.
-/obj/item/modular_computer/GetAccess()
+/obj/item/modular_computer/get_access(datum/access_category/category)
 	var/obj/item/computer_hardware/card_slot/card_slot = all_components[MC_CARD]
 	if(card_slot)
-		return card_slot.GetAccess()
+		return card_slot.get_access(category)
 	return ..()
 
 /obj/item/modular_computer/GetID()

@@ -9,6 +9,7 @@
 	active_power_usage = 5000
 	circuit = /obj/item/circuitboard/machine/mechfab
 	processing_flags = START_PROCESSING_MANUALLY
+	req_access = list(ACCESS_ROBOTICS)
 
 	subsystem_type = /datum/controller/subsystem/processing/fastprocess
 

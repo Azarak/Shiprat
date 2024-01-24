@@ -3,6 +3,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
+	req_access = list(ACCESS_BAR)
 	products = list(/obj/item/reagent_containers/food/drinks/drinkingglass = 30,
 					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 12,
 					/obj/item/reagent_containers/food/drinks/flask = 3,
@@ -58,6 +59,7 @@
 
 /obj/machinery/vending/boozeomat/all_access
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one. This model appears to have no access restrictions."
+	req_access = null
 
 /obj/machinery/vending/boozeomat/syndicate_access
 	age_restrictions = FALSE

@@ -278,6 +278,11 @@
 						var/obj/item/electronics/airlock/ae
 						if(!electronics)
 							ae = new/obj/item/electronics/airlock(drop_location())
+							if(req_one_access)
+								ae.one_access = 1
+								ae.accesses = req_one_access
+							else
+								ae.accesses = req_access
 						else
 							ae = electronics
 							electronics = null
@@ -365,9 +370,11 @@
 /obj/machinery/door/window/brigdoor/security/cell
 	name = "cell door"
 	desc = "For keeping in criminal scum."
+	req_access = list(ACCESS_BRIG)
 
 /obj/machinery/door/window/brigdoor/security/holding
 	name = "holding cell door"
+	req_one_access = list(ACCESS_SEC_DOORS, ACCESS_LAWYER) //love for the lawyer
 
 /obj/machinery/door/window/northleft
 	dir = NORTH

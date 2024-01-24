@@ -238,3 +238,4 @@ Maintenance panel is [open ? "opened" : "closed"]"}
 
 
 /obj/machinery/bot_core/hygienebot
+	req_one_access = list(ACCESS_JANITOR, ACCESS_ROBOTICS)

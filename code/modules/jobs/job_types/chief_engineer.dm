@@ -67,6 +67,7 @@
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
 	chameleon_extras = /obj/item/stamp/ce
+	id_chips = list(/obj/item/id_card_chip/station_job/chief_engineer)
 
 /datum/outfit/job/ce/rig
 	name = "Chief Engineer (Hardsuit)"

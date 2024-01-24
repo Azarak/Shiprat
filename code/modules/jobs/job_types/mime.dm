@@ -56,10 +56,11 @@
 
 	backpack = /obj/item/storage/backpack/mime
 	satchel = /obj/item/storage/backpack/mime
+	id_chips = list(/obj/item/id_card_chip/station_job/mime)
 
 	chameleon_extras = /obj/item/stamp/mime
 
-/datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)

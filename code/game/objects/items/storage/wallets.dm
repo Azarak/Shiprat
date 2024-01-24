@@ -8,7 +8,6 @@
 	component_type = /datum/component/storage/concrete/wallet
 
 	var/obj/item/card/id/front_id = null
-	var/list/combined_access
 	var/cached_flat_icon
 
 /obj/item/storage/wallet/ComponentInitialize()
@@ -52,8 +51,6 @@
  * * removed - If this proc was called because a card was removed. There's a chance we don't need to calculate the new front ID if a card was removed.
  */
 /obj/item/storage/wallet/proc/refreshID(removed = FALSE)
-	LAZYCLEARLIST(combined_access)
-
 	// If the front_id is still in our wallet an we removed a card, we can return early.
 	if((front_id in src) && removed)
 		return
@@ -68,8 +65,6 @@
 		if(card_tally > winning_tally)
 			winning_tally = card_tally
 			front_id = id_card
-		LAZYINITLIST(combined_access)
-		combined_access |= id_card.access
 
 	// If we didn't pick a front ID - Maybe none of our cards have any command accesses? Just grab the first card (if we even have one).
 	// We could also have no ID card in the wallet at all, which will mean we end up with a null front_id and that's fine too.
@@ -142,11 +137,11 @@
 		return TRUE
 	return FALSE
 
-/obj/item/storage/wallet/GetAccess()
-	if(LAZYLEN(combined_access))
-		return combined_access
-	else
-		return ..()
+/obj/item/storage/wallet/get_access(datum/access_category/category)
+	var/list/accesses = list()
+	for(var/obj/item/something as anything in contents)
+		accesses += something.get_access(category)
+	return accesses
 
 /obj/item/storage/wallet/random
 	icon_state = "random_wallet"

@@ -156,5 +156,6 @@
 
 	backpack = /obj/item/storage/backpack/cultpack
 	satchel = /obj/item/storage/backpack/cultpack
+	id_chips = list(/obj/item/id_card_chip/station_job/chaplain)
 
 	chameleon_extras = /obj/item/stamp/chap

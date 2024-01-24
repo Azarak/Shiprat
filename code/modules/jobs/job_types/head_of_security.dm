@@ -64,6 +64,7 @@
 	implants = list(/obj/item/implant/mindshield)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun/hos, /obj/item/stamp/hos)
+	id_chips = list(/obj/item/id_card_chip/station_job/head_of_security)
 
 /datum/outfit/job/hos/hardsuit
 	name = "Head of Security (Hardsuit)"

@@ -44,4 +44,5 @@
 	backpack = /obj/item/storage/backpack/botany
 	satchel = /obj/item/storage/backpack/satchel/hyd
 	duffelbag = /obj/item/storage/backpack/duffelbag/hydroponics
+	id_chips = list(/obj/item/id_card_chip/station_job/botanist)
 

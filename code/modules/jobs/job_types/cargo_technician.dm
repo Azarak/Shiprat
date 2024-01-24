@@ -37,3 +37,4 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	l_hand = /obj/item/export_scanner
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo = 1)
+	id_chips = list(/obj/item/id_card_chip/station_job/cargo_technician)
