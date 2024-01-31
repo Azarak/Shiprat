@@ -12,6 +12,15 @@
 	var/list/access = list()
 	access_category_define = ACCESS_CATEGORY_LAST_LOADED
 
+/obj/item/storage/box/id_chips/empty
+	name = "box of id card chips"
+	desc = "Has so many empty ID card chips."
+	illustration = "id"
+
+/obj/item/storage/box/id_chips/empty/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/id_card_chip(src)
+
 /obj/item/id_card_chip/Initialize(mapload)
 	. = ..()
 	category = SSid_access.get_access_category_by_define(access_category_define)
@@ -38,7 +47,7 @@
 
 /obj/item/id_card_chip/station_job/captain
 	name = "captain id card chip"
-	access = list(ALL_STATION_ACCESSES)
+	access = ALL_STATION_ACCESSES
 
 /obj/item/id_card_chip/station_job/cargo_technician
 	name = "cargo technician id card chip"

@@ -5203,7 +5203,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "ank" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -6804,7 +6804,7 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "arL" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/machinery/camera{
 	c_tag = "Bridge - Central"
 	},
@@ -9546,7 +9546,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "axU" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
@@ -12312,7 +12312,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
 "aEP" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 1
 	},
 /obj/structure/cable,
@@ -19588,7 +19588,7 @@
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos/dorm)
 "aZF" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 4
 	},
 /obj/machinery/light{

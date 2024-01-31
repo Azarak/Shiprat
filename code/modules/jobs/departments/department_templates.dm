@@ -94,7 +94,6 @@
 	latejoin_color = "#ffddff"
 	department_job_types = list(
 		/datum/job/research_director,
-		/datum/job/doctor,
 		/datum/job/scientist,
 		/datum/job/roboticist,
 	)

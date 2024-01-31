@@ -2666,7 +2666,7 @@
 /turf/closed/wall,
 /area/engineering/supermatter)
 "IB" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 4
 	},
 /turf/open/floor/carpet,

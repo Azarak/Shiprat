@@ -14,13 +14,36 @@
 	w_class = WEIGHT_CLASS_SMALL
 	grind_results = list(/datum/reagent/silicon = 20)
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
+	access_category_define = ACCESS_CATEGORY_LAST_LOADED
 	var/build_path = null
 	///determines if the circuit board originated from a vendor off station or not.
 	var/onstation = TRUE
 
 /obj/item/circuitboard/Initialize()
 	set_greyscale(new_config=/datum/greyscale_config/circuit)
-	return ..()
+	. = ..()
+	gen_access()
+
+/obj/item/circuitboard/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Current access category set: [access_category.name]")
+	. += SPAN_NOTICE("You can change the access category with right click")
+
+/obj/item/circuitboard/RightClick(mob/user, modifiers)
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return FALSE
+	var/list/select_list = list()
+	var/i = 0
+	for(var/datum/access_category/category as anything in SSid_access.access_categories)
+		i++
+		select_list[category.name] = i
+	var/selected_name = input(user, "Select access category", "Acccess", select_list[1]) as null|anything in select_list
+	if(!selected_name)
+		return TRUE
+	if(!user.canUseTopic(src, BE_CLOSE))
+		return TRUE
+	access_category = SSid_access.access_categories[select_list[selected_name]]
+	return TRUE
 
 /obj/item/circuitboard/proc/apply_default_parts(obj/machinery/M)
 	if(LAZYLEN(M.component_parts))

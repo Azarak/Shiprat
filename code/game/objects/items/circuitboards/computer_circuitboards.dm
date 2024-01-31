@@ -454,6 +454,7 @@
 		to_chat(user, SPAN_NOTICE("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
 
 /obj/item/circuitboard/computer/cargo/configure_machine(obj/machinery/computer/cargo/machine)
+	. = ..()
 	if(!istype(machine))
 		CRASH("Cargo board attempted to configure incorrect machine type: [machine] ([machine?.type])")
 

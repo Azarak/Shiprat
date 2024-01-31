@@ -157,6 +157,72 @@
 	ACCESS_AUX_BASE, \
 )
 
+#define ALL_STATION_ACCESS_TYPES list( \
+	/datum/access_type/security, \
+	/datum/access_type/brig, \
+	/datum/access_type/armory, \
+	/datum/access_type/forensics_lockers, \
+	/datum/access_type/medical, \
+	/datum/access_type/morgue, \
+	/datum/access_type/rnd, \
+	/datum/access_type/toxins, \
+	/datum/access_type/genetics, \
+	/datum/access_type/engine, \
+	/datum/access_type/engine_equip, \
+	/datum/access_type/maint_tunnels, \
+	/datum/access_type/external_airlocks, \
+	/datum/access_type/change_ids, \
+	/datum/access_type/ai_upload, \
+	/datum/access_type/teleporter, \
+	/datum/access_type/eva, \
+	/datum/access_type/heads, \
+	/datum/access_type/captain, \
+	/datum/access_type/all_personal_lockers, \
+	/datum/access_type/chapel_office, \
+	/datum/access_type/tech_storage, \
+	/datum/access_type/atmospherics, \
+	/datum/access_type/bar, \
+	/datum/access_type/janitor, \
+	/datum/access_type/crematorium, \
+	/datum/access_type/kitchen, \
+	/datum/access_type/robotics, \
+	/datum/access_type/rd, \
+	/datum/access_type/cargo, \
+	/datum/access_type/construction, \
+	/datum/access_type/chemistry, \
+	/datum/access_type/hydroponics, \
+	/datum/access_type/library, \
+	/datum/access_type/lawyer, \
+	/datum/access_type/virology, \
+	/datum/access_type/cmo, \
+	/datum/access_type/qm, \
+	/datum/access_type/court, \
+	/datum/access_type/surgery, \
+	/datum/access_type/theatre, \
+	/datum/access_type/research, \
+	/datum/access_type/mining, \
+	/datum/access_type/mailsorting, \
+	/datum/access_type/vault, \
+	/datum/access_type/mining_station, \
+	/datum/access_type/xenobiology, \
+	/datum/access_type/ce, \
+	/datum/access_type/hop, \
+	/datum/access_type/hos, \
+	/datum/access_type/rc_announce, \
+	/datum/access_type/keycard_auth, \
+	/datum/access_type/tcomsat, \
+	/datum/access_type/gateway, \
+	/datum/access_type/sec_doors, \
+	/datum/access_type/mineral_storeroom, \
+	/datum/access_type/minisat, \
+	/datum/access_type/weapons, \
+	/datum/access_type/network, \
+	/datum/access_type/pharmacy, \
+	/datum/access_type/psychology, \
+	/datum/access_type/toxins_storage, \
+	/datum/access_type/aux_base, \
+)
+
 // Remove this at earliest convinience
 // Mech Access, allows maintanenace of internal components and altering keycard requirements.
 #define ACCESS_MECH_MINING 300

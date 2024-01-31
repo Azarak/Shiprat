@@ -188,6 +188,7 @@
 				if(component_check)
 					P.play_tool_sound(src)
 					var/obj/machinery/new_machine = new circuit.build_path(loc)
+					new_machine.access_category = circuit.access_category
 					if(istype(new_machine))
 						// Machines will init with a set of default components. Move to nullspace so we don't trigger handle_atom_del, then qdel.
 						// Finally, replace with this frame's parts.

@@ -1374,6 +1374,7 @@
 					ae.accesses = req_one_access
 				else
 					ae.accesses = req_access
+				ae.access_category = access_category
 			else
 				ae = electronics
 				electronics = null

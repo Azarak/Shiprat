@@ -50,6 +50,8 @@
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
+	new /obj/item/storage/box/id_chips/empty(src)
+	new /obj/item/storage/box/id_chips/empty(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
