@@ -3,7 +3,6 @@ Assistant
 */
 /datum/job/assistant
 	title = "Assistant"
-	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "absolutely everyone"
@@ -38,7 +37,7 @@ Assistant
 /datum/outfit/job/assistant
 	name = "Assistant"
 	jobtype = /datum/job/assistant
-	id_trim = /datum/id_trim/job/assistant
+	id_chips = list(/obj/item/id_card_chip/station_job/assistant)
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()

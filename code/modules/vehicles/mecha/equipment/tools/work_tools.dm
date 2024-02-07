@@ -333,9 +333,11 @@
 	if(LAZYLEN(M.cargo))
 		to_chat(loc, SPAN_WARNING("[M]'s cargo hold must be empty before this conversion kit can be applied."))
 		return FALSE
+	/*
 	if(!(M.mecha_flags & ADDING_MAINT_ACCESS_POSSIBLE)) //non-removable upgrade, so lets make sure the pilot or owner has their say.
 		to_chat(loc, SPAN_WARNING("[M] must have maintenance protocols active in order to allow this conversion kit."))
 		return FALSE
+	*/
 	if(LAZYLEN(M.occupants)) //We're actualy making a new mech and swapping things over, it might get weird if players are involved
 		to_chat(loc, SPAN_WARNING("[M] must be unoccupied before this conversion kit can be applied."))
 		return FALSE

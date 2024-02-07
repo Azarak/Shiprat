@@ -3,7 +3,6 @@
 	department_head = list("Captain")
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	head_announce = list(RADIO_CHANNEL_MEDICAL)
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -17,10 +16,6 @@
 
 	outfit = /datum/outfit/job/cmo
 	plasmaman_outfit = /datum/outfit/plasmaman/chief_medical_officer
-	departments_list = list(
-		/datum/job_department/medical,
-		/datum/job_department/command,
-		)
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_MED
@@ -41,7 +36,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	voice_of_god_power = 1.4 //Command staff has authority
-	
+
 	required_languages = IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 
 
@@ -70,8 +65,7 @@
 	box = /obj/item/storage/box/survival/medical
 
 	chameleon_extras = list(/obj/item/gun/syringe, /obj/item/stamp/cmo)
-
-	id_trim = /datum/id_trim/job/chief_medical_officer
+	id_chips = list(/obj/item/id_card_chip/station_job/chief_medical_officer)
 
 /datum/outfit/job/cmo/hardsuit
 	name = "Chief Medical Officer (Hardsuit)"

@@ -1,7 +1,6 @@
 /datum/job/chaplain
 	title = "Chaplain"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_CHAPLAIN
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/toy/windup_toolbox, /obj/item/reagent_containers/food/drinks/bottle/holywater)
 
@@ -160,7 +156,6 @@
 
 	backpack = /obj/item/storage/backpack/cultpack
 	satchel = /obj/item/storage/backpack/cultpack
+	id_chips = list(/obj/item/id_card_chip/station_job/chaplain)
 
 	chameleon_extras = /obj/item/stamp/chap
-
-	id_trim = /datum/id_trim/job/chaplain

@@ -129,7 +129,7 @@
 	var/obj/machinery/rnd/server/temp_server
 	var/list/servers = list()
 	var/list/consoles = list()
-	req_access = list(ACCESS_RD)
+	req_access = list(ACCESS_RD) //ONLY THE R&D CAN CHANGE SERVER SETTINGS.
 	var/badmin = 0
 	circuit = /obj/item/circuitboard/computer/rdservercontrol
 

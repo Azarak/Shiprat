@@ -205,7 +205,6 @@
 	icon_state = "synd_sec"
 	faction = list(ROLE_SYNDICATE)
 	bubble_icon = "syndibot"
-	req_access = list(ACCESS_SYNDICATE)
 	lawupdate = FALSE
 	scrambledcodes = TRUE // These are rogue borgs.
 	ionpulse = TRUE

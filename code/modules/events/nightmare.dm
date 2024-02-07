@@ -35,7 +35,7 @@
 
 	var/mob/living/carbon/human/S = new ((pick(spawn_locs)))
 	player_mind.transfer_to(S)
-	player_mind.set_assigned_role(SSjob.GetJobType(/datum/job/nightmare))
+	player_mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/nightmare))
 	player_mind.special_role = ROLE_NIGHTMARE
 	player_mind.add_antag_datum(/datum/antagonist/nightmare)
 	S.set_species(/datum/species/shadow/nightmare)

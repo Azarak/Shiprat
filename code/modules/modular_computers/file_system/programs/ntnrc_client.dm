@@ -92,7 +92,7 @@
 					channel.remove_client(src) // We shouldn't be in channel's user list, but just in case...
 				return TRUE
 			var/mob/living/user = usr
-			if(can_run(user, TRUE, ACCESS_NETWORK))
+			if(can_run(user, TRUE, NONE))
 				for(var/C in SSnetworks.station_network.chat_channels)
 					var/datum/ntnet_conversation/chan = C
 					chan.remove_client(src)
@@ -202,7 +202,7 @@
 
 /datum/computer_file/program/chatclient/ui_static_data(mob/user)
 	var/list/data = list()
-	data["can_admin"] = can_run(user, FALSE, ACCESS_NETWORK)
+	data["can_admin"] = can_run(user, FALSE, NONE)
 	return data
 
 /datum/computer_file/program/chatclient/ui_data(mob/user)

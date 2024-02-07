@@ -84,6 +84,8 @@
 /// Reopens this position if we lose the player at roundstart.
 #define JOB_REOPEN_ON_ROUNDSTART_LOSS (1<<6)
 
-#define FACTION_NONE "None"
-#define FACTION_STATION "Station"
-
+#define JOB_LISTING_LAST_LOADED "LAST"
+#define JOB_LISTING_STATION "Station"
+#define JOB_LISTING_MERCHANT "Merchant"
+#define JOB_LISTING_PIRATE "Pirate"
+#define JOB_LISTING_COLONY "Colony"

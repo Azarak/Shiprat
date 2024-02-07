@@ -80,7 +80,6 @@
 	autoclose = FALSE
 	frequency = FREQ_AIRLOCK_CONTROL
 	heat_proof = TRUE
-	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/door/airlock/glass/incinerator/syndicatelava_interior
 	name = "Turbine Interior Airlock"
@@ -461,7 +460,6 @@
 	assemblytype = /obj/structure/door_assembly/door_assembly_cult
 	hackProof = TRUE
 	aiControlDisabled = AI_WIRE_DISABLED
-	req_access = list(ACCESS_BLOODCULT)
 	damage_deflection = 10
 	airlock_paint = "#333333"
 	stripe_paint = "#610000"

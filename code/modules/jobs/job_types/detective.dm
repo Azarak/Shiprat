@@ -2,7 +2,6 @@
 	title = "Detective"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security"
@@ -14,9 +13,6 @@
 
 	outfit = /datum/outfit/job/detective
 	plasmaman_outfit = /datum/outfit/plasmaman/detective
-	departments_list = list(
-		/datum/job_department/security,
-		)
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SEC
@@ -65,10 +61,10 @@
 	implants = list(/obj/item/implant/mindshield)
 
 	chameleon_extras = list(/obj/item/gun/ballistic/revolver/detective, /obj/item/clothing/glasses/sunglasses)
+	id_chips = list(/obj/item/id_card_chip/station_job/detective)
 
-	id_trim = /datum/id_trim/job/detective
 
-/datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 	var/obj/item/clothing/mask/cigarette/cig = H.wear_mask
 	if(istype(cig)) //Some species specfic changes can mess this up (plasmamen)

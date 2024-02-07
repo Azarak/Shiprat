@@ -201,5 +201,5 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, .proc/on_sentience_gained)
 
 /// Use this proc to define how your controller defines what access the pawn has for the sake of pathfinding, likely pointing to whatever ID slot is relevant
-/datum/ai_controller/proc/get_access()
+/datum/ai_controller/proc/get_access(datum/access_category/category)
 	return

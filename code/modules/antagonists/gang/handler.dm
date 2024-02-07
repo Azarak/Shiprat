@@ -479,7 +479,7 @@ GLOBAL_VAR_INIT(deaths_during_shift, 0)
 			var/datum/antagonist/ert/families/ert_antag = new cops_to_send
 
 			cop.mind.add_antag_datum(ert_antag)
-			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
+			cop.mind.set_assigned_role(SSjob.get_job_by_type(ert_antag.ert_job_path))
 			SSjob.SendToLateJoin(cop)
 
 			//Logging and cleanup

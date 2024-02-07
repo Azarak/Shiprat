@@ -1,4 +1,4 @@
-/datum/outfit/families_police/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/families_police/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
@@ -32,8 +32,6 @@
 	/obj/item/ammo_box/magazine/m45 = 3,
 	/obj/item/ammo_box/c45 = 2,
 	/obj/item/storage/box/survival/security)
-
-	id_trim = /datum/id_trim/space_police
 
 /datum/outfit/families_police/beatcop/armored
 	name = "Families: Armored Beat Cop"

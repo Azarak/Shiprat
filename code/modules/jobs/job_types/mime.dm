@@ -1,7 +1,6 @@
 /datum/job/mime
 	title = "Mime"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_MIME
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/food/baguette)
 
@@ -60,12 +56,11 @@
 
 	backpack = /obj/item/storage/backpack/mime
 	satchel = /obj/item/storage/backpack/mime
+	id_chips = list(/obj/item/id_card_chip/station_job/mime)
 
 	chameleon_extras = /obj/item/stamp/mime
 
-	id_trim = /datum/id_trim/job/mime
-
-/datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)

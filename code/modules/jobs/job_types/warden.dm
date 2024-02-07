@@ -2,7 +2,6 @@
 	title = "Warden"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security"
@@ -20,9 +19,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_WARDEN
 	bounty_types = CIV_JOB_SEC
-	departments_list = list(
-		/datum/job_department/security,
-		)
 
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
@@ -63,7 +59,6 @@
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	box = /obj/item/storage/box/survival/security
+	id_chips = list(/obj/item/id_card_chip/station_job/warden)
 
 	implants = list(/obj/item/implant/mindshield)
-
-	id_trim = /datum/id_trim/job/warden

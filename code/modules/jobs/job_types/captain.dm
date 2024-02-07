@@ -2,7 +2,6 @@
 	title = "Captain"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("CentCom")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Nanotrasen officials and Space law"
@@ -21,9 +20,6 @@
 	paycheck_department = ACCOUNT_SEC
 
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
-	departments_list = list(
-		/datum/job_department/command,
-		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
 
@@ -67,10 +63,9 @@
 
 	implants = list(/obj/item/implant/mindshield)
 	accessory = /obj/item/clothing/accessory/medal/gold/captain
+	id_chips = list(/obj/item/id_card_chip/station_job/captain)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/captain)
-
-	id_trim = /datum/id_trim/job/captain
 	var/special_charter
 
 /datum/outfit/job/captain/pre_equip(mob/living/carbon/human/H, visualsOnly)

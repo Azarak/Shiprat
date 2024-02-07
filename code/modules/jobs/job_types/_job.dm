@@ -11,9 +11,6 @@
 	/// Bitflags for the job
 	var/auto_deadmin_role_flags = NONE
 
-	/// Players will be allowed to spawn in as jobs that are set to "Station"
-	var/faction = FACTION_NONE
-
 	/// How many players can be this job
 	var/total_positions = 0
 
@@ -69,11 +66,6 @@
 
 	/// Bitfield of departments this job belongs to. These get setup when adding the job into the department, on job datum creation.
 	var/departments_bitflags = NONE
-	/// Lazy list with the departments this job belongs to.
-	var/list/departments_list = null
-
-	/// Should this job be allowed to be picked for the bureaucratic error event?
-	var/allow_bureaucratic_error = TRUE
 
 	/// Is this job affected by weird spawns like the ones from station traits
 	var/random_spawns_possible = TRUE
@@ -105,6 +97,13 @@
 
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
+	/// Full ID of the job, prefixed by it's job listing ID ex. "Station Cargo Technician", if null it defaults to job name
+	var/id = ""
+	/// Raw ID of the job, used to build the full ID if null it defaults to job name
+	var/raw_id = null
+	/// The job listing this job belongs to, setup during listing creation
+	var/datum/job_listing/listing = null
+	var/list/departments_list = list()
 
 
 /datum/job/New()
@@ -116,6 +115,16 @@
 		spawn_positions = jobs_changes["spawn_positions"]
 	if(isnum(jobs_changes["total_positions"]))
 		total_positions = jobs_changes["total_positions"]
+
+/datum/job/proc/setup(datum/job_listing/passed_listing)
+	listing = passed_listing
+	var/suffix
+	if(raw_id == null)
+		suffix = title
+	else
+		suffix = raw_id
+	id = "[listing.id] [suffix]"
+	SSjob.jobs_by_id[id] = src
 
 /// Loads up map configs if necessary and returns job changes for this job.
 /datum/job/proc/get_map_changes()
@@ -169,7 +178,7 @@
 		if(equipping.no_dresscode)
 			packed_items = used_client.prefs.equip_preference_loadout(src, FALSE, equipping, blacklist = equipping.blacklist_dresscode_slots, initial = TRUE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
-	equipOutfit(equipping.outfit, visual_only)
+	equipOutfit(equipping.outfit, visual_only, equipping.listing.access_category)
 	if(loadout_asserted && !equipping.no_dresscode)
 		packed_items = used_client.prefs.equip_preference_loadout(src, FALSE, equipping, blacklist = equipping.blacklist_dresscode_slots, initial = TRUE)
 	if(packed_items)
@@ -184,7 +193,7 @@
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
-		return TRUE //Available in 0 days = available right now = player is old enough to play.
+		return TRUE //Available in 0 days = available right now = player is old en to play.
 	return FALSE
 
 
@@ -258,17 +267,12 @@
 		holder = "[uniform]"
 	uniform = text2path(holder)
 
-/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	if(visualsOnly)
 		return
 
-	var/datum/job/J = SSjob.GetJobType(jobtype)
-	if(!J)
-		J = SSjob.GetJob(H.job)
-
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))
-		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
@@ -279,11 +283,14 @@
 			C.registered_account = B
 			B.bank_cards += C
 		H.sec_hud_set_ID()
+		if(access_category != null)
+			for(var/obj/item/id_card_chip/chip in C.contents)
+				chip.category = access_category
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		PDA.ownjob = name
 		PDA.update_label()
 
 
@@ -305,49 +312,26 @@
 
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
-	if(random_spawns_possible)
-		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
-			return get_latejoin_spawn_point()
-		if(HAS_TRAIT(SSstation, STATION_TRAIT_RANDOM_ARRIVALS))
-			return get_safe_random_station_turf(typesof(/area/hallway)) || get_latejoin_spawn_point()
-		if(HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER))
-			var/obj/effect/landmark/start/hangover_spawn_point
-			for(var/obj/effect/landmark/start/hangover/hangover_landmark in GLOB.start_landmarks_list)
-				hangover_spawn_point = hangover_landmark
-				if(hangover_landmark.used) //so we can revert to spawning them on top of eachother if something goes wrong
-					continue
-				hangover_landmark.used = TRUE
-				break
-			return hangover_spawn_point || get_latejoin_spawn_point()
-	if(length(GLOB.jobspawn_overrides[title]))
-		return pick(GLOB.jobspawn_overrides[title])
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
-		return get_latejoin_spawn_point()
+		spawn_point = get_latejoin_spawn_point()
+	if(!spawn_point)
+		spawn_point = SSjob.get_last_resort_spawn_points()
 	return spawn_point
 
 
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
-	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != title)
-			continue
-		. = spawn_point
-		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
-			continue
-		spawn_point.used = TRUE
-		break
+	. = listing.get_roundstart_spawn_point_for_job(src)
 	if(!.)
 		log_world("Couldn't find a round start spawn point for [title]")
 
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
-	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
-		return pick(GLOB.jobspawn_overrides[title])
-	if(length(SSjob.latejoin_trackers))
-		return pick(SSjob.latejoin_trackers)
-	return SSjob.get_last_resort_spawn_points()
+	. = listing.get_latejoin_spawn_point_for_job(src)
+	if(!.)
+		log_world("Couldn't find a late join start spawn point for [title]")
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)

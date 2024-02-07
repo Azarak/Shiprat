@@ -75,7 +75,7 @@
 			continue
 		var/mob/living/carbon/alien/larva/new_xeno = new(vent.loc)
 		candidate_mind.transfer_to(new_xeno)
-		candidate_mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
+		candidate_mind.set_assigned_role(SSjob.get_job_by_type(/datum/job/xenomorph))
 		candidate_mind.special_role = ROLE_ALIEN
 		new_xeno.move_into_vent(vent)
 

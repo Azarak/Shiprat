@@ -64,35 +64,6 @@
 /obj/machinery/modular_computer/console/preset/command/install_programs()
 	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
 	hard_drive.store_file(new/datum/computer_file/program/chatclient())
-	hard_drive.store_file(new/datum/computer_file/program/card_mod())
-
-
-// ===== IDENTIFICATION CONSOLE =====
-/obj/machinery/modular_computer/console/preset/id
-	console_department = "Identification"
-	name = "identification console"
-	desc = "A stationary computer. This one comes preloaded with identification modification programs."
-	_has_second_id_slot = TRUE
-	_has_printer = TRUE
-
-/obj/machinery/modular_computer/console/preset/id/install_programs()
-	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
-	hard_drive.store_file(new/datum/computer_file/program/chatclient())
-	hard_drive.store_file(new/datum/computer_file/program/card_mod())
-	hard_drive.store_file(new/datum/computer_file/program/job_management())
-	hard_drive.store_file(new/datum/computer_file/program/crew_manifest())
-
-/obj/machinery/modular_computer/console/preset/id/centcom
-	desc = "A stationary computer. This one comes preloaded with CentCom identification modification programs."
-
-/obj/machinery/modular_computer/console/preset/id/centcom/install_programs()
-	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
-	var/datum/computer_file/program/card_mod/card_mod_centcom = new /datum/computer_file/program/card_mod()
-	card_mod_centcom.is_centcom = TRUE
-	hard_drive.store_file(new /datum/computer_file/program/chatclient())
-	hard_drive.store_file(card_mod_centcom)
-	hard_drive.store_file(new /datum/computer_file/program/job_management())
-	hard_drive.store_file(new /datum/computer_file/program/crew_manifest())
 
 // ===== CIVILIAN CONSOLE =====
 /obj/machinery/modular_computer/console/preset/civilian

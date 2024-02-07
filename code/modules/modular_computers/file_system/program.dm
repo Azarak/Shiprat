@@ -146,7 +146,7 @@
 			if(loud)
 				to_chat(user, SPAN_DANGER("\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning."))
 			return FALSE
-		access = D.GetAccess()
+		access = D.get_access()
 
 	if(access_to_check in access)
 		return TRUE

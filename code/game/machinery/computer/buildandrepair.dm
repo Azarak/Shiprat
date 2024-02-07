@@ -115,6 +115,7 @@
 				to_chat(user, SPAN_NOTICE("You connect the monitor."))
 
 				var/obj/machinery/new_machine = new circuit.build_path(loc)
+				new_machine.access_category = circuit.access_category
 				new_machine.setDir(dir)
 				transfer_fingerprints_to(new_machine)
 

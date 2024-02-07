@@ -109,7 +109,7 @@
 
 	icon_state = "apc0"
 	use_power = NO_POWER_USE
-	req_access = null
+	req_access = list(ACCESS_ENGINE_EQUIP)
 	max_integrity = 200
 	integrity_failure = 0.25
 	damage_deflection = 10
@@ -165,10 +165,10 @@
 	locked = FALSE
 
 /obj/machinery/power/apc/syndicate //general syndicate access
-	req_access = list(ACCESS_SYNDICATE)
+	req_access = null
 
 /obj/machinery/power/apc/away //general away mission access
-	req_access = list(ACCESS_AWAY_GENERAL)
+	req_access = null
 
 /obj/machinery/power/apc/highcap/five_k
 	cell_type = /obj/item/stock_parts/cell/upgraded/plus
@@ -208,8 +208,6 @@
 		terminal.connect_to_network()
 
 /obj/machinery/power/apc/New(turf/loc, ndir, building=0)
-	if (!req_access)
-		req_access = list(ACCESS_ENGINE_EQUIP)
 	if (!armor)
 		armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 100, BOMB = 30, BIO = 100, RAD = 100, FIRE = 90, ACID = 50)
 	..()

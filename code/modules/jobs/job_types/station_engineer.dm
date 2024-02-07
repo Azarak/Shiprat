@@ -1,7 +1,6 @@
 /datum/job/station_engineer
 	title = "Station Engineer"
 	department_head = list("Chief Engineer")
-	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineer"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_STATION_ENGINEER
 	bounty_types = CIV_JOB_ENG
-	departments_list = list(
-		/datum/job_department/engineering,
-		)
 
 	family_heirlooms = list(/obj/item/clothing/head/hardhat, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 
@@ -52,8 +48,7 @@
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced/engineering=1)
-
-	id_trim = /datum/id_trim/job/station_engineer
+	id_chips = list(/obj/item/id_card_chip/station_job/station_engineer)
 
 /datum/outfit/job/engineer/gloved
 	name = "Station Engineer (Gloves)"
@@ -68,7 +63,5 @@
 	internals_slot = ITEM_SLOT_SUITSTORE
 
 /datum/outfit/job/engineer/gloved/gunner
-	id_trim = /datum/id_trim/job/station_engineer/gunner
 
 /datum/outfit/job/engineer/gloved/rig/gunner
-	id_trim = /datum/id_trim/job/station_engineer/gunner

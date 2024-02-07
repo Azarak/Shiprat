@@ -296,6 +296,7 @@
 			var/obj/machinery/door/airlock/new_airlock = new the_rcd.airlock_type(src)
 			new_airlock.electronics = new /obj/item/electronics/airlock(new_airlock)
 			if(the_rcd.airlock_electronics)
+				new_airlock.electronics.access_category = the_rcd.airlock_electronics.access_category
 				new_airlock.electronics.accesses = the_rcd.airlock_electronics.accesses.Copy()
 				new_airlock.electronics.one_access = the_rcd.airlock_electronics.one_access
 				new_airlock.electronics.unres_sides = the_rcd.airlock_electronics.unres_sides

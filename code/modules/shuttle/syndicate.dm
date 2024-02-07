@@ -7,7 +7,6 @@
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
-	req_access = list(ACCESS_SYNDICATE)
 	shuttleId = "syndicate"
 	possible_destinations = "syndicate_away;syndicate_z5;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s;syndicate_custom"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -41,7 +40,6 @@
 	icon_state = "dorm_available"
 	icon_keyboard = null
 	light_color = LIGHT_COLOR_BLUE
-	req_access = list(ACCESS_SYNDICATE)
 	shuttleId = "steel_rain"
 	possible_destinations = null
 

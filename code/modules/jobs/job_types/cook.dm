@@ -1,7 +1,6 @@
 /datum/job/cook
 	title = "Cook"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -20,9 +19,6 @@
 	display_order = JOB_DISPLAY_ORDER_COOK
 	bounty_types = CIV_JOB_CHEF
 	required_languages = LESS_IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/condiment/saltshaker, /obj/item/kitchen/rollingpin, /obj/item/clothing/head/chefhat)
 
@@ -83,12 +79,11 @@
 		/obj/item/sharpener = 1,
 		/obj/item/choice_beacon/ingredient = 1
 	)
-
-	id_trim = /datum/id_trim/job/cook
+	id_chips = list(/obj/item/id_card_chip/station_job/cook)
 
 /datum/outfit/job/cook/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
-	var/datum/job/cook/J = SSjob.GetJobType(jobtype)
+	var/datum/job/cook/J = SSjob.get_job_by_type(jobtype)
 	if(J) // Fix for runtime caused by invalid job being passed
 		if(J.cooks>0)//Cooks
 			suit = /obj/item/clothing/suit/apron/chef

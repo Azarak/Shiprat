@@ -1,7 +1,6 @@
 /datum/job/virologist
 	title = "Virologist"
 	department_head = list("Chief Medical Officer")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the chief medical officer"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_VIROLOGIST
 	bounty_types = CIV_JOB_VIRO
-	departments_list = list(
-		/datum/job_department/medical,
-		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/syringe)
 
@@ -51,5 +47,4 @@
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/virology
 	box = /obj/item/storage/box/survival/medical
-
-	id_trim = /datum/id_trim/job/virologist
+	id_chips = list(/obj/item/id_card_chip/station_job/virologist)

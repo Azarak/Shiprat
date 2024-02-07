@@ -345,21 +345,6 @@
 	return FALSE
 
 /mob/living/silicon/robot/proc/check_access(obj/item/card/id/I)
-	if(!istype(req_access, /list)) //something's very wrong
-		return TRUE
-
-	var/list/L = req_access
-	if(!L.len) //no requirements
-		return TRUE
-
-	if(!istype(I, /obj/item/card/id) && isitem(I))
-		I = I.GetID()
-
-	if(!I || !I.access) //not ID or no access
-		return FALSE
-	for(var/req in req_access)
-		if(!(req in I.access)) //doesn't have this access
-			return FALSE
 	return TRUE
 
 /mob/living/silicon/robot/regenerate_icons()
@@ -1000,6 +985,6 @@
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()
 
-	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
+	var/datum/job/cyborg/cyborg_job_ref = SSjob.get_job_by_type(/datum/job/cyborg)
 
 	.[cyborg_job_ref.title] = minutes

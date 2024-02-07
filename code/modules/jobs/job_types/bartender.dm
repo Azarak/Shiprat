@@ -1,7 +1,6 @@
 /datum/job/bartender
 	title = "Bartender"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_BARTENDER
 	bounty_types = CIV_JOB_DRINK
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/rag, /obj/item/clothing/head/that, /obj/item/reagent_containers/food/drinks/shaker)
 
@@ -42,7 +38,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	backpack_contents = list(/obj/item/storage/box/beanbag=1)
 	shoes = /obj/item/clothing/shoes/laceup
-	id_trim = /datum/id_trim/job/bartender
+	id_chips = list(/obj/item/id_card_chip/station_job/bartender)
 
 /datum/outfit/job/bartender/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

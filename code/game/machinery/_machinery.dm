@@ -148,9 +148,11 @@
 	if(powered_ambience)
 		set_ambience(powered_ambience)
 
+	gen_access()
 	if(ispath(circuit, /obj/item/circuitboard))
 		circuit = new circuit(src)
 		circuit.apply_default_parts(src)
+		circuit.access_category = access_category
 
 	if(processing_flags & START_PROCESSING_ON_INIT)
 		begin_processing()

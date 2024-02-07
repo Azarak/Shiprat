@@ -1,5 +1,6 @@
 /obj/structure/closet/secure_closet/freezer
 	icon_state = "freezer"
+	req_access = list(ACCESS_KITCHEN)
 	var/jones = FALSE
 
 /obj/structure/closet/secure_closet/freezer/Destroy()
@@ -27,7 +28,6 @@
 
 /obj/structure/closet/secure_closet/freezer/kitchen
 	name = "kitchen cabinet"
-	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/PopulateContents()
 	..()
@@ -63,8 +63,8 @@
 		new /obj/item/food/meat/slab/monkey(src)
 
 /obj/structure/closet/secure_closet/freezer/meat/open
-	req_access = list()
 	locked = FALSE
+	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/gulag_fridge
 	name = "refrigerator"

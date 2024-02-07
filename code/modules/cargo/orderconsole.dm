@@ -155,7 +155,6 @@
 			"id" = pack,
 			"desc" = P.desc || P.name, // If there is a description, use it. Otherwise use the pack's name.
 			"goody" = P.goody,
-			"access" = P.access
 		))
 	return data
 

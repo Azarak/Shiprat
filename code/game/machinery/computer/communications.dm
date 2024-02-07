@@ -74,8 +74,6 @@
 	if (obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	if (authenticated)
-		authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 	to_chat(user, SPAN_DANGER("You scramble the communication routing circuits!"))
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 
@@ -132,7 +130,7 @@
 					to_chat(usr, SPAN_WARNING("You need to swipe your ID!"))
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
-				if (!(ACCESS_CAPTAIN in id_card.access))
+				if (!(ACCESS_CAPTAIN in id_card.get_access(access_category)))
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this!"))
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
@@ -313,7 +311,6 @@
 
 			if (obj_flags & EMAGGED)
 				authenticated = TRUE
-				authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 				authorize_name = "Unknown"
 				to_chat(usr, SPAN_WARNING("[src] lets out a quiet alarm as its login is overridden."))
 				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
@@ -322,7 +319,7 @@
 				var/obj/item/card/id/id_card = L.get_idcard(hand_first = TRUE)
 				if (check_access(id_card))
 					authenticated = TRUE
-					authorize_access = id_card.access.Copy()
+					authorize_access = id_card.get_access(access_category).Copy()
 					authorize_name = "[id_card.registered_name] - [id_card.assignment]"
 
 			state = STATE_MAIN
@@ -342,28 +339,7 @@
 				deadchat_broadcast(" enabled emergency maintenance access at [SPAN_NAME("[get_area_name(usr, TRUE)]")].", SPAN_NAME("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
 		if("requestSafeCodes")
-			if(SSjob.assigned_captain)
-				to_chat(usr, SPAN_WARNING("There is already an assigned Captain or Acting Captain on deck!"))
-				return
-
-			if(SSjob.safe_code_timer_id)
-				to_chat(usr, SPAN_WARNING("The safe code has already been requested and is being delivered to your station!"))
-				return
-
-			if(SSjob.safe_code_requested)
-				to_chat(usr, SPAN_WARNING("The safe code has already been requested and delivered to your station!"))
-				return
-
-			if(!SSid_access.spare_id_safe_code)
-				to_chat(usr, SPAN_WARNING("There is no safe code to deliver to your station!"))
-				return
-
-			var/turf/pod_location = get_turf(src)
-
-			SSjob.safe_code_request_loc = pod_location
-			SSjob.safe_code_requested = TRUE
-			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+			return
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -375,18 +351,6 @@
 
 	var/has_connection = has_communication()
 	data["hasConnection"] = has_connection
-
-	if(!SSjob.assigned_captain && !SSjob.safe_code_requested && SSid_access.spare_id_safe_code && has_connection)
-		data["canRequestSafeCode"] = TRUE
-		data["safeCodeDeliveryWait"] = 0
-	else
-		data["canRequestSafeCode"] = FALSE
-		if(SSjob.safe_code_timer_id && has_connection)
-			data["safeCodeDeliveryWait"] = timeleft(SSjob.safe_code_timer_id)
-			data["safeCodeDeliveryArea"] = get_area(SSjob.safe_code_request_loc)
-		else
-			data["safeCodeDeliveryWait"] = 0
-			data["safeCodeDeliveryArea"] = null
 
 	if (authenticated || issilicon(user))
 		data["authenticated"] = TRUE
@@ -475,11 +439,6 @@
 
 					var/has_access = FALSE
 
-					for (var/purchase_access in shuttle_template.who_can_purchase)
-						if (purchase_access in authorize_access)
-							has_access = TRUE
-							break
-
 					if (!has_access)
 						continue
 
@@ -552,13 +511,6 @@
 /// Returns whether we are authorized to buy this specific shuttle.
 /// Does not handle prerequisite checks, as those should still *show*.
 /obj/machinery/computer/communications/proc/can_purchase_this_shuttle(datum/map_template/shuttle/shuttle_template)
-	if (isnull(shuttle_template.who_can_purchase))
-		return FALSE
-
-	for (var/access in authorize_access)
-		if (access in shuttle_template.who_can_purchase)
-			return TRUE
-
 	return FALSE
 
 /obj/machinery/computer/communications/proc/can_send_messages_to_other_sectors(mob/user)

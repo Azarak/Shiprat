@@ -20,6 +20,12 @@
 	grass_color = null
 	water_color = null
 
+/datum/overmap_map_zone_generator/asteroid/charlie
+	map_zone_generator = /datum/map_zone_generator/asteroid/charlie
+
+/datum/map_zone_generator/asteroid/charlie
+	pre_custom_generators = list(/datum/custom_generator/landing_pads, /datum/custom_generator/spawn_ruin/charlie)
+
 /datum/base_map_generator/empty_levels/asteroid
 	level_amount = 1
 	turf_type = null

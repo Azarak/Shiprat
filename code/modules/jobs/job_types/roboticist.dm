@@ -1,7 +1,6 @@
 /datum/job/roboticist
 	title = "Roboticist"
 	department_head = list("Research Director")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the research director"
@@ -13,9 +12,6 @@
 
 	outfit = /datum/outfit/job/roboticist
 	plasmaman_outfit = /datum/outfit/plasmaman/robotics
-	departments_list = list(
-		/datum/job_department/science,
-		)
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SCI
@@ -51,7 +47,6 @@
 	satchel = /obj/item/storage/backpack/satchel/tox
 	duffelbag = /obj/item/storage/backpack/duffelbag/toxins
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/science=1)
+	id_chips = list(/obj/item/id_card_chip/station_job/roboticist)
 
 	pda_slot = ITEM_SLOT_LPOCKET
-
-	id_trim = /datum/id_trim/job/roboticist

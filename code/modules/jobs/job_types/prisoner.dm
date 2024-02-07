@@ -1,7 +1,6 @@
 /datum/job/prisoner
 	title = "Prisoner"
 	department_head = list("The Security Team")
-	faction = FACTION_STATION
 	total_positions = 0
 	spawn_positions = 2
 	supervisors = "the security team"
@@ -32,7 +31,6 @@
 	uniform = /obj/item/clothing/under/rank/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	id = /obj/item/card/id/advanced/prisoner
+	id_chips = list(/obj/item/id_card_chip/station_job/prisoner)
 	ears = null
 	belt = null
-
-	id_trim = /datum/id_trim/job/prisoner

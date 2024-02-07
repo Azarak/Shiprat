@@ -95,7 +95,7 @@
 				to_chat(user, SPAN_NOTICE("You unlock [src]."))
 		else if(!(obj_flags & EMAGGED))
 			to_chat(user, SPAN_NOTICE("You lock [src] with [W]."))
-			var/list/access = W.GetAccess()
+			var/list/access = W.get_access(access_category)
 			req_access = access
 			locked = TRUE
 		else

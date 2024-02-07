@@ -1,7 +1,6 @@
 /datum/job/chemist
 	title = "Chemist"
 	department_head = list("Chief Medical Officer")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
@@ -18,9 +17,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_CHEMIST
 	bounty_types = CIV_JOB_CHEM
-	departments_list = list(
-		/datum/job_department/medical,
-	)
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/chemistry, /obj/item/ph_booklet)
 
@@ -50,7 +46,7 @@
 	satchel = /obj/item/storage/backpack/satchel/chem
 	duffelbag = /obj/item/storage/backpack/duffelbag/chemistry
 	box = /obj/item/storage/box/survival/medical
+	id_chips = list(/obj/item/id_card_chip/station_job/chemist)
 
 	chameleon_extras = /obj/item/gun/syringe
 
-	id_trim = /datum/id_trim/job/chemist

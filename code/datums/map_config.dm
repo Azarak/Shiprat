@@ -23,8 +23,7 @@
 		"ferry" = "ferry_fancy",
 		"emergency" = "emergency_box")
 
-	var/job_faction = FACTION_STATION
-
+	var/job_listing_template = /datum/job_listing_template/hubstation
 	var/overflow_job = /datum/job/assistant
 
 	/// Dictionary of job sub-typepath to template changes dictionary

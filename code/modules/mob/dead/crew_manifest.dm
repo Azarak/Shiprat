@@ -19,7 +19,7 @@
 
 /datum/crew_manifest/ui_data(mob/user)
 	var/list/positions = list()
-	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+	for(var/datum/job_department/department as anything in SSjob.get_joinable_departments())
 		var/open = 0
 		var/list/exceptions = list()
 		for(var/datum/job/job as anything in department.department_jobs)
@@ -30,7 +30,7 @@
 			if(open_slots < 1)
 				continue
 			open += open_slots
-		positions[department.department_name] = list("exceptions" = exceptions, "open" = open)
+		positions[department.template_ref.department_name] = list("exceptions" = exceptions, "open" = open)
 
 	return list(
 		"manifest" = GLOB.data_core.get_manifest(),

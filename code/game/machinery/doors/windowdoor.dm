@@ -31,9 +31,6 @@
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	if(set_dir)
 		setDir(set_dir)
-	if(LAZYLEN(req_access))
-		icon_state = "[icon_state]"
-		base_state = icon_state
 	for(var/i in 1 to shards)
 		debris += new /obj/item/shard(src)
 	if(rods)

@@ -4730,7 +4730,7 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "awt" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/machinery/camera{
 	c_tag = "Bridge - Central"
 	},
@@ -8738,7 +8738,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "aPT" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
@@ -15462,7 +15462,7 @@
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
 "bKH" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -38455,7 +38455,7 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
-/obj/effect/landmark/start/depsec/engineering,
+/obj/effect/landmark/depsec/engineering,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/smart_pipe/simple/supply/hidden/layer4{
 	dir = 6
@@ -49025,7 +49025,7 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "sAD" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 1
 	},
 /obj/structure/cable,
@@ -51655,7 +51655,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "tQV" = (
-/obj/effect/landmark/start/depsec/science,
+/obj/effect/landmark/depsec/science,
 /obj/structure/chair/office{
 	dir = 1
 	},
@@ -54632,7 +54632,7 @@
 /obj/effect/mapping_helpers/smart_pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/effect/landmark/start/depsec/medical,
+/obj/effect/landmark/depsec/medical,
 /obj/structure/chair/office/light{
 	dir = 1
 	},
@@ -56025,7 +56025,7 @@
 /turf/open/floor/iron/white,
 /area/science/explab)
 "vYY" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 4
 	},
 /obj/machinery/light{

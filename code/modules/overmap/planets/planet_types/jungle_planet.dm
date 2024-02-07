@@ -3,6 +3,12 @@
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle
 	map_zone_generator = /datum/map_zone_generator/jungle
 
+/datum/overmap_map_zone_generator/jungle/bunker
+	map_zone_generator = /datum/map_zone_generator/jungle/bunker
+
+/datum/map_zone_generator/jungle/bunker
+	pre_custom_generators = list(/datum/custom_generator/landing_pads, /datum/custom_generator/spawn_ruin/bunker)
+
 /datum/map_zone_generator/jungle
 	mapzone_name = "Jungle Planet"
 	base_map_generator = /datum/base_map_generator/empty_levels/jungle

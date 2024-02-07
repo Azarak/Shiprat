@@ -1,6 +1,5 @@
 /datum/job/ship_captain
 	title = "Ship Captain"
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "yourself"
@@ -32,5 +31,5 @@
 /datum/outfit/job/ship_captain
 	name = "Ship Captain"
 	jobtype = /datum/job/ship_captain
-	id_trim = /datum/id_trim/job/assistant
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/gun/energy/e_gun/mini = 1, /obj/item/stack/spacecash/c10000 = 2)
+	id_chips = list(/obj/item/id_card_chip/station_job/assistant)

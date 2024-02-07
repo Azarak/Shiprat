@@ -850,7 +850,7 @@
 
 		var/Add = href_list["addjobslot"]
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(job.title == Add)
 				job.total_positions += 1
 				break
@@ -864,7 +864,7 @@
 
 		var/Add = href_list["customjobslot"]
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(job.title == Add)
 				var/newtime = null
 				newtime = input(usr, "How many jebs do you want?", "Add wanted posters", "[newtime]") as num|null
@@ -882,7 +882,7 @@
 
 		var/Remove = href_list["removejobslot"]
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(job.title == Remove && job.total_positions - job.current_positions > 0)
 				job.total_positions -= 1
 				break
@@ -895,7 +895,7 @@
 
 		var/Unlimit = href_list["unlimitjobslot"]
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(job.title == Unlimit)
 				job.total_positions = -1
 				break
@@ -908,7 +908,7 @@
 
 		var/Limit = href_list["limitjobslot"]
 
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in SSjob.get_joinable_jobs())
 			if(job.title == Limit)
 				job.total_positions = job.current_positions
 				break

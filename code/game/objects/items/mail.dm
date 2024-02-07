@@ -145,7 +145,7 @@
 	var/mob/living/body = recipient.current
 	var/list/goodies = generic_goodies
 
-	var/datum/job/this_job = SSjob.name_occupations[recipient.assigned_role]
+	var/datum/job/this_job = recipient.assigned_role
 	if(this_job)
 		if(this_job.paycheck_department && department_colors[this_job.paycheck_department])
 			color = department_colors[this_job.paycheck_department]

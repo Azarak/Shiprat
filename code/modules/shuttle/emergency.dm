@@ -96,7 +96,7 @@
 		to_chat(user, SPAN_WARNING("You don't have an ID."))
 		return
 
-	if(!(ACCESS_HEADS in ID.access))
+	if(!(ACCESS_HEADS in ID.get_access(access_category)))
 		to_chat(user, SPAN_WARNING("The access level of your card is not high enough."))
 		return
 
@@ -268,7 +268,7 @@
 		// the shuttle system doesn't know who these people are, but they
 		// must be important, surely
 		var/obj/item/card/id/ID = new(src)
-		var/datum/job/J = pick(SSjob.joinable_occupations)
+		var/datum/job/J = pick(SSjob.get_joinable_jobs())
 		ID.registered_name = S.random_name(pick(MALE, FEMALE))
 		ID.assignment = J.title
 

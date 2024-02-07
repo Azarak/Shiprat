@@ -5203,7 +5203,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "ank" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -6804,7 +6804,7 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "arL" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/machinery/camera{
 	c_tag = "Bridge - Central"
 	},
@@ -9546,7 +9546,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "axU" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
@@ -12312,7 +12312,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
 "aEP" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 1
 	},
 /obj/structure/cable,
@@ -19552,7 +19552,7 @@
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos/dorm)
 "aZF" = (
-/obj/machinery/modular_computer/console/preset/id{
+/obj/machinery/computer/access{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -26136,7 +26136,7 @@
 /obj/effect/mapping_helpers/smart_pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/effect/landmark/start/depsec/medical,
+/obj/effect/landmark/depsec/medical,
 /obj/structure/chair/office/light{
 	dir = 1
 	},
@@ -35622,7 +35622,7 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
-/obj/effect/landmark/start/depsec/engineering,
+/obj/effect/landmark/depsec/engineering,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/smart_pipe/simple/supply/hidden/layer4{
 	dir = 6
@@ -44402,7 +44402,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "dhz" = (
-/obj/effect/landmark/start/depsec/science,
+/obj/effect/landmark/depsec/science,
 /obj/structure/chair/office{
 	dir = 1
 	},

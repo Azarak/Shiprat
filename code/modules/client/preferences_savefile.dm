@@ -486,6 +486,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["joblessrole"], joblessrole)
 	//Load prefs
 	READ_FILE(S["job_preferences"], job_preferences)
+	READ_FILE(S["job_listing_highs"], job_listing_highs)
+	job_preferences = SANITIZE_LIST(job_preferences)
+	job_listing_highs = SANITIZE_LIST(job_listing_highs)
 
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
@@ -658,6 +661,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["joblessrole"] , joblessrole)
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
+	WRITE_FILE(S["job_listing_highs"], job_listing_highs)
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"] , all_quirks)

@@ -114,6 +114,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
+	// Associative list of job listing ID to job ID, indicating which job is the highest priority for that job listing
+	var/list/job_listing_highs = list()
 
 	/// What to do if the selected jobs are not available
 	var/joblessrole = RETURNTOLOBBY
@@ -239,6 +241,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/perceived_attributes = list()
 	/// Skills that the character will end up with, accounting in for other factors
 	var/list/perceived_skills = list()
+
+	var/selected_listing_index = 1
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -1254,7 +1258,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/width = widthPerColumn
 
 	var/HTML = "<center>"
-	if(length(SSjob.joinable_occupations) <= 0)
+	if(length(SSjob.get_joinable_jobs()) <= 0)
 		HTML += "The job SSticker is not yet finished creating jobs, please try again later"
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 
@@ -1263,15 +1267,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		HTML += "<div align='center'>Left-click to raise an occupation preference, right-click to lower it.<br></div>"
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
+
+		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
+		var/datum/job/lastJob
+		var/datum/job/overflow_role = SSjob.get_job_by_type(SSjob.overflow_role)
+
+		var/datum/job_listing/selected_listing = SSjob.job_listings[selected_listing_index]
+
+		HTML += "<HR>"
+		var/iterate = 0
+		for(var/datum/job_listing/listing as anything in SSjob.job_listings)
+			iterate++
+			var/button_class
+			if(selected_listing_index == iterate)
+				button_class = "href='?_src_=prefs;preference=job;task=setSelectedListing;level=[iterate]' class='linkOn'"
+			else
+				button_class = "href='?_src_=prefs;preference=job;task=setSelectedListing;level=[iterate]'"
+			HTML += "<a [button_class]>[listing.template_ref.name]</a>"
+		HTML += "<HR>"
+
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 		var/index = -1
 
-		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-		var/datum/job/lastJob
-		var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
-
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
+		for(var/datum/job/job as anything in selected_listing.jobs)
 
 			index += 1
 			if(index >= limit)
@@ -1284,35 +1303,36 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				index = 0
 
 			HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
-			var/rank = job.title
+			var/rank = job.id
+			var/job_name = job.title
 			lastJob = job
 			if(is_banned_from(user.ckey, rank))
-				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
 				continue
 			if(!job.player_old_enough(user.client))
 				var/available_in_days = job.available_in_days(user.client)
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
 				continue
 			if(job.has_banned_quirk(src))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD QUIRKS\]</font></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><font color=red> \[BAD QUIRKS\]</font></td></tr>"
 				continue
 			if(job.has_banned_species(src))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD SPECIES\]</font></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><font color=red> \[BAD SPECIES\]</font></td></tr>"
 				continue
 			if(!job.has_required_languages(src))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD LANGS\]</font></td></tr>"
+				HTML += "<font color=red>[job_name]</font></td><td><font color=red> \[BAD LANGS\]</font></td></tr>"
 				continue
-			if((job_preferences[overflow_role.title] == JP_LOW) && (rank != overflow_role.title) && !is_banned_from(user.ckey, overflow_role.title))
-				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
+			if((job_preferences[overflow_role.id] == JP_LOW) && (rank != overflow_role.id) && !is_banned_from(user.ckey, overflow_role.id))
+				HTML += "<font color=orange>[job_name]</font></td><td></td></tr>"
 				continue
 			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
-				HTML += "<b><span class='dark'>[rank]</span></b>"
+				HTML += "<b><span class='dark'>[job_name]</span></b>"
 			else
-				HTML += "<span class='dark'>[rank]</span>"
+				HTML += "<span class='dark'>[job_name]</span>"
 
 			HTML += "</td><td width='40%'>"
 
@@ -1321,7 +1341,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/prefUpperLevel = -1 // level to assign on left click
 			var/prefLowerLevel = -1 // level to assign on right click
 
-			switch(job_preferences[job.title])
+			switch(job_preferences[job.id])
 				if(JP_HIGH)
 					prefLevelLabel = "High"
 					prefLevelColor = "slateblue"
@@ -1343,10 +1363,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					prefUpperLevel = 3
 					prefLowerLevel = 1
 
-			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
+			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[job.title]\");'>"
 
-			if(rank == overflow_role.title)//Overflow is special
-				if(job_preferences[overflow_role.title] == JP_LOW)
+			if(rank == overflow_role.id)//Overflow is special
+				if(job_preferences[overflow_role.id] == JP_LOW)
 					HTML += "<font color=green>Yes</font>"
 				else
 					HTML += "<font color=red>No</font>"
@@ -1362,7 +1382,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		HTML += "</td'></tr></table>"
 		HTML += "</center></table>"
 
-		var/message = "Be an [overflow_role.title] if preferences unavailable"
+		var/message = "Be an [overflow_role.id] if preferences unavailable"
 		if(joblessrole == BERANDOMJOB)
 			message = "Get random job if preferences unavailable"
 		else if(joblessrole == RETURNTOLOBBY)
@@ -1379,20 +1399,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (!job)
 		return FALSE
 
+	var/name = job.id
 	if (level == JP_HIGH) // to high
-		//Set all other high to medium
-		for(var/j in job_preferences)
-			if(job_preferences[j] == JP_HIGH)
-				job_preferences[j] = JP_MEDIUM
-				//technically break here
+		// Set the high from this listing to medium
+		if(job_listing_highs[job.listing.id])
+			job_preferences[job_listing_highs[job.listing.id]] = JP_MEDIUM
+		job_listing_highs[job.listing.id] = name
 
-	job_preferences[job.title] = level
+	job_preferences[job.id] = level
 	return TRUE
 
 /datum/preferences/proc/UpdateJobPreference(mob/user, role, desiredLvl)
-	if(!SSjob || length(SSjob.joinable_occupations) <= 0)
+	if(!SSjob || length(SSjob.get_joinable_jobs()) <= 0)
 		return
-	var/datum/job/job = SSjob.GetJob(role)
+	var/datum/job/job = SSjob.get_job_by_id(role)
 
 	if(!job || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		user << browse(null, "window=mob_occupation")
@@ -1414,7 +1434,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			jpval = JP_HIGH
 
 	if(job.type == SSjob.overflow_role)
-		if(job_preferences[job.title] == JP_LOW)
+		if(job_preferences[job.id] == JP_LOW)
 			jpval = null
 		else
 			jpval = JP_LOW
@@ -1544,8 +1564,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if("random")
 				switch(joblessrole)
 					if(RETURNTOLOBBY)
-						var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
-						if(is_banned_from(user.ckey, overflow_role.title))
+						var/datum/job/overflow_role = SSjob.get_job_by_type(SSjob.overflow_role)
+						if(is_banned_from(user.ckey, overflow_role.id))
 							joblessrole = BERANDOMJOB
 						else
 							joblessrole = BEOVERFLOW
@@ -1556,6 +1576,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				SetChoices(user)
 			if("setJobLevel")
 				UpdateJobPreference(user, href_list["text"], text2num(href_list["level"]))
+			if("setSelectedListing")
+				var/listing_index = text2num(href_list["level"])
+				selected_listing_index = listing_index
+				SetChoices(user)
 			else
 				SetChoices(user)
 		return 1

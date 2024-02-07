@@ -3,7 +3,6 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Captain")
 	head_announce = list(RADIO_CHANNEL_SECURITY)
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -17,10 +16,6 @@
 
 	outfit = /datum/outfit/job/hos
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_security
-	departments_list = list(
-		/datum/job_department/security,
-		/datum/job_department/command,
-		)
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SEC
@@ -35,7 +30,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	voice_of_god_power = 1.4 //Command staff has authority
-	
+
 	required_languages = IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 
 
@@ -69,8 +64,7 @@
 	implants = list(/obj/item/implant/mindshield)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun/hos, /obj/item/stamp/hos)
-
-	id_trim = /datum/id_trim/job/head_of_security
+	id_chips = list(/obj/item/id_card_chip/station_job/head_of_security)
 
 /datum/outfit/job/hos/hardsuit
 	name = "Head of Security (Hardsuit)"

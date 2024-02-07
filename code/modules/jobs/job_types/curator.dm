@@ -1,7 +1,6 @@
 /datum/job/curator
 	title = "Curator"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_CURATOR
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice)
 
@@ -44,10 +40,10 @@
 		/obj/item/soapstone = 1,
 		/obj/item/barcodescanner = 1
 	)
+	id_chips = list(/obj/item/id_card_chip/station_job/curator)
 
-	id_trim = /datum/id_trim/job/curator
 
-/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	..()
 
 	if(visualsOnly)

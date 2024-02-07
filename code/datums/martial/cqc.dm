@@ -229,7 +229,7 @@
 
 /// Refreshes the valid areas from the cook job singleton, otherwise uses the default kitchen area as a fallback option. See also [/datum/job/cook/New].
 /datum/martial_art/cqc/under_siege/proc/refresh_valid_areas()
-	var/datum/job/cook/cook_job = SSjob.GetJobType(/datum/job/cook)
+	var/datum/job/cook/cook_job = SSjob.get_job_by_type(/datum/job/cook)
 	kitchen_areas = cook_job.kitchen_areas.Copy()
 
 /// Limits where the chef's CQC can be used to only whitelisted areas.

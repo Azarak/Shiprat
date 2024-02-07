@@ -3,7 +3,6 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	head_announce = list("Engineering")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -17,10 +16,6 @@
 
 	outfit = /datum/outfit/job/ce
 	plasmaman_outfit = /datum/outfit/plasmaman/chief_engineer
-	departments_list = list(
-		/datum/job_department/engineering,
-		/datum/job_department/command,
-		)
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_ENG
@@ -44,7 +39,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	voice_of_god_power = 1.4 //Command staff has authority
-	
+
 	required_languages = IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 
 
@@ -72,8 +67,7 @@
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
 	chameleon_extras = /obj/item/stamp/ce
-
-	id_trim = /datum/id_trim/job/chief_engineer
+	id_chips = list(/obj/item/id_card_chip/station_job/chief_engineer)
 
 /datum/outfit/job/ce/rig
 	name = "Chief Engineer (Hardsuit)"

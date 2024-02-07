@@ -32,8 +32,8 @@
 
 /obj/structure/closet/secure_closet/cytology
 	name = "cytology equipment locker"
-	icon_state = "science"
 	req_access = list(ACCESS_RESEARCH)
+	icon_state = "science"
 
 /obj/structure/closet/secure_closet/cytology/PopulateContents()
 	. = ..()

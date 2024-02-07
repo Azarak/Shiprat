@@ -20,9 +20,6 @@
 	/// Type path of item to go in the idcard slot
 	var/id = null
 
-	/// Type path of ID card trim associated with this outfit.
-	var/id_trim = null
-
 	/// Type path of item to go in uniform slot
 	var/uniform = null
 
@@ -113,6 +110,8 @@
 	/// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
 	var/datum/sprite_accessory/undershirt = null
 
+	var/list/id_chips = null
+
 /**
  * Called at the start of the equip proc
  *
@@ -139,7 +138,7 @@
  *
  * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	//to be overridden for toggling internals, id binding, access etc
 	return
 
@@ -151,7 +150,7 @@
  *
  * If visualsOnly is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, datum/access_category/access_category)
 	pre_equip(H, visualsOnly)
 
 	//Start with uniform,suit,backpack for additional slots
@@ -178,11 +177,10 @@
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H),ITEM_SLOT_EYES, TRUE)
 	if(id)
-		H.equip_to_slot_or_del(new id(H),ITEM_SLOT_ID, TRUE)
-	if(!visualsOnly && id_trim && H.wear_id)
-		var/obj/item/card/id/id_card = H.wear_id
-		if(istype(id_card) && !SSid_access.apply_trim_to_card(id_card, id_trim))
-			WARNING("Unable to apply trim [id_trim] to [id_card] in outfit [name].")
+		var/obj/item/new_id = new id(H)
+		if(H.equip_to_slot_or_del(new_id,ITEM_SLOT_ID, TRUE))
+			for(var/chip_type in id_chips)
+				new chip_type(new_id)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H),ITEM_SLOT_SUITSTORE, TRUE)
 
@@ -225,7 +223,7 @@
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 		HS.ToggleHelmet()
 
-	post_equip(H, visualsOnly)
+	post_equip(H, visualsOnly, access_category)
 
 	if(!visualsOnly)
 		apply_fingerprints(H)
@@ -313,7 +311,6 @@
 	.["ears"] = ears
 	.["glasses"] = glasses
 	.["id"] = id
-	.["id_trim"] = id_trim
 	.["l_pocket"] = l_pocket
 	.["r_pocket"] = r_pocket
 	.["suit_store"] = suit_store
@@ -341,7 +338,6 @@
 	ears = target.ears
 	glasses = target.glasses
 	id = target.id
-	id_trim = target.id_trim
 	l_pocket = target.l_pocket
 	r_pocket = target.r_pocket
 	suit_store = target.suit_store
@@ -380,7 +376,6 @@
 	ears = text2path(outfit_data["ears"])
 	glasses = text2path(outfit_data["glasses"])
 	id = text2path(outfit_data["id"])
-	id_trim = text2path(outfit_data["id_trim"])
 	l_pocket = text2path(outfit_data["l_pocket"])
 	r_pocket = text2path(outfit_data["r_pocket"])
 	suit_store = text2path(outfit_data["suit_store"])

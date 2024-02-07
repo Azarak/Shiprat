@@ -1,7 +1,6 @@
 /datum/job/janitor
 	title = "Janitor"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_JANITOR
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/mop, /obj/item/clothing/suit/caution, /obj/item/reagent_containers/glass/bucket, /obj/item/paper/fluff/stations/soap)
 
@@ -39,8 +35,7 @@
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced=1)
-
-	id_trim = /datum/id_trim/job/janitor
+	id_chips = list(/obj/item/id_card_chip/station_job/janitor)
 
 /datum/outfit/job/janitor/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()

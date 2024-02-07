@@ -1,7 +1,6 @@
 /datum/job/psychologist
 	title = "Psychologist"
 	department_head = list("Head of Personnel","Chief Medical Officer")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel and the chief medical officer"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_PSYCHOLOGIST
-	departments_list = list(
-		/datum/job_department/service,
-		)
 
 	family_heirlooms = list(/obj/item/storage/pill_bottle)
 
@@ -41,11 +37,10 @@
 	belt = /obj/item/pda/medical
 	pda_slot = ITEM_SLOT_BELT
 	l_hand = /obj/item/clipboard
+	id_chips = list(/obj/item/id_card_chip/station_job/psychologist)
 
 	backpack_contents = list(/obj/item/storage/pill_bottle/mannitol, /obj/item/storage/pill_bottle/psicodine, /obj/item/storage/pill_bottle/paxpsych, /obj/item/storage/pill_bottle/happinesspsych, /obj/item/storage/pill_bottle/lsdpsych)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
-
-	id_trim = /datum/id_trim/job/psychologist

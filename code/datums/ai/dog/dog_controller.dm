@@ -48,12 +48,12 @@
 		return FALSE
 	return ..()
 
-/datum/ai_controller/dog/get_access()
+/datum/ai_controller/dog/get_access(datum/access_category/category)
 	var/mob/living/simple_animal/simple_pawn = pawn
 	if(!istype(simple_pawn))
 		return
 
-	return simple_pawn.access_card
+	return simple_pawn.access_card.get_access(category)
 
 /datum/ai_controller/dog/SelectBehaviors(delta_time)
 	current_behaviors = list()

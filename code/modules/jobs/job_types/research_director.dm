@@ -3,7 +3,6 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	head_announce = list("Science")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -17,10 +16,6 @@
 
 	outfit = /datum/outfit/job/rd
 	plasmaman_outfit = /datum/outfit/plasmaman/research_director
-	departments_list = list(
-		/datum/job_department/science,
-		/datum/job_department/command,
-		)
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SCI
@@ -41,7 +36,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	voice_of_god_power = 1.4 //Command staff has authority
-	
+
 	required_languages = IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 
 
@@ -66,10 +61,9 @@
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
 	duffelbag = /obj/item/storage/backpack/duffelbag/toxins
+	id_chips = list(/obj/item/id_card_chip/station_job/research_director)
 
 	chameleon_extras = /obj/item/stamp/rd
-
-	id_trim = /datum/id_trim/job/research_director
 
 /datum/outfit/job/rd/rig
 	name = "Research Director (Hardsuit)"

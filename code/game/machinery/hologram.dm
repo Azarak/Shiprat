@@ -688,10 +688,10 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	desc = "It's a floor-mounted device for projecting holographic images across vast distances."
 	icon_state = "holopad-longrange0"
 	base_icon_state = "holopad-longrange"
+	req_access = null
 	circuit = /obj/item/circuitboard/machine/holopad_long_range
 	secure = TRUE
 	listed = FALSE
-	req_access = null
 	var/static/list/long_range_holopads = list()
 
 /obj/machinery/holopad/long_range/Initialize()

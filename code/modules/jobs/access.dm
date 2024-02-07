@@ -31,7 +31,7 @@
 			return TRUE
 	return FALSE
 
-/obj/item/proc/GetAccess()
+/obj/item/proc/get_access(datum/access_category/category)
 	return list()
 
 /obj/item/proc/GetID()
@@ -64,10 +64,14 @@
 		req_one_access = list()
 		for(var/b in text2access(req_one_access_txt))
 			req_one_access += b
+	if(!access_category)
+		var/access_define = access_category_define || ACCESS_CATEGORY_LAST_LOADED
+		access_category = SSid_access.get_access_category_by_define(access_define)
 
 // Check if an item has access to this object
 /obj/proc/check_access(obj/item/I)
-	return check_access_list(I ? I.GetAccess() : null)
+	gen_access()
+	return check_access_list(I? I.get_access(access_category) : null)
 
 /obj/proc/check_access_list(list/access_list)
 	gen_access()
@@ -102,7 +106,7 @@
  * * passkey - passkey from the datum/netdata packet
  */
 /obj/proc/check_access_ntnet(list/passkey)
-	return check_access_list(passkey)
+	return TRUE
 
 /// Returns the SecHUD job icon state for whatever this object's ID card is, if it has one.
 /obj/item/proc/get_sechud_job_icon_state()
@@ -111,25 +115,11 @@
 	if(!id_card)
 		return "hudno_id"
 
-	var/card_assignment
-	if(istype(id_card, /obj/item/card/id/advanced))
-		var/obj/item/card/id/advanced/advanced_id_card = id_card
-		card_assignment = advanced_id_card.trim_assignment_override ? advanced_id_card.trim_assignment_override : advanced_id_card.trim?.assignment
-	else
-		card_assignment = id_card.trim?.assignment
-
-	if(!card_assignment)
-		card_assignment = id_card.assignment
+	var/card_assignment = id_card.assignment
 
 	// Is this one of the jobs with dedicated HUD icons?
-	if(card_assignment in SSjob.station_jobs)
+	if(card_assignment in SSjob.get_station_jobs())
 		return "hud[ckey(card_assignment)]"
-	if(card_assignment in SSjob.additional_jobs_with_icons)
-		return "hud[ckey(card_assignment)]"
-
-	// If not, is it one of the jobs that should use the NT logo?
-	if(card_assignment in SSjob.centcom_jobs)
-		return "hudcentcom"
 
 	// If none of the above apply, job name is unknown.
 	return "hudunknown"

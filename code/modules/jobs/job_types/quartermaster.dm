@@ -1,7 +1,6 @@
 /datum/job/quartermaster
 	title = "Quartermaster"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -17,9 +16,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	bounty_types = CIV_JOB_RANDOM
-	departments_list = list(
-		/datum/job_department/cargo,
-		)
+
 	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3
@@ -29,7 +26,7 @@
 
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS) //Not a head.. YET
-	
+
 	required_languages = IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 
 /datum/outfit/job/quartermaster
@@ -43,7 +40,6 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/clipboard
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1)
+	id_chips = list(/obj/item/id_card_chip/station_job/quartermaster)
 
 	chameleon_extras = /obj/item/stamp/qm
-
-	id_trim = /datum/id_trim/job/quartermaster

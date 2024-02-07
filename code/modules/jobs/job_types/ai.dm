@@ -1,7 +1,6 @@
 /datum/job/ai
 	title = "AI"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
-	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your laws"
@@ -14,10 +13,6 @@
 	exp_required_type_department = EXP_TYPE_SILICON
 	exp_granted_type = EXP_TYPE_CREW
 	display_order = JOB_DISPLAY_ORDER_AI
-	allow_bureaucratic_error = FALSE
-	departments_list = list(
-		/datum/job_department/silicon,
-		)
 	random_spawns_possible = FALSE
 	loadout = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_BOLD_SELECT_TEXT | JOB_CREW_MANIFEST

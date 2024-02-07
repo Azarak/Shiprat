@@ -240,7 +240,7 @@
 /turf/open/floor/engine,
 /area/shuttle/aggregeddon)
 "iT" = (
-/obj/machinery/modular_computer/console/preset/id/centcom{
+/obj/machinery/computer/access{
 	dir = 8
 	},
 /obj/structure/railing,

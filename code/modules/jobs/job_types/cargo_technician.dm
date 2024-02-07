@@ -1,7 +1,6 @@
 /datum/job/cargo_technician
 	title = "Cargo Technician"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the quartermaster and the head of personnel"
@@ -15,9 +14,6 @@
 	paycheck_department = ACCOUNT_CAR
 	display_order = JOB_DISPLAY_ORDER_CARGO_TECHNICIAN
 	bounty_types = CIV_JOB_RANDOM
-	departments_list = list(
-		/datum/job_department/cargo,
-		)
 
 	family_heirlooms = list(/obj/item/clipboard)
 
@@ -41,4 +37,4 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	l_hand = /obj/item/export_scanner
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo = 1)
-	id_trim = /datum/id_trim/job/cargo_technician
+	id_chips = list(/obj/item/id_card_chip/station_job/cargo_technician)

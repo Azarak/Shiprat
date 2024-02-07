@@ -67,7 +67,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "ai" = (
-/obj/machinery/modular_computer/console/preset/id,
+/obj/machinery/computer/access,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "aj" = (

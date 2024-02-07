@@ -145,7 +145,6 @@
 
 /mob/living/simple_animal/drone/snowflake/bardrone/Initialize()
 	. = ..()
-	access_card.add_access(list(ACCESS_CENT_BAR))
 	become_area_sensitive(ROUNDSTART_TRAIT)
 	RegisterSignal(src, COMSIG_ENTER_AREA, .proc/check_barstaff_godmode)
 	check_barstaff_godmode()
@@ -164,9 +163,6 @@
 	. = ..()
 	// Simple bot ID card that can hold all accesses. Someone turn access into a component at some point, please.
 	access_card = new /obj/item/card/id/advanced/simple_bot(src)
-
-	var/datum/id_trim/job/cap_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/captain]
-	access_card.add_access(cap_trim.access + cap_trim.wildcard_access + list(ACCESS_CENT_BAR))
 
 	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 	become_area_sensitive(ROUNDSTART_TRAIT)
@@ -218,10 +214,6 @@
 		var/mob/living/carbon/human/human_user = user
 		if(is_bartender_job(human_user.mind?.assigned_role))
 			return TRUE
-
-	var/obj/item/card/id/ID = user.get_idcard(FALSE)
-	if(ID && (ACCESS_CENT_BAR in ID.access))
-		return TRUE
 
 //Luxury Shuttle Blockers
 

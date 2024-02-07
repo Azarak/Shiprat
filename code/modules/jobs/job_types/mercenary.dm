@@ -1,6 +1,5 @@
 /datum/job/mercenary
 	title = "Mercenary"
-	faction = FACTION_STATION
 	total_positions = 10
 	spawn_positions = 10
 	supervisors = "yourself"
@@ -34,9 +33,9 @@
 /datum/outfit/job/mercenary
 	name = "Mercenary"
 	jobtype = /datum/job/mercenary
-	id_trim = /datum/id_trim/job/assistant
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,
 		/obj/item/pickaxe/mini=1,
 		)
+	id_chips = list(/obj/item/id_card_chip/station_job/assistant)

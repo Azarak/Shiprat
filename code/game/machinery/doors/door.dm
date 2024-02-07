@@ -60,11 +60,6 @@
 	if(safety_mode)
 		. += SPAN_NOTICE("It has labels indicating that it has an emergency mechanism to open it with <b>just your hands</b> if there's no power.")
 
-/obj/machinery/door/check_access_list(list/access_list)
-	if(red_alert_access && SSsecurity_level.current_level >= SEC_LEVEL_RED)
-		return TRUE
-	return ..()
-
 /obj/machinery/door/Initialize()
 	. = ..()
 	set_init_door_layer()
@@ -219,7 +214,7 @@
 
 	if(isitem(AM))
 		var/obj/item/I = AM
-		if(!density || (I.w_class < WEIGHT_CLASS_NORMAL && !LAZYLEN(I.GetAccess())))
+		if(!density || (I.w_class < WEIGHT_CLASS_NORMAL && !LAZYLEN(I.get_access(access_category))))
 			return
 		if(check_access(I))
 			open()

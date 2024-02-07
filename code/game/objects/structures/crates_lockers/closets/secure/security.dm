@@ -50,6 +50,8 @@
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
+	new /obj/item/storage/box/id_chips/empty(src)
+	new /obj/item/storage/box/id_chips/empty(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
@@ -197,7 +199,6 @@
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
-	req_access = list(ACCESS_HOS)
 
 /obj/structure/closet/secure_closet/injection/PopulateContents()
 	..()
@@ -213,8 +214,8 @@
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE
 	name = "Secure Evidence Closet"
-	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
+	req_access = list()
+	req_one_access = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()

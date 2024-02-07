@@ -32,8 +32,8 @@
 
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
-	req_access = list(ACCESS_SURGERY)
 	icon_state = "med_secure"
+	req_access = list(ACCESS_SURGERY)
 
 /obj/structure/closet/secure_closet/medical3/PopulateContents()
 	..()
