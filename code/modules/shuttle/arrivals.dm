@@ -53,7 +53,7 @@
 			WARNING("No latejoin landmarks exist. Players will spawn unbuckled on the shuttle.")
 		return
 
-	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(JOB_LISTING_LAST_LOADED)
+	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(JOB_LISTING_STATION)
 	listing.latejoin_landmarks = new_latejoin
 
 /obj/docking_port/mobile/arrivals/check()

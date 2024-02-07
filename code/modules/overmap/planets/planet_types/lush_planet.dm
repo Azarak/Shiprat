@@ -20,6 +20,12 @@
 	water_color = null
 	plant_color_as_grass = TRUE
 
+/datum/overmap_map_zone_generator/lush/bunker
+	map_zone_generator = /datum/map_zone_generator/lush/bunker
+
+/datum/map_zone_generator/lush/bunker
+	pre_custom_generators = list(/datum/custom_generator/landing_pads, /datum/custom_generator/spawn_ruin/bunker)
+
 /datum/base_map_generator/empty_levels/lush
 	level_amount = 1
 	turf_type = null

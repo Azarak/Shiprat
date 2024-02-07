@@ -17,6 +17,10 @@
 	///the list of atoms created by this template being loaded, only populated if returns_created_atoms is TRUE
 	var/list/created_atoms = list()
 	//make sure this list is accounted for/cleared if you request it from ssatoms!
+	/// The type of job listing to load with this ruin
+	var/job_listing_type = null
+	/// The type of access category to load with this ruin
+	var/access_category_type = null
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
@@ -152,6 +156,14 @@
 		var/turf/turf_to_disable = L
 		SSair.remove_from_active(turf_to_disable) //stop processing turfs along the border to prevent runtimes, we return it in initTemplateBounds()
 		turf_to_disable.atmos_adjacent_turfs?.Cut()
+
+	// Create the job listing if we want any for the map template
+	if(job_listing_type)
+		SSjob.add_job_listing(job_listing_type)
+
+	// Create the access category if we want any for the map template
+	if(access_category_type)
+		SSid_access.create_access_category(access_category_type)
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.

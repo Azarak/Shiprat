@@ -36,7 +36,7 @@
 /datum/job_listing/proc/get_latejoin_spawn_point_for_job(datum/job/job)
 	if(latejoin_landmarks.len == 0)
 		return null
-	return pick(latejoin_landmarks)
+	return get_turf(pick(latejoin_landmarks))
 
 /datum/job_listing/proc/shuffle_landmarks()
 	//TODO

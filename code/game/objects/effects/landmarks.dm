@@ -338,8 +338,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/new_player_start)
 /obj/effect/landmark/latejoin/Initialize(mapload)
 	..()
 	var/datum/job_listing/listing = SSjob.get_job_listing_by_define(job_listing_define)
-	listing.latejoin_landmarks += loc
-	return INITIALIZE_HINT_QDEL
+	listing.latejoin_landmarks += src
 
 //space carps, magicarps, lone ops, slaughter demons, possibly revenants spawn here
 /obj/effect/landmark/carpspawn

@@ -637,3 +637,15 @@
 	port_id = "exploration"
 	suffix = "crow"
 	name = "ESS Crow"
+
+/datum/map_template/shuttle/tradership
+	port_id = "common"
+	suffix = "tradership"
+	name = "Tradership"
+	job_listing_type = /datum/job_listing_template/merchant_ship
+
+/datum/map_template/shuttle/outlawship
+	port_id = "common"
+	suffix = "outlawship"
+	name = "Outlawship"
+	job_listing_type = /datum/job_listing_template/outlaw_ship

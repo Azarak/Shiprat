@@ -299,19 +299,12 @@
 			return "You don't have the required languages for [jobtitle]."
 	return "Error: Unknown job availability."
 
-/mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
-	var/datum/job/job = SSjob.get_job_by_name(rank)
+/mob/dead/new_player/proc/IsJobUnavailable(datum/job/job, latejoin = FALSE)
+	var/rank = job.title
 	if(!(job in SSjob.get_joinable_jobs()))
 		return JOB_UNAVAILABLE_GENERIC
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-		if(is_assistant_job(job))
-			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
-				return JOB_AVAILABLE
-			for(var/datum/job/other_job as anything in SSjob.get_joinable_jobs())
-				if(other_job.current_positions < other_job.total_positions && other_job != job)
-					return JOB_UNAVAILABLE_SLOTFULL
-		else
-			return JOB_UNAVAILABLE_SLOTFULL
+		return JOB_UNAVAILABLE_SLOTFULL
 	if(is_banned_from(ckey, rank))
 		return JOB_UNAVAILABLE_BANNED
 	if(QDELETED(src))
@@ -331,7 +324,10 @@
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
-	var/error = IsJobUnavailable(rank)
+	var/datum/job_listing/listing = SSjob.job_listings[latejoin_job_listing_index]
+	var/datum/job/job = listing.jobs_by_name[rank]
+
+	var/error = IsJobUnavailable(job)
 	if(error != JOB_AVAILABLE)
 		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
 		return FALSE
@@ -352,9 +348,6 @@
 	//Remove the player from the join queue if he was in one and reset the timer
 	SSticker.queued_players -= src
 	SSticker.queue_delay = 4
-
-	var/datum/job_listing/listing = SSjob.job_listings[latejoin_job_listing_index]
-	var/datum/job/job = listing.jobs_by_name[rank]
 
 	SSjob.AssignRole(src, job, TRUE)
 
@@ -446,21 +439,22 @@
 		else
 			button_class = "href='byond://?src=[REF(src)];SelectJobListingLatejoin=[i]'"
 		dat += "<a [button_class]>[listing.template_ref.name]</a>"
-		dat += "<br>[listing.template_ref.desc]"
+
+	var/datum/job_listing/selected_listing = SSjob.job_listings[latejoin_job_listing_index]
+	dat += "<HR>[selected_listing.template_ref.desc]"
 
 	dat += "<HR>"
 	// List jobs under departments
 	dat += "<table><tr><td valign='top'>"
 	var/column_counter = 0
 
-	var/datum/job_listing/selected_listing = SSjob.job_listings[latejoin_job_listing_index]
 	for(var/datum/job_department/department as anything in selected_listing.departments)
 		var/department_color = department.template_ref.latejoin_color
 		dat += "<fieldset style='width: 185px; border: 2px solid [department_color]; display: inline'>"
 		dat += "<legend align='center' style='color: [department_color]'>[department.template_ref.department_name]</legend>"
 		var/list/dept_data = list()
 		for(var/datum/job/job_datum as anything in department.department_jobs)
-			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
+			if(IsJobUnavailable(job_datum, TRUE) != JOB_AVAILABLE)
 				continue
 			var/command_bold = ""
 			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)

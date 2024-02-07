@@ -258,7 +258,7 @@
 					iter++
 					var/list/obj/docking_port/stationary/docks = mapzone.get_docks_for_shuttle(my_shuttle)
 					for(var/obj/docking_port/stationary/dock as anything in docks)
-						docks["[iter]. [dock.name]"] = dock
+						dock_list["[iter]. [dock.name]"] = dock
 
 				dat += "<B>Designated docks:</B>"
 				for(var/key in dock_list)

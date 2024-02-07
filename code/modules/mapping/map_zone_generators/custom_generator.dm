@@ -25,3 +25,20 @@
 				start_x = vlevel.low_x + vlevel.reserved_margin + half_width
 				start_y = vlevel.low_y + vlevel.reserved_margin + half_height
 		pad.try_to_place(vlevel, list(), locate(start_x, start_y, vlevel.z_value), TRUE)
+
+/datum/custom_generator/spawn_ruin
+	var/map_template = null
+
+/datum/custom_generator/spawn_ruin/generate(datum/map_zone/mapzone)
+	var/datum/virtual_level/vlevel = mapzone.virtual_levels[1]
+	var/turf/middle = vlevel.get_center()
+	var/datum/map_template/ruin/ruin_template = SSmapping.ruins_templates_by_type[map_template]
+	if(ruin_template == null)
+		ruin_template = new map_template()
+	ruin_template.load(middle, TRUE, TRUE)
+
+/datum/custom_generator/spawn_ruin/bunker
+	map_template = /datum/map_template/ruin/special/bunker
+
+/datum/custom_generator/spawn_ruin/charlie
+	map_template = /datum/map_template/ruin/special/charlie

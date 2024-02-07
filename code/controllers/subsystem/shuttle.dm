@@ -124,6 +124,7 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
 
 	init_sold_shuttles()
+	load_roundstart_shuttles()
 	return ..()
 
 /datum/controller/subsystem/shuttle/proc/init_sold_shuttles()
@@ -150,6 +151,10 @@ SUBSYSTEM_DEF(shuttle)
 		var/obj/docking_port/stationary/S = s
 		S.load_roundstart()
 		CHECK_TICK
+
+/datum/controller/subsystem/shuttle/proc/load_roundstart_shuttles()
+	SSmapping.load_shuttle_to_first_matching_dock_in_mapzone(SSmapping.strand_map_zone, SSmapping.shuttle_templates_by_type[/datum/map_template/shuttle/tradership], "largedock")
+	SSmapping.load_shuttle_to_first_matching_dock_in_mapzone(SSmapping.ship_graveyard_map_zone, SSmapping.shuttle_templates_by_type[/datum/map_template/shuttle/outlawship], "largedock")
 
 /datum/controller/subsystem/shuttle/fire()
 	for(var/thing in mobile)

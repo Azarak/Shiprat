@@ -3,6 +3,12 @@
 	overmap_type = /datum/overmap_object/shuttle/planet/snow
 	map_zone_generator = /datum/map_zone_generator/snow
 
+/datum/overmap_map_zone_generator/snow/bunker
+	map_zone_generator = /datum/map_zone_generator/snow/bunker
+
+/datum/map_zone_generator/snow/bunker
+	pre_custom_generators = list(/datum/custom_generator/landing_pads, /datum/custom_generator/spawn_ruin/bunker)
+
 /datum/map_zone_generator/snow
 	mapzone_name = "Snow Planet"
 	base_map_generator = /datum/base_map_generator/empty_levels/snow

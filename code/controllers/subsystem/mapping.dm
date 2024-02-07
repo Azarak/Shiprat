@@ -15,10 +15,12 @@ SUBSYSTEM_DEF(mapping)
 	var/list/landing_pad_templates = list()
 
 	var/list/ruins_templates = list()
+	var/list/ruins_templates_by_type = list()
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
 	var/list/shuttle_templates = list()
+	var/list/shuttle_templates_by_type = list()
 	var/list/shelter_templates = list()
 	var/list/holodeck_templates = list()
 
@@ -80,6 +82,13 @@ SUBSYSTEM_DEF(mapping)
 /// Pre loads some allocation levels that are very likely to be used so they dont have to initalized on runtime. Completely fine if this didn't exist.
 /datum/controller/subsystem/mapping/proc/pre_load_allocation_levels()
 	add_new_zlevel("Free Allocation Level", allocation_type = ALLOCATION_FREE)
+
+/datum/controller/subsystem/mapping/proc/load_shuttle_to_first_matching_dock_in_mapzone(datum/map_zone/mapzone, datum/map_template/shuttle/shuttle_template, destinations)
+	var/list/obj/docking_port/stationary/docks = mapzone.get_docks_for_shuttle_destinations(destinations)
+	for(var/obj/docking_port/stationary/dock as anything in docks)
+		SSshuttle.action_load(shuttle_template, dock, FALSE)
+		return TRUE
+	return FALSE
 
 /datum/controller/subsystem/mapping/proc/safety_clear_transit_dock(obj/docking_port/stationary/transit/T, obj/docking_port/mobile/M, list/returning)
 	M.setTimer(0)
@@ -168,17 +177,17 @@ Used by the AI doomsday and the self-destruct nuke.
 		/datum/overmap_map_zone_generator/volcanic/quad,
 		*/
 	)
-	/*
+
 	var/picked_big_planet = pick(habitable_big_planets)
 	var/datum/overmap_map_zone_generator/big_gen = new picked_big_planet()
 	big_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
-	*/
+
 
 	for(var/generator_type in smaller_levels_to_spawn)
 		var/datum/overmap_map_zone_generator/smaller_gen = new generator_type()
 		smaller_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 #endif
-	var/datum/overmap_map_zone_generator/asteroid_gen = new /datum/overmap_map_zone_generator/asteroid()
+	var/datum/overmap_map_zone_generator/asteroid_gen = new /datum/overmap_map_zone_generator/asteroid/charlie()
 	strand_map_zone = asteroid_gen.generate(SSovermap.main_system, rand(5,25), rand(5,25))
 
 	var/datum/overmap_map_zone_generator/graveyard_gen = new /datum/overmap_map_zone_generator/ship_graveyard()
@@ -314,6 +323,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		map_templates[R.name] = R
 		ruins_templates[R.name] = R
+		ruins_templates_by_type[ruin_type] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	for(var/item in subtypesof(/datum/map_template/shuttle))
@@ -325,6 +335,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		shuttle_templates[S.shuttle_id] = S
 		map_templates[S.shuttle_id] = S
+		shuttle_templates_by_type[shuttle_type] = S
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))

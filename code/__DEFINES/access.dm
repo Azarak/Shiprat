@@ -2,6 +2,8 @@
 #define ACCESS_CATEGORY_LAST_LOADED "LASTLOADED"
 #define ACCESS_CATEGORY_DEFAULT "DEFAULT"
 #define ACCESS_CATEGORY_STATION "Station"
+#define ACCESS_CATEGORY_BUNKER "Bunker"
+#define ACCESS_CATEGORY_OTHER "Other"
 
 // Security equipment, security records, gulag item storage, secbots
 #define ACCESS_SECURITY 1
