@@ -436,11 +436,6 @@
 /turf/open/floor/wood,
 /area/cargo/qm)
 "abi" = (
-/obj/machinery/status_display/supply{
-	dir = 4;
-	layer = 4;
-	pixel_x = -32
-	},
 /turf/open/floor/wood,
 /area/cargo/qm)
 "aby" = (
@@ -8211,9 +8206,6 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "auT" = (
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -10887,7 +10879,6 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
 "aBB" = (
-/obj/machinery/computer/cargo/request,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = 29
@@ -17313,11 +17304,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/status_display/supply{
-	dir = 4;
-	layer = 4;
-	pixel_y = 32
-	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "aUC" = (
@@ -18184,7 +18170,6 @@
 /area/cargo/sorting)
 "aWu" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/cargo,
 /obj/structure/window/reinforced{
 	dir = 1;
 	pixel_y = 1
@@ -20706,11 +20691,6 @@
 /obj/machinery/conveyor{
 	id = "CargoLoad"
 	},
-/obj/machinery/status_display/supply{
-	dir = 4;
-	layer = 4;
-	pixel_x = 33
-	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
@@ -20750,9 +20730,6 @@
 /turf/open/floor/wood,
 /area/cargo/qm)
 "bcS" = (
-/obj/machinery/computer/cargo{
-	dir = 8
-	},
 /turf/open/floor/wood,
 /area/cargo/qm)
 "bcT" = (
@@ -36399,9 +36376,6 @@
 /obj/effect/turf_decal/stripes/white/end{
 	dir = 8
 	},
-/obj/machinery/computer/trade_console{
-	dir = 8
-	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "bWF" = (
@@ -37416,7 +37390,6 @@
 /obj/effect/turf_decal/stripes/white/end{
 	dir = 4
 	},
-/obj/machinery/trade_pad,
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "bZx" = (
@@ -41076,10 +41049,6 @@
 	},
 /area/maintenance/department/crew_quarters/bar)
 "coL" = (
-/obj/machinery/computer/piratepad_control/civilian{
-	dir = 8;
-	pixel_y = -2
-	},
 /obj/effect/turf_decal/stripes/white/end{
 	dir = 8
 	},
@@ -41659,7 +41628,6 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cqE" = (
-/obj/machinery/piratepad/civilian,
 /obj/effect/turf_decal/stripes/white/end{
 	dir = 4
 	},
@@ -44517,9 +44485,6 @@
 /turf/open/floor/iron/white,
 /area/medical/virology)
 "doQ" = (
-/obj/machinery/computer/cargo{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/brown/filled/end{
 	dir = 1
 	},
@@ -49178,11 +49143,6 @@
 /turf/open/floor/wood,
 /area/cargo/qm)
 "jdr" = (
-/obj/machinery/status_display/supply{
-	dir = 4;
-	layer = 4;
-	pixel_y = 32
-	},
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -52341,9 +52301,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "ndU" = (
-/obj/machinery/computer/cargo/request{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	layer = 2.9
@@ -52945,11 +52902,6 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "nNk" = (
-/obj/machinery/status_display/supply{
-	dir = 4;
-	layer = 4;
-	pixel_y = 32
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/cargo/storage)

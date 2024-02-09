@@ -17,12 +17,6 @@
 
 	family_heirlooms = list(/obj/item/mop, /obj/item/clothing/suit/caution, /obj/item/reagent_containers/glass/bucket, /obj/item/paper/fluff/stations/soap)
 
-	mail_goodies = list(
-		/obj/item/grenade/chem_grenade/cleaner = 30,
-		/obj/item/storage/box/lights/mixed = 20,
-		/obj/item/lightreplacer = 10
-	)
-
 	required_languages = LESS_IMPORTANT_ROLE_LANGUAGE_REQUIREMENT
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 

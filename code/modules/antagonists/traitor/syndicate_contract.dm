@@ -59,85 +59,11 @@
 
 // Launch the pod to collect our victim.
 /datum/syndicate_contract/proc/launch_extraction_pod(turf/empty_pod_turf)
-	var/obj/structure/closet/supplypod/extractionpod/empty_pod = new()
-
-	RegisterSignal(empty_pod, COMSIG_ATOM_ENTERED, .proc/enter_check)
-
-	empty_pod.stay_after_drop = TRUE
-	empty_pod.reversing = TRUE
-	empty_pod.explosionSize = list(0,0,0,1)
-	empty_pod.leavingSound = 'sound/effects/podwoosh.ogg'
-
-	new /obj/effect/pod_landingzone(empty_pod_turf, empty_pod)
+	return
 
 /datum/syndicate_contract/proc/enter_check(datum/source, sent_mob)
 	SIGNAL_HANDLER
-	if (istype(source, /obj/structure/closet/supplypod/extractionpod))
-		if (isliving(sent_mob))
-			var/mob/living/M = sent_mob
-			var/datum/antagonist/traitor/traitor_data = contract.owner.has_antag_datum(/datum/antagonist/traitor)
-
-			if (M == contract.target.current)
-				traitor_data.contractor_hub.contract_TC_to_redeem += contract.payout
-				traitor_data.contractor_hub.contracts_completed += 1
-
-				if (M.stat != DEAD)
-					traitor_data.contractor_hub.contract_TC_to_redeem += contract.payout_bonus
-
-				status = CONTRACT_STATUS_COMPLETE
-
-				if (traitor_data.contractor_hub.current_contract == src)
-					traitor_data.contractor_hub.current_contract = null
-
-				traitor_data.contractor_hub.contract_rep += 2
-			else
-				status = CONTRACT_STATUS_ABORTED // Sending a target that wasn't even yours is as good as just aborting it
-
-				if (traitor_data.contractor_hub.current_contract == src)
-					traitor_data.contractor_hub.current_contract = null
-
-			if (iscarbon(M))
-				for(var/obj/item/W in M)
-					if (ishuman(M))
-						var/mob/living/carbon/human/H = M
-						if(W == H.w_uniform)
-							continue //So all they're left with are shoes and uniform.
-						if(W == H.shoes)
-							continue
-
-
-					M.transferItemToLoc(W)
-					victim_belongings.Add(W)
-
-			var/obj/structure/closet/supplypod/extractionpod/pod = source
-
-			// Handle the pod returning
-			pod.startExitSequence(pod)
-
-			if (ishuman(M))
-				var/mob/living/carbon/human/target = M
-
-				// After we remove items, at least give them what they need to live.
-				target.dna.species.give_important_for_life(target)
-
-			// After pod is sent we start the victim narrative/heal.
-			INVOKE_ASYNC(src, .proc/handleVictimExperience, M)
-
-			// This is slightly delayed because of the sleep calls above to handle the narrative.
-			// We don't want to tell the station instantly.
-			var/points_to_check
-			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			if(D)
-				points_to_check = D.account_balance
-			if(points_to_check >= ransom)
-				D.adjust_money(-ransom)
-			else
-				D.adjust_money(-points_to_check)
-
-			priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. \
-							As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
-
-			INVOKE_ASYNC(src, .proc/finish_enter)
+	return
 
 /datum/syndicate_contract/proc/finish_enter()
 	sleep(30)
@@ -199,11 +125,6 @@
 	if (possible_drop_loc.len > 0)
 		var/pod_rand_loc = rand(1, possible_drop_loc.len)
 
-		var/obj/structure/closet/supplypod/return_pod = new()
-		return_pod.bluespace = TRUE
-		return_pod.explosionSize = list(0,0,0,0)
-		return_pod.style = STYLE_SYNDICATE
-
 		do_sparks(8, FALSE, M)
 		M.visible_message(SPAN_NOTICE("[M] vanishes..."))
 
@@ -216,17 +137,16 @@
 					continue
 			M.dropItemToGround(W)
 
+		var/atom/location = possible_drop_loc[pod_rand_loc]
 		for(var/obj/item/W in victim_belongings)
-			W.forceMove(return_pod)
+			W.forceMove(location)
 
-		M.forceMove(return_pod)
+		M.forceMove(location)
 
 		M.flash_act()
 		M.blur_eyes(30)
 		M.Dizzy(35)
 		M.add_confusion(20)
-
-		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
 		to_chat(M, "<span class='reallybig hypnophrase'>A million voices echo in your head... <i>\"Seems where you got sent here from won't \
 					be able to handle our pod... You will die here instead.\"</i></span>")

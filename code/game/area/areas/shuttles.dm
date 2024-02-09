@@ -141,10 +141,6 @@
 	name = "Labor Camp Shuttle"
 	area_flags = NONE //Set this so it doesn't inherit NO_ALERTS
 
-/area/shuttle/supply
-	name = "Supply Shuttle"
-	area_flags = NOTELEPORT
-
 /area/shuttle/escape
 	name = "Emergency Shuttle"
 	area_flags = BLOBS_ALLOWED

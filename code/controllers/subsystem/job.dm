@@ -632,9 +632,7 @@ SUBSYSTEM_DEF(job)
 	if(!spawn_turf)
 		SendToLateJoin(living_mob)
 	else
-		var/obj/structure/closet/supplypod/centcompod/toLaunch = new()
-		living_mob.forceMove(toLaunch)
-		new /obj/effect/pod_landingzone(spawn_turf, toLaunch)
+		living_mob.forceMove(spawn_turf)
 
 ///////////////////////////////////
 //Keeps track of all living heads//
@@ -675,28 +673,3 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/JobDebug(message)
 	log_job_debug(message)
-
-/obj/item/paper/fluff/spare_id_safe_code
-	name = "Nanotrasen-Approved Spare ID Safe Code"
-	desc = "Proof that you have been approved for Captaincy, with all its glory and all its horror."
-
-/obj/item/paper/fluff/spare_id_safe_code/Initialize()
-	. = ..()
-	var/safe_code = "ERROR"
-	info = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge.<br><br>If your job would not ordinarily have Head of Staff access, your ID card has been specially modified to possess it."
-	update_appearance()
-
-/obj/item/paper/fluff/emergency_spare_id_safe_code
-	name = "Emergency Spare ID Safe Code Requisition"
-	desc = "Proof that nobody has been approved for Captaincy. A skeleton key for a skeleton shift."
-
-/obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize()
-	. = ..()
-	var/safe_code = "ERROR"
-	info = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge."
-	update_appearance()
-
-/// Send a drop pod containing a piece of paper with the spare ID safe code to loc
-/datum/controller/subsystem/job/proc/send_spare_id_safe_code(loc)
-	new /obj/effect/pod_landingzone(loc, /obj/structure/closet/supplypod/centcompod, new /obj/item/paper/fluff/emergency_spare_id_safe_code())
-

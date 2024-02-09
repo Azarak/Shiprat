@@ -1273,7 +1273,6 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "ey" = (
-/obj/machinery/status_display/supply,
 /turf/closed/wall,
 /area/cargo/storage)
 "ez" = (
@@ -1473,9 +1472,6 @@
 /turf/open/floor/plating,
 /area/cargo/storage)
 "fe" = (
-/obj/machinery/computer/cargo{
-	dir = 8
-	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/button/door/directional/east{
 	id = "cargounload";
@@ -1567,9 +1563,6 @@
 /area/cargo/storage)
 "fr" = (
 /obj/machinery/light/directional/west,
-/obj/machinery/computer/cargo/express{
-	dir = 4
-	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "fs" = (
@@ -1635,7 +1628,6 @@
 /turf/open/floor/iron,
 /area/commons/storage/primary)
 "fB" = (
-/obj/machinery/status_display/supply,
 /turf/closed/wall/r_wall,
 /area/cargo/storage)
 "fC" = (

@@ -72,7 +72,6 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 	GLOB.exodrones += src
 	/// Cargo storage
 	var/datum/component/storage/storage = AddComponent(/datum/component/storage/concrete)
-	storage.cant_hold = GLOB.blacklisted_cargo_types
 	storage.max_w_class = WEIGHT_CLASS_NORMAL
 	storage.max_items = EXODRONE_CARGO_SLOTS
 
@@ -179,11 +178,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /// Crashes the drone somewhere random if there's no launchpad to be found.
 /obj/item/exodrone/proc/drop_somewhere_on_station()
 	var/turf/random_spot = get_safe_random_station_turf()
-
-	var/obj/structure/closet/supplypod/pod = podspawn(list(
-		"target" = random_spot,
-	))
-	forceMove(pod)
+	forceMove(random_spot)
 	return random_spot
 
 /// Tries to find landing pad, starting with the one we launched from.

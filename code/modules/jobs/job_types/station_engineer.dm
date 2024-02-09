@@ -20,13 +20,6 @@
 
 	family_heirlooms = list(/obj/item/clothing/head/hardhat, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 
-	mail_goodies = list(
-		/obj/item/storage/box/lights/mixed = 20,
-		/obj/item/lightreplacer = 10,
-		/obj/item/holosign_creator/engineering = 8,
-		/obj/item/clothing/head/hardhat/red/upgraded = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

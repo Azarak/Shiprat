@@ -29,10 +29,6 @@
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 
-	/// Type of the global trading hub that will be created
-	var/global_trading_hub_type = /datum/trade_hub/worldwide
-	/// A lazylist of types of trading hubs to be spawned
-	var/localized_trading_hub_types = list(/datum/trade_hub/randomname, /datum/trade_hub/randomname)
 	/// The type of the overmap object the station will act as on the overmap
 	var/overmap_object_type = /datum/overmap_object/shuttle/station
 	var/amount_of_planets_spawned = 1

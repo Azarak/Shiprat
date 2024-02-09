@@ -390,34 +390,6 @@ Code:
 		if (47) //quartermaster order records
 			menu = "<h4>[PDAIMG(crate)] Supply Record Interlink</h4>"
 
-			menu += "<BR><B>Supply shuttle</B><BR>"
-			menu += "Location: "
-			switch(SSshuttle.supply.mode)
-				if(SHUTTLE_CALL)
-					menu += "Moving to "
-					if(!is_station_level(SSshuttle.supply))
-						menu += "station"
-					else
-						menu += "CentCom"
-					menu += " ([SSshuttle.supply.timeLeft(600)] Mins)"
-				else
-					menu += "At "
-					if(!is_station_level(SSshuttle.supply))
-						menu += "CentCom"
-					else
-						menu += "station"
-			menu += "<BR>Current approved orders: <BR><ol>"
-			for(var/S in SSshuttle.shoppinglist)
-				var/datum/supply_order/SO = S
-				menu += "<li>#[SO.id] - [SO.pack.name] approved by [SO.orderer] [SO.reason ? "([SO.reason])":""]</li>"
-			menu += "</ol>"
-
-			menu += "Current requests: <BR><ol>"
-			for(var/S in SSshuttle.requestlist)
-				var/datum/supply_order/SO = S
-				menu += "<li>#[SO.id] - [SO.pack.name] requested by [SO.orderer]</li>"
-			menu += "</ol><font size=\"-3\">Upgrade NOW to Space Parts & Space Vendors PLUS for full remote order control and inventory management."
-
 		if (48) // quartermaster ore logs
 			menu = list("<h4>[PDAIMG(crate)] Ore Silo Logs</h4>")
 			if (GLOB.ore_silo_default)

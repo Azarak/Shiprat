@@ -321,15 +321,6 @@
 		to_chat(user, SPAN_WARNING("You've already put something new in this case!"))
 		return
 
-	if(is_type_in_typecache(W, GLOB.blacklisted_cargo_types))
-		to_chat(user, SPAN_WARNING("The case rejects the [W]!"))
-		return
-
-	for(var/a in W.GetAllContents())
-		if(is_type_in_typecache(a, GLOB.blacklisted_cargo_types))
-			to_chat(user, SPAN_WARNING("The case rejects the [W]!"))
-			return
-
 	if(user.transferItemToLoc(W, src))
 
 		if(showpiece)

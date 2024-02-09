@@ -18,12 +18,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_ROBOTICIST
 
-	mail_goodies = list(
-		/obj/item/storage/box/flashes = 20,
-		/obj/item/stack/sheet/iron/twenty = 15,
-		/obj/item/modular_computer/tablet/preset/advanced = 5
-	)
-
 	family_heirlooms = list(/obj/item/toy/plush/pkplush)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS

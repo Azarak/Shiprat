@@ -17,14 +17,6 @@
 
 	family_heirlooms = list(/obj/item/toy/windup_toolbox, /obj/item/reagent_containers/food/drinks/bottle/holywater)
 
-	mail_goodies = list(
-		/obj/item/reagent_containers/food/drinks/bottle/holywater = 30,
-		/obj/item/toy/plush/awakenedplushie = 10,
-		/obj/item/grenade/chem_grenade/holy = 5,
-		/obj/item/toy/plush/narplush = 2,
-		/obj/item/toy/plush/ratplush = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	voice_of_god_power = 2 //Chaplains are very good at speaking with the voice of god

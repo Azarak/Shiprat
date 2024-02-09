@@ -42,11 +42,6 @@
 /datum/team/pirate/proc/forge_objectives()
 	var/datum/objective/loot/getbooty = new()
 	getbooty.team = src
-	for(var/obj/machinery/computer/piratepad_control/P in GLOB.machines)
-		var/area/A = get_area(P)
-		if(istype(A,/area/shuttle/pirate))
-			getbooty.cargo_hold = P
-			break
 	getbooty.update_explanation_text()
 	objectives += getbooty
 	for(var/datum/mind/M in members)
@@ -56,34 +51,13 @@
 
 
 /datum/objective/loot
-	var/obj/machinery/computer/piratepad_control/cargo_hold
-	explanation_text = "Acquire valuable loot and store it in designated area."
 	var/target_value = 50000
 
-
-/datum/objective/loot/update_explanation_text()
-	if(cargo_hold)
-		var/area/storage_area = get_area(cargo_hold)
-		explanation_text = "Acquire loot and store [target_value] of credits worth in [storage_area.name] cargo hold."
-
 /datum/objective/loot/proc/loot_listing()
-	//Lists notable loot.
-	if(!cargo_hold || !cargo_hold.total_report)
-		return "Nothing"
-	cargo_hold.total_report.total_value = sortTim(cargo_hold.total_report.total_value, cmp = /proc/cmp_numeric_dsc, associative = TRUE)
-	var/count = 0
-	var/list/loot_texts = list()
-	for(var/datum/export/E in cargo_hold.total_report.total_value)
-		if(++count > 5)
-			break
-		loot_texts += E.total_printout(cargo_hold.total_report,notes = FALSE)
-	return loot_texts.Join(", ")
+	return ""
 
 /datum/objective/loot/proc/get_loot_value()
-	return cargo_hold ? cargo_hold.points : 0
-
-/datum/objective/loot/check_completion()
-	return ..() || get_loot_value() >= target_value
+	return 0
 
 /datum/team/pirate/roundend_report()
 	var/list/parts = list()

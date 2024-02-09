@@ -415,11 +415,7 @@
 	addtimer(CALLBACK(src, .proc/launch_payload), 40)
 
 /obj/item/roulette_wheel_beacon/proc/launch_payload()
-	var/obj/structure/closet/supplypod/centcompod/toLaunch = new()
-
-	new /obj/machinery/roulette(toLaunch)
-
-	new /obj/effect/pod_landingzone(drop_location(), toLaunch)
+	new /obj/machinery/roulette(drop_location())
 	qdel(src)
 
 #undef ROULETTE_SINGLES_PAYOUT

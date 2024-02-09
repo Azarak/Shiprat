@@ -19,14 +19,6 @@
 
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
 
-	mail_goodies = list(
-		/obj/item/pizzabox = 10,
-		/obj/item/stack/sheet/mineral/gold = 5,
-		/obj/item/stack/sheet/mineral/uranium = 4,
-		/obj/item/stack/sheet/mineral/diamond = 3,
-		/obj/item/gun/ballistic/rifle/boltaction = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

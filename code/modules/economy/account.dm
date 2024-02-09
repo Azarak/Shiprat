@@ -9,9 +9,6 @@
 	var/add_to_accounts = TRUE
 	var/account_id
 	var/being_dumped = FALSE //pink levels are rising
-	var/datum/bounty/civilian_bounty
-	var/list/datum/bounty/bounties
-	var/bounty_timer = 0
 
 /datum/bank_account/New(newname, job, modifier = 1)
 	account_holder = newname
@@ -132,45 +129,6 @@
 				if(M.can_hear())
 					M.playsound_local(get_turf(sound_atom), 'sound/machines/twobeep_high.ogg', 50, TRUE)
 					to_chat(M, "[icon2html(icon_source, M)] [SPAN_NOTICE("[message]")]")
-
-/**
- * Returns a string with the civilian bounty's description on it.
- */
-/datum/bank_account/proc/bounty_text()
-	if(!civilian_bounty)
-		return FALSE
-	return civilian_bounty.description
-
-
-/**
- * Returns the required item count, or required chemical units required to submit a bounty.
- */
-/datum/bank_account/proc/bounty_num()
-	if(!civilian_bounty)
-		return FALSE
-	if(istype(civilian_bounty, /datum/bounty/item))
-		var/datum/bounty/item/item = civilian_bounty
-		return "[item.shipped_count]/[item.required_count]"
-	if(istype(civilian_bounty, /datum/bounty/reagent))
-		var/datum/bounty/reagent/chemical = civilian_bounty
-		return "[chemical.shipped_volume]/[chemical.required_volume] u"
-	if(istype(civilian_bounty, /datum/bounty/virus))
-		return "At least 1u"
-
-/**
- * Produces the value of the account's civilian bounty reward, if able.
- */
-/datum/bank_account/proc/bounty_value()
-	if(!civilian_bounty)
-		return FALSE
-	return civilian_bounty.reward
-
-/**
- * Performs house-cleaning on variables when a civilian bounty is replaced, or, when a bounty is claimed.
- */
-/datum/bank_account/proc/reset_bounty()
-	civilian_bounty = null
-	bounty_timer = 0
 
 /datum/bank_account/department
 	account_holder = "Guild Credit Agency"

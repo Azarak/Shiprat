@@ -1055,25 +1055,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(dresscode != "Naked")
 			spawned_player.equipOutfit(dresscode)
 
-		switch(teleport_option)
-			if(CHOICE_TPOPTION_POD)
-				var/obj/structure/closet/supplypod/empty_pod = new()
+			spawned_player.forceMove(current_turf)
 
-				empty_pod.style = STYLE_BLUESPACE
-				empty_pod.bluespace = TRUE
-				empty_pod.explosionSize = list(0,0,0,0)
-				empty_pod.desc = "A sleek, and slightly worn bluespace pod - its probably seen many deliveries..."
-
-				spawned_player.forceMove(empty_pod)
-
-				new /obj/effect/pod_landingzone(current_turf, empty_pod)
-			else
-				spawned_player.forceMove(current_turf)
-
-				var/datum/effect_system/spark_spread/quantum/sparks = new
-				sparks.set_up(10, 1, spawned_player)
-				sparks.attach(get_turf(spawned_player))
-				sparks.start()
+			var/datum/effect_system/spark_spread/quantum/sparks = new
+			sparks.set_up(10, 1, spawned_player)
+			sparks.attach(get_turf(spawned_player))
+			sparks.start()
 
 #undef CHOICE_CANCEL
 #undef CHOICE_YES

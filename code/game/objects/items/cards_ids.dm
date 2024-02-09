@@ -333,11 +333,6 @@
 				msg += "The [D.account_holder] reports a balance of [D.account_balance] cr."
 		msg += SPAN_INFO("Alt-Click the ID to pull money from the linked account in the form of holochips.")
 		msg += SPAN_INFO("You can insert credits into the linked account by pressing holochips, cash, or coins against the ID.")
-		if(registered_account.civilian_bounty)
-			msg += "<span class='info'><b>There is an active civilian bounty.</b>"
-			msg += SPAN_INFO("<i>[registered_account.bounty_text()]</i>")
-			msg += SPAN_INFO("Quantity: [registered_account.bounty_num()]")
-			msg += SPAN_INFO("Reward: [registered_account.bounty_value()]")
 		if(registered_account.account_holder == user.real_name)
 			msg += SPAN_BOLDNOTICE("If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.")
 	else

@@ -96,7 +96,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "am" = (
-/obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},

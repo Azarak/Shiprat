@@ -575,8 +575,6 @@
 		"bluespace_crystal",
 		"telesci_gps",
 		"xenobioconsole",
-		"tradeconsole",
-		"tradepad"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

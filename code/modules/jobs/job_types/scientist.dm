@@ -20,12 +20,6 @@
 
 	family_heirlooms = list(/obj/item/toy/plush/slimeplushie)
 
-	mail_goodies = list(
-		/obj/item/raw_anomaly_core/random = 10,
-		/obj/item/disk/tech_disk/spaceloot = 2,
-		/obj/item/camera_bug = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

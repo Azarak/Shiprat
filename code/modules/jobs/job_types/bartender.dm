@@ -17,13 +17,6 @@
 
 	family_heirlooms = list(/obj/item/reagent_containers/rag, /obj/item/clothing/head/that, /obj/item/reagent_containers/food/drinks/shaker)
 
-	mail_goodies = list(
-		/obj/item/storage/box/rubbershot = 30,
-		/obj/item/reagent_containers/glass/bottle/clownstears = 10,
-		/obj/item/stack/sheet/mineral/plasma = 10,
-		/obj/item/stack/sheet/mineral/uranium = 10,
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

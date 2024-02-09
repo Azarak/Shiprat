@@ -26,15 +26,6 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
 
-	mail_goodies = list(
-		/obj/item/storage/fancy/cigarettes = 15,
-		/obj/item/storage/box/handcuffs = 10,
-		/obj/item/storage/box/teargas = 10,
-		/obj/item/storage/box/flashbangs = 10,
-		/obj/item/storage/box/rubbershot = 10,
-		/obj/item/storage/box/lethalshot = 5
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

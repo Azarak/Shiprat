@@ -17,14 +17,6 @@
 
 	family_heirlooms = list(/obj/item/clipboard)
 
-	mail_goodies = list(
-		/obj/item/pizzabox = 10,
-		/obj/item/stack/sheet/mineral/gold = 5,
-		/obj/item/stack/sheet/mineral/uranium = 4,
-		/obj/item/stack/sheet/mineral/diamond = 3,
-		/obj/item/gun/ballistic/rifle/boltaction = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 
@@ -35,6 +27,5 @@
 	belt = /obj/item/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargo/tech
-	l_hand = /obj/item/export_scanner
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo = 1)
 	id_chips = list(/obj/item/id_card_chip/station_job/cargo_technician)

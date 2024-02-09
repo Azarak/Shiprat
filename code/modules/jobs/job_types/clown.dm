@@ -15,14 +15,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_CLOWN
 
-	mail_goodies = list(
-		/obj/item/food/grown/banana = 100,
-		/obj/item/food/pie/cream = 50,
-		/obj/item/clothing/shoes/clown_shoes/combat = 10,
-		/obj/item/reagent_containers/spray/waterflower/lube = 20, // lube
-		/obj/item/reagent_containers/spray/waterflower/superlube = 1 // Superlube, good lord.
-	)
-
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS

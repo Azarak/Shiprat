@@ -491,7 +491,6 @@ GLOBAL_VAR(station_nuke_source)
 		off_station = NUKE_MISS_STATION
 
 	if(off_station < NUKE_MISS_STATION)
-		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
 	//Cinematic

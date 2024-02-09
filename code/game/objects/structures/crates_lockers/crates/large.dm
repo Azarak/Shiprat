@@ -18,16 +18,10 @@
 
 /obj/structure/closet/crate/large/attack_hand(mob/user, list/modifiers)
 	add_fingerprint(user)
-	if(manifest)
-		tear_manifest(user)
-	else
-		to_chat(user, SPAN_WARNING("You need a crowbar to pry this open!"))
+	to_chat(user, SPAN_WARNING("You need a crowbar to pry this open!"))
 
 /obj/structure/closet/crate/large/attackby(obj/item/W, mob/living/user, params)
 	if(W.tool_behaviour == TOOL_CROWBAR)
-		if(manifest)
-			tear_manifest(user)
-
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
 			SPAN_NOTICE("You pry open \the [src]."), \
 			SPAN_HEAR("You hear splitting wood."))

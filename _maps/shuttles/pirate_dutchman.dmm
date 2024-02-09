@@ -441,7 +441,6 @@
 /turf/open/floor/carpet/blue/airless,
 /area/shuttle/pirate/flying_dutchman)
 "tt" = (
-/obj/machinery/piratepad,
 /turf/open/floor/carpet/royalblack/airless,
 /area/shuttle/pirate/flying_dutchman)
 "tH" = (
@@ -704,9 +703,6 @@
 /turf/closed/wall/mineral/wood/nonmetal,
 /area/shuttle/pirate/flying_dutchman)
 "Hh" = (
-/obj/machinery/computer/piratepad_control{
-	dir = 4
-	},
 /turf/open/floor/carpet/royalblack/airless,
 /area/shuttle/pirate/flying_dutchman)
 "Jp" = (

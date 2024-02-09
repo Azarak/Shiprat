@@ -640,7 +640,6 @@
 "by" = (
 /obj/effect/mapping_helpers/smart_pipe/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/piratepad,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "bA" = (
@@ -695,9 +694,6 @@
 /area/shuttle/pirate)
 "bI" = (
 /obj/machinery/light/small/directional/south,
-/obj/machinery/computer/piratepad_control{
-	dir = 1
-	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "bJ" = (

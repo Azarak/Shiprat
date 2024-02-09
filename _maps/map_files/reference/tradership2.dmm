@@ -516,7 +516,6 @@
 /area/cargo/warehouse)
 "mx" = (
 /obj/machinery/light_switch/directional/east,
-/obj/machinery/trade_pad,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
@@ -1358,9 +1357,6 @@
 "Jb" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
-/obj/machinery/computer/trade_console{
-	dir = 8
-	},
 /obj/effect/turf_decal/box,
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron,

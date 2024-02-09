@@ -36,11 +36,7 @@
 		to_chat(M, SPAN_NOTICE("[uses] use[uses > 1 ? "s" : ""] remaining on the [src]."))
 
 /obj/item/choice_beacon/proc/spawn_option(obj/choice,mob/living/M)
-	podspawn(list(
-		"target" = get_turf(src),
-		"style" = STYLE_BLUESPACE,
-		"spawn" = choice,
-	))
+	choice.forceMove(get_turf(src))
 	var/msg = "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>"
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

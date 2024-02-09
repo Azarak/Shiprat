@@ -118,13 +118,6 @@
 		return FALSE
 	return TRUE
 
-/// Creates the drop pod the nukie will be dropped by
-/obj/item/antag_spawner/nuke_ops/proc/setup_pod()
-	var/obj/structure/closet/supplypod/pod = new(null, pod_style)
-	pod.explosionSize = list(0,0,0,0)
-	pod.bluespace = TRUE
-	return pod
-
 /obj/item/antag_spawner/nuke_ops/attack_self(mob/user)
 	if(!(check_usability(user)))
 		return
@@ -144,7 +137,6 @@
 
 /obj/item/antag_spawner/nuke_ops/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/nukie = new()
-	var/obj/structure/closet/supplypod/pod = setup_pod()
 	C.prefs.safe_transfer_prefs_to(nukie, is_antag = TRUE)
 	nukie.ckey = C.key
 	var/datum/mind/op_mind = nukie.mind
@@ -156,8 +148,7 @@
 	var/datum/antagonist/nukeop/creator_op = user.has_antag_datum(/datum/antagonist/nukeop, TRUE)
 	op_mind.add_antag_datum(antag_datum, creator_op ? creator_op.get_team() : null)
 	op_mind.special_role = special_role_name
-	nukie.forceMove(pod)
-	new /obj/effect/pod_landingzone(get_turf(src), pod)
+	nukie.forceMove(get_turf(src))
 
 //////CLOWN OP
 /obj/item/antag_spawner/nuke_ops/clown
@@ -192,7 +183,6 @@
 	var/datum/antagonist/nukeop/creator_op = user.has_antag_datum(/datum/antagonist/nukeop,TRUE)
 	if(!creator_op)
 		return
-	var/obj/structure/closet/supplypod/pod = setup_pod()
 	switch(borg_to_spawn)
 		if("Medical")
 			borg = new /mob/living/silicon/robot/model/syndicate/medical()
@@ -221,8 +211,7 @@
 	new_borg.send_to_spawnpoint = FALSE
 	borg.mind.add_antag_datum(new_borg,creator_op.nuke_team)
 	borg.mind.special_role = "Syndicate Cyborg"
-	borg.forceMove(pod)
-	new /obj/effect/pod_landingzone(get_turf(src), pod)
+	borg.forceMove(T)
 
 ///////////SLAUGHTER DEMON
 

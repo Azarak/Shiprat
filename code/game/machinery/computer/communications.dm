@@ -485,28 +485,7 @@
 /// Returns TRUE if the user can buy shuttles.
 /// If they cannot, returns FALSE or a string detailing why.
 /obj/machinery/computer/communications/proc/can_buy_shuttles(mob/user)
-	if (!SSmapping.config.allow_custom_shuttles)
-		return FALSE
-	if (issilicon(user))
-		return FALSE
-
-	var/has_access = FALSE
-
-	for (var/access in SSshuttle.has_purchase_shuttle_access)
-		if (access in authorize_access)
-			has_access = TRUE
-			break
-
-	if (!has_access)
-		return FALSE
-
-	if (SSshuttle.emergency.mode != SHUTTLE_RECALL && SSshuttle.emergency.mode != SHUTTLE_IDLE)
-		return "The shuttle is already in transit."
-	if (SSshuttle.shuttle_purchased == SHUTTLEPURCHASE_PURCHASED)
-		return "A replacement shuttle has already been purchased."
-	if (SSshuttle.shuttle_purchased == SHUTTLEPURCHASE_FORCED)
-		return "Due to unforseen circumstances, shuttle purchasing is no longer available."
-	return TRUE
+	return FALSE
 
 /// Returns whether we are authorized to buy this specific shuttle.
 /// Does not handle prerequisite checks, as those should still *show*.

@@ -18,16 +18,6 @@
 
 	family_heirlooms = list(/obj/item/storage/firstaid/ancient/heirloom)
 
-	mail_goodies = list(
-		/obj/item/healthanalyzer/advanced = 15,
-		/obj/item/scalpel/advanced = 6,
-		/obj/item/retractor/advanced = 6,
-		/obj/item/cautery/advanced = 6,
-		/obj/item/reagent_containers/glass/bottle/formaldehyde = 6,
-		/obj/effect/spawner/lootdrop/organ_spawner = 5,
-		/obj/effect/spawner/lootdrop/memeorgans = 1
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

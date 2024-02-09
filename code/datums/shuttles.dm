@@ -162,13 +162,6 @@
 	admin_notes = "No brig, no medical facilities, no shuttle console."
 	credit_cost = CARGO_CRATE_VALUE * 5
 
-/datum/map_template/shuttle/emergency/airless/post_load()
-	. = ..()
-	//enable buying engines from cargo
-	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/shuttle_engine]
-	P.special_enabled = TRUE
-
-
 /datum/map_template/shuttle/emergency/asteroid
 	suffix = "asteroid"
 	name = "Asteroid Station Emergency Shuttle"
@@ -449,22 +442,6 @@
 	suffix = "kilo"
 	name = "kilo transport ferry"
 	description = "Standard issue CentCom Ferry for Kilo pattern stations. Includes additional equipment and rechargers."
-
-/datum/map_template/shuttle/cargo/kilo
-	suffix = "kilo"
-	name = "supply shuttle (Kilo)"
-
-/datum/map_template/shuttle/cargo/birdboat
-	suffix = "birdboat"
-	name = "supply shuttle (Birdboat)"
-
-/datum/map_template/shuttle/cargo/donut
-	suffix = "donut"
-	name = "supply shuttle (Donut)"
-
-/datum/map_template/shuttle/cargo/pubby
-	suffix = "pubby"
-	name = "supply shuttle (Pubby)"
 
 /datum/map_template/shuttle/emergency/delta
 	suffix = "delta"

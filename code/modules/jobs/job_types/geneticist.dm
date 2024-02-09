@@ -18,10 +18,6 @@
 	display_order = JOB_DISPLAY_ORDER_GENETICIST
 	bounty_types = CIV_JOB_SCI
 
-	mail_goodies = list(
-		/obj/item/storage/box/monkeycubes = 10
-	)
-
 	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS

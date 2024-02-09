@@ -493,7 +493,6 @@
 /turf/open/floor/iron,
 /area/centcom/control)
 "iN" = (
-/obj/machinery/status_display/supply,
 /turf/closed/indestructible/riveted,
 /area/centcom/supply)
 "iO" = (
@@ -796,9 +795,6 @@
 	name = "Loading Doors";
 	pixel_x = -27;
 	pixel_y = 5
-	},
-/obj/machinery/computer/cargo{
-	dir = 4
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -2191,9 +2187,6 @@
 /turf/open/floor/iron,
 /area/centcom/supply)
 "mG" = (
-/obj/machinery/computer/cargo{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -2713,9 +2706,6 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_y = -32
 	},
-/obj/machinery/computer/cargo{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
@@ -3217,9 +3207,6 @@
 /turf/open/floor/iron,
 /area/centcom/supply)
 "ov" = (
-/obj/machinery/computer/cargo{
-	dir = 8
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},

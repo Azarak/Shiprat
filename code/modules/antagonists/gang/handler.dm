@@ -212,7 +212,6 @@ GLOBAL_VAR_INIT(deaths_during_shift, 0)
 		// see /datum/antagonist/gang/create_team() for how the gang team datum gets instantiated and added to our gangs list
 
 	addtimer(CALLBACK(src, .proc/announce_gang_locations), 5 MINUTES)
-	SSshuttle.registerHostileEnvironment(src)
 	return TRUE
 
 /**
@@ -492,7 +491,7 @@ GLOBAL_VAR_INIT(deaths_during_shift, 0)
 
 /// Internal. Clears the hostile environment, letting the shuttle leave.
 /datum/gang_handler/proc/end_hostile_sit()
-	SSshuttle.clearHostileEnvironment(src)
+	return
 
 /// Internal. Assigns points to families according to gang tags.
 /datum/gang_handler/proc/check_tagged_turfs()

@@ -18,15 +18,6 @@
 
 	family_heirlooms = list(/obj/item/storage/firstaid/ancient/heirloom)
 
-	mail_goodies = list(
-		/obj/item/reagent_containers/hypospray/medipen = 20,
-		/obj/item/reagent_containers/hypospray/medipen/oxandrolone = 10,
-		/obj/item/reagent_containers/hypospray/medipen/salacid = 10,
-		/obj/item/reagent_containers/hypospray/medipen/salbutamol = 10,
-		/obj/item/reagent_containers/hypospray/medipen/penacid = 10,
-		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
-	)
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 

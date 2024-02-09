@@ -199,41 +199,6 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 
-/obj/item/clothing/neck/necklace/dope/merchant
-	desc = "Don't ask how it works, the proof is in the holochips!"
-	/// scales the amount received in case an admin wants to emulate taxes/fees.
-	var/profit_scaling = 1
-	/// toggles between sell (TRUE) and get price post-fees (FALSE)
-	var/selling = FALSE
-
-/obj/item/clothing/neck/necklace/dope/merchant/attack_self(mob/user)
-	. = ..()
-	selling = !selling
-	to_chat(user, SPAN_NOTICE("[src] has been set to [selling ? "'Sell'" : "'Get Price'"] mode."))
-
-/obj/item/clothing/neck/necklace/dope/merchant/afterattack(obj/item/I, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	var/datum/export_report/ex = export_item_and_contents(I, dry_run=TRUE)
-	var/price = 0
-	for(var/x in ex.total_amount)
-		price += ex.total_value[x]
-
-	if(price)
-		var/true_price = round(price*profit_scaling)
-		to_chat(user, SPAN_NOTICE("[selling ? "Sold" : "Getting the price of"] [I], value: <b>[true_price]</b> credits[I.contents.len ? " (exportable contents included)" : ""].[profit_scaling < 1 && selling ? "<b>[round(price-true_price)]</b> credit\s taken as processing fee\s." : ""]"))
-		if(selling)
-			new /obj/item/holochip(get_turf(user),true_price)
-			for(var/i in ex.exported_atoms_ref)
-				var/atom/movable/AM = i
-				if(QDELETED(AM))
-					continue
-				qdel(AM)
-	else
-		to_chat(user, SPAN_WARNING("There is no export value for [I] or any items within it."))
-
-
 /obj/item/clothing/neck/neckerchief
 	icon = 'icons/obj/clothing/masks.dmi' //In order to reuse the bandana sprite
 	w_class = WEIGHT_CLASS_TINY

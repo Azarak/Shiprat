@@ -34,8 +34,6 @@
 /mob/living/simple_animal/pet/gondola/Initialize()
 	. = ..()
 	AddElement(/datum/element/pet_bonus, "smiles!")
-	if (!(istype(src, /mob/living/simple_animal/pet/gondola/gondolapod)))
-		CreateGondola()
 
 /mob/living/simple_animal/pet/gondola/proc/CreateGondola()
 	icon_state = null

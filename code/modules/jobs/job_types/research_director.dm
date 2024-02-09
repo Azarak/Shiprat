@@ -25,12 +25,6 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-	mail_goodies = list(
-		/obj/item/storage/box/monkeycubes = 30,
-		/obj/item/circuitboard/machine/sleeper/party = 3,
-		/obj/item/borg/upgrade/ai = 2
-	)
-
 	family_heirlooms = list(/obj/item/toy/plush/slimeplushie)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
